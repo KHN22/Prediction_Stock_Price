@@ -1,0 +1,4527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+                <title>Table Data - Consumer Price Index for All Urban Consumers: All Items in U.S. City Average | FRED | St. Louis Fed</title>
+              <script>
+      dataLayer = []
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []
+      w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      })
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''
+      j.async = true
+      j.src =
+        '//www.googletagmanager.com/gtm.js?id=' + i + dl
+      f.parentNode.insertBefore(j, f)
+    })(window, document, 'script', 'dataLayer', 'GTM-5L322W')</script>
+    <!-- End Google Tag Manager -->
+
+        
+
+    
+    <link rel="preconnect" href="https://research.stlouisfed.org">
+    <link rel="preconnect" href="https://uapi.stlouisfed.org">
+    <link rel="preconnect" href="https://alfred.stlouisfed.org">
+    <link rel="preconnect" href="https://fred.stlouisfed.org">
+    <link rel="preconnect" href="https://fred.stlouisfed.org">
+    <link rel="preconnect" href="https://apis.google.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://www.google-analytics.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+    <meta name="apple-itunes-app" content="app-id=451715489">
+    <meta name="google-play-app" content="app-id=org.stlouisfed.research.fred">
+
+    
+    
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+
+    <!--<meta name="viewport" content="width=device-width">-->
+
+    
+    
+
+</head>
+<body class="">
+
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5L322W"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- pingdom_uptime_check=uXCPjTUzTxL7ULra -->
+<link rel="stylesheet" type="text/css" href=/assets/bootstrap/dist/css/1793728005.bootstrap.min.css>
+<link rel="stylesheet" type="text/css" href=/assets/fontawesome-free/css/all.min.css>
+<script></script>
+<link rel="stylesheet" type="text/css" href=/css/1793728006.pager.min.css>
+<script></script>
+<link rel="stylesheet" type="text/css" href=/assets/select2/dist/css/1793728005.select2.min.css>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+<!--googleoff: snippet-->
+<a href="#content-container" class="skip-to">Skip to main content</a>
+<!--googleon: snippet-->
+<a id="top"></a>
+<!--Move content shift styles internal to boost performance scores-->
+<style>
+    #zoom-and-share {
+        position:relative;
+        background-color: rgb(225, 233, 240);
+        min-height: 437px;
+    }
+</style>
+<div id="container">
+    <header>
+        <nav class="navbar navbar-expand-lg header-not-home py-0 EL-nonhomepage-header EL-header-and-subheader">
+            <div id="hidden-user" class='hide'></div>
+            <div id="action-modal"></div>
+            <div class="col-12 d-none d-lg-block">
+                <div class="col-12 d-none d-lg-flex">
+                    <a class="bank-logo-gtm" target="_blank" href="https://www.stlouisfed.org">
+                        <img class="research-logo-gtm" src="//fred.stlouisfed.org/images/Small_Stl_Fed_Logo.svg" alt="Federal Reserve Bank of St. Louis">
+                    </a>
+                    <hr class=" hr-post-frb-stls-logo">
+                </div>
+                <div class="col-12 d-none d-lg-flex">
+                    <div class="col-3 align-content-center">
+                        <a class="fred-logo-gtm" target="_blank" href="//fred.stlouisfed.org">
+                            <img class="header-logo-eagle" src="//fred.stlouisfed.org/images/FRED_Logo_Header.svg" alt="FRED homepage">
+                        </a>
+                    </div>    
+                    <div class="col-9 d-none d-lg-flex align-content-center justify-content-end">
+                        <div class='input-group EL-header-search-container' id="search-container-header">
+    <select id="head-search" class='EL-header-search'>
+        <option></option>
+    </select>
+
+    <button class="search-submit-select2" id="select2-nav-search-button" type="submit" aria-label="Submit Search">
+        <i class="fa fa-search" title="Submit Search"></i>
+    </button>
+</div>
+                        <nav id="blueheader-navbar-nav">
+                            <ul id="blueheader-navbar" class="nav float-end">
+                                <li class="blueheader-navbar-item center-content-vertically switch-products-gtm">
+                                    <span id="switchprod-popover-container" class="switchprod-popover-container">
+
+  <button type="button" id="switchProd" data-toggle="popover" aria-controls="switch-prod-list" 
+    aria-haspopup="true" class="header-popover" aria-label="Toggle Explore Our Apps Menu">
+    <img class="Switch-Products-gtm" src="//fred.stlouisfed.org/images/Waffle_Menu_off.svg" alt="Toggle Explore Our Apps Menu" />
+  </button>
+</span>
+
+<div id="switchprod-popover" class="hide">
+  <!-- empty alt values handle older screen readers that don't handle WAI-ARIA roles. Both methods allow the screenreader to skip the image and not read the filename to the user. -->
+<h2 class="explore-products-desk">Explore Our Apps</h2>
+<hr>
+<ul id="switch-prod-list" class="list-group switch-products-list" role="menu" aria-labelledby="switchProduct">
+    <li role="presentaion" id="ham-fred-dev" class="list-group-item product-fred">
+      <a class="d-flex burger-fred-gtm" role="menuitem" href="//fred.stlouisfed.org">
+        <div>
+          <img class="switch-icon-padding burger-fred-gtm" src="//fred.stlouisfed.org/images/FRED_Logo_for_Waffle.svg" alt="" role="presentation">
+        </div>
+        <div>
+          <h3 class="burger-fred-gtm">FRED</h3>
+          <p>Tools and resources to find and use economic data worldwide</p>
+        </div>
+      </a>
+    </li>
+    <li role="presentaion" id="ham-fraser" class="list-group-item">
+      <a rel="noopener" target="_blank" class="d-flex burger-fraser-gtm" role="menuitem" href="https://fraser.stlouisfed.org/">
+        <div>
+          <img class="switch-icon-padding burger-fraser-gtm" src="//fred.stlouisfed.org/images/FRASER_Logo_for_Waffle.svg" alt="" role="presentation">
+        </div>
+        <div>
+          <h3 class="burger-fraser-gtm">FRASER</h3>
+          <p>U.S. financial, economic, and banking history</p>
+        </div>
+      </a>
+    </li>
+    <li role="presentaion" id="ham-alfred" class="list-group-item">
+      <a rel="noopener" target="_blank" class="d-flex burger-alfred-gtm" role="menuitem" href="//alfred.stlouisfed.org">
+        <div>
+          <img class="switch-icon-padding burger-alfred-gtm" src="//fred.stlouisfed.org/images/ALFRED_Logo_for_Waffle.svg" alt="" role="presentation">
+        </div>
+        <div>
+          <h3 class="burger-alfred-gtm">ALFRED</h3>
+          <p>Vintages of economic data from specific dates in history</p>
+        </div>
+      </a>
+    </li>
+    <li role="presentaion" id="ham-ecolowdown" class="list-group-item">
+      <a rel="noopener" target="_blank" class="d-flex burger-econlowdown-gtm" role="menuitem" href="https://cassidi.stlouisfed.org/index">
+        <div>
+          <img class="burger-econlowdown-gtm" src="//fred.stlouisfed.org/images/CASSIDI_Logo_for_Waffle.svg" alt="" role="presentation">
+        </div>
+        <div>
+          <h3 class="burger-econlowdown-gtm">CASSIDI</h3>
+          <p>View banking market concentrations and perform HHI analysis</p>
+        </div>
+      </a>
+  </li>
+</ul>
+</div>                                </li>
+                                <li class="blueheader-navbar-item center-content-vertically">
+                                    <div class="hidden-xs" id="signin-wrap">
+                                        <div id="user-nav" class="EL-my-account-link"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 d-lg-none">
+                <div class="fred-logo-div col-6 align-content-center">
+                    <a class="fred-logo-gtm" href="//fred.stlouisfed.org/">
+                        <img class="header-logo" src="//fred.stlouisfed.org/images/FRED_Logo_Header_white_text.svg" alt="FRED homepage">
+                    </a>
+                </div>
+                <div class="blueheader-navbar center-content-vertically">
+                    <button type="button" id="search-btn-open" aria-controls="mobile-search-container" 
+    onclick="mobileSearchToggle('open')" aria-label="Open Search">
+    <i class="fas fa-solid fa-search" title="Open Search"></i>
+</button>
+<button type="button" id="search-btn-close" class="hide" aria-controls="mobile-search-container" 
+    onclick="mobileSearchToggle('close')" aria-label="Close Search" disabled="true">
+    <i class="fa-solid fa-x" title="Close Search"></i>
+</button>  
+                    <button type="button" id="hamburger-btn-open" class="hamburger-gtm" aria-controls="hamburger-drawer" 
+    onclick="hamburgerMenuToggle('open')" aria-label="Open Mobile Menu">
+    <i id="hamburger" class="fas fa-bars hamburger-header" title="Open Mobile Menu"></i>
+</button> 
+<button type="button" id="hamburger-btn-close" class="close-btn burger-close-gtm hide" aria-controls="hamburger-drawer" 
+    onclick="hamburgerMenuToggle('close')" aria-label="Close Mobile Menu">
+    <i class="fa-solid fa-x" title="Close Mobile Menu"></i>
+</button> 
+                </div>
+            </div>
+            <div id="notifications-container"></div>
+        </nav>
+        <div class="blueheader-navbar d-lg-none">
+            <div id="mobile-search-container" class="hide col-12">
+                <input type="hidden" id="mobile-search-input" class="search-text-input" placeholder="Search FRED Data..." disabled="disabled">
+                <button type="submit" class="search-submit-select2" id="mobile-search-submit" disabled="disabled">
+                    <i class="fas fa-solid fa-search" title="Search"></i>
+                </button>
+            </div>
+            <nav id="hamburger-drawer" class="hide">
+    <div class="slide-content">
+        <div id="hamburger-navigation">
+            <div id="hamburger-home">
+                <ul class="list-group flush-list hamburger-list col-12">
+                    <li class="list-group-item">
+                        <a class="burger-calendar-gtm" href="https://fred.stlouisfed.org/releases/calendar">Release Calendar</a>
+                    </li>
+                    <li class="list-group-item hamburger-menu-item">
+                        <button type="button" class="burger-tools-gtm" onclick="toggleMenuNavigation('hamburger-tools', true)" aria-controls="hamburger-tools">Tools
+                            <i class="fas fa-solid fa-angle-down" title="Toggle FRED Tools Submenu"></i>
+                        </button>
+                        <ul id="hamburger-tools" role="menu" class="hide list-group hamburger-submenu-list col-12">
+                            <li role="presentation" class="list-group-item">
+                                <a role="menuitem" class="burger-fred-mcp-connector-gtm" href="https://fred.stlouisfed.org/help/data/connecting-fred-to-ai-services/FRED-MCP-Connector"> FRED MCP Connector</a>
+                            </li>
+                            <li role="presentation" class="list-group-item">
+                                <a role="menuitem" class="burger-fred-excel-add-in-gtm" href="https://fred.stlouisfed.org/fred-addin"> FRED Add-in for Excel</a>
+                            </li>
+                            <li role="presentation" class="list-group-item">
+                                <a role="menuitem" class="burger-fred-api-gtm" href="https://fred.stlouisfed.org/docs/api/fred"> FRED API</a>
+                            </li>
+                            <li role="presentation" class="list-group-item">
+                                <a role="menuitem" class="burger-fred-mobile-apps-gtm" href="https://fred.stlouisfed.org/fred-mobile"> FRED Mobile Apps</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="burger-news-gtm" href="https://news.research.stlouisfed.org/category/fred-announcements/">News</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="burger-blog-gtm" href="https://fredblog.stlouisfed.org">Blog</a>
+                    </li>
+                    <li class="list-group-item hamburger-menu-item">
+                        <button type="button" class="burger-about-gtm" onclick="toggleMenuNavigation('hamburger-about-fred', true)" aria-controls="hamburger-about-fred">About
+                            <i class="fas fa-solid fa-angle-down" title="Toggle About FRED Submenu"></i>
+                        </button>
+                        <ul id="hamburger-about-fred" role="menu" class="hide list-group hamburger-submenu-list col-12">
+                            <li role="presentation" class="list-group-item">
+                                <a role="menuitem" class="burger-fred-about-gtm" href="https://fred.stlouisfed.org/help/about/about-fred/what-is-fred"> What is FRED</a>
+                            </li>
+                            <li role="presentation" class="list-group-item">
+                                <a role="menuitem" class="burger-tutorials-gtm" href="https://fred.stlouisfed.org/help"> Tutorial</a>
+                            </li>
+                            <li role="presentation" class="list-group-item">
+                                <a role="menuitem" class="burger-data-literacy-gtm" href="https://fred.stlouisfed.org/digital-badges/">
+                                Digital Badges
+                                </a>
+                            </li>
+                            <li role="presentation" class="list-group-item">
+                                <a role="menuitem" class="burger-contact-us-gtm" href="https://fred.stlouisfed.org/contactus/"> Contact Us</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="burger-myaccount-gtm" href="https://fredaccount.stlouisfed.org">My Account</a>
+                    </li>
+                    <li class="list-group-item hamburger-menu-item">
+                        <button type="button" class="burger-switch-gtm" onclick="toggleMenuNavigation('hamburger-products', true)" aria-controls="hamburger-products">
+                            Explore Our Apps
+                            <i class="fas fa-solid fa-angle-down" title="Toggle Apps Submenu"></i>
+                        </button>
+                        <div id="hamburger-products" class="hide">
+                            <!-- empty alt values handle older screen readers that don't handle WAI-ARIA roles. Both methods allow the screenreader to skip the image and not read the filename to the user. -->
+<h2 class="explore-products-desk">Explore Our Apps</h2>
+<hr>
+<ul id="switch-prod-list" class="list-group switch-products-list" role="menu" aria-labelledby="switchProduct">
+    <li role="presentaion" id="ham-fred-dev" class="list-group-item product-fred">
+      <a class="d-flex burger-fred-gtm" role="menuitem" href="//fred.stlouisfed.org">
+        <div>
+          <img class="switch-icon-padding burger-fred-gtm" src="//fred.stlouisfed.org/images/FRED_Logo_for_Waffle.svg" alt="" role="presentation">
+        </div>
+        <div>
+          <h3 class="burger-fred-gtm">FRED</h3>
+          <p>Tools and resources to find and use economic data worldwide</p>
+        </div>
+      </a>
+    </li>
+    <li role="presentaion" id="ham-fraser" class="list-group-item">
+      <a rel="noopener" target="_blank" class="d-flex burger-fraser-gtm" role="menuitem" href="https://fraser.stlouisfed.org/">
+        <div>
+          <img class="switch-icon-padding burger-fraser-gtm" src="//fred.stlouisfed.org/images/FRASER_Logo_for_Waffle.svg" alt="" role="presentation">
+        </div>
+        <div>
+          <h3 class="burger-fraser-gtm">FRASER</h3>
+          <p>U.S. financial, economic, and banking history</p>
+        </div>
+      </a>
+    </li>
+    <li role="presentaion" id="ham-alfred" class="list-group-item">
+      <a rel="noopener" target="_blank" class="d-flex burger-alfred-gtm" role="menuitem" href="//alfred.stlouisfed.org">
+        <div>
+          <img class="switch-icon-padding burger-alfred-gtm" src="//fred.stlouisfed.org/images/ALFRED_Logo_for_Waffle.svg" alt="" role="presentation">
+        </div>
+        <div>
+          <h3 class="burger-alfred-gtm">ALFRED</h3>
+          <p>Vintages of economic data from specific dates in history</p>
+        </div>
+      </a>
+    </li>
+    <li role="presentaion" id="ham-ecolowdown" class="list-group-item">
+      <a rel="noopener" target="_blank" class="d-flex burger-econlowdown-gtm" role="menuitem" href="https://cassidi.stlouisfed.org/index">
+        <div>
+          <img class="burger-econlowdown-gtm" src="//fred.stlouisfed.org/images/CASSIDI_Logo_for_Waffle.svg" alt="" role="presentation">
+        </div>
+        <div>
+          <h3 class="burger-econlowdown-gtm">CASSIDI</h3>
+          <p>View banking market concentrations and perform HHI analysis</p>
+        </div>
+      </a>
+  </li>
+</ul>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <a class="burger-stls-home-gtm" href="https://www.stlouisfed.org/">STL Fed Home Page</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+        </div>
+        <div class='navbar navbar-expand-lg sub-header EL-header-and-subheader'>
+            <div class="container-fluid gx-0">
+                <div class="col d-flex justify-content-end">
+                    <div class="container-fluid gx-0">
+                        
+<hr class="col-12 hr-pre-subheader-nav d-none d-lg-block">
+<nav class="col-12 navbar EL-main-nav navbar-expand-sm d-none d-lg-flex" id="subheader-nav">
+    <div class="navbar-collapse collapse d-flex justify-content-end">
+        <ul id="subheader-navbar" class="nav float-end navbar-nav">
+            <li class="nav-li-subheader">
+                <a href="https://fred.stlouisfed.org/releases/calendar" class="nav-releasecal-subheader-gtm">Release Calendar</a>
+            </li>
+            <li class="nav-li-subheader">
+              <span class="sub-header-nav-tools-gtm  header-popover fred-tools-container">
+  <button type="button" id="fred-tools-link" class="align-icon header-popover tools-gtm" 
+    aria-haspopup="true" aria-controls="fred-tools-menu" data-toggle="popover" 
+    onclick="toggleMenuNavigation('fred-tools-popover')">Tools
+    <i class="fas fa-angle-down" title="Toggle Tools Menu"></i>
+  </button>
+</span>
+
+<div id="fred-tools-popover" class="hide">
+  <ul id="fred-tools-menu" role="menu" class="header-list-popover list-group flush-list">
+    <li role="presentation" class="list-group-item">
+      <a role="menuitem" class="homepage-nav-tools-fred-mcp-connector-gtm" href="https://fred.stlouisfed.org/help/data/connecting-fred-to-ai-services/FRED-MCP-Connector">FRED MCP Connector</a>
+    </li>
+    <li role="presentation" class="list-group-item">
+      <a role="menuitem" class="homepage-nav-tools-fred-excel-addin-gtm" href="https://fred.stlouisfed.org/fred-addin">FRED Add-in for Excel</a>
+    </li>
+    <li role="presentation" class="list-group-item">
+      <a role="menuitem" class="homepage-nav-tools-fred-api-gtm" href="https://fred.stlouisfed.org/docs/api/fred">FRED API</a>
+    </li>
+    <li role="presentation" class="list-group-item">
+      <a role="menuitem" class="homepage-nav-tools-fred-mobile-gtm" href="https://fred.stlouisfed.org/fred-mobile">FRED Mobile Apps</a>
+    </li>
+  </ul>
+</div>            </li>
+            <li class="nav-li-subheader">
+                <a href="https://news.research.stlouisfed.org/category/fred-announcements/" class="nav-news-subheader-gtm">News</a>
+            </li>
+            <li class="nav-li-subheader">
+                <a href="https://fredblog.stlouisfed.org" class="nav-fredblog-subheader-gtm">Blog</a>
+            </li>
+            <li class="nav-li-subheader">
+              
+<span class="subheader-nav-about-gtm about-fred-container">
+  <button type="button" id="about-fred-link" class="align-icon header-popover about-gtm" 
+    data-toggle="popover" aria-controls="about-fred-menu" aria-haspopup="true"
+    onclick="toggleMenuNavigation('about-fred-popover')">About
+    <i class="fas fa-angle-down" alt="Toggle About Menu"></i>
+  </button>
+</span>
+
+<div id="about-fred-popover" class="hide">
+  <ul id="about-fred-menu" role="menu" aria-labelledby="about-fred-link" class="header-list-popover list-group flush-list">
+    <li role="presentation" class="list-group-item">
+      <a role="menuitem" class="about-fred-what-is-gtm" href="https://fred.stlouisfed.org/help/about/about-fred/what-is-fred">
+        What is FRED
+      </a>
+    </li>
+    <li role="presentation" class="list-group-item">
+      <a role="menuitem" class="about-fred-tutorials-gtm" href="https://fred.stlouisfed.org/help">
+        Tutorial
+      </a>
+    </li>
+    <li role="presentation" class="list-group-item">
+      <a role="menuitem" class="about-research-data-literacy-gtm" href="https://fred.stlouisfed.org/digital-badges/">
+        Digital Badges
+      </a>
+    </li>
+    <li role="presentation" class="list-group-item">
+      <a role="menuitem" class="about-fred-contact-gtm" href="https://fred.stlouisfed.org/contactus/ ">
+        Contact Us
+      </a>
+    </li>
+  </ul>
+</div>
+            </li>
+        </ul>
+    </div>
+</nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+<div class="clear row gx-0 container" id="content-container">
+
+
+
+<div class="col-12 container-fluid" id="main-content-column">
+
+<div id="page-title" class="page-title">
+
+
+
+
+
+
+
+
+</div>
+
+    
+                        
+                <h1 id="data-table-title" class="mb-3">Table Data - Consumer Price Index for All Urban Consumers: All Items in U.S. City Average</h1>
+
+<table aria-label="metadata - Consumer Price Index for All Urban Consumers: All Items in U.S. City Average" name="Consumer Price Index for All Urban Consumers: All Items in U.S. City Average" class="table table-bordered">
+    <tbody>
+        <tr>
+            <th scope="row">Title</th>
+            <td>Consumer Price Index for All Urban Consumers: All Items in U.S. City Average</td>
+        </tr>
+        <tr>
+            <th scope="row">Series ID</th>
+            <td>CPIAUCSL</td>
+        </tr>
+        <tr>
+            <th scope="row">Source</th>
+            <td>U.S. Bureau of Labor Statistics</td>
+        </tr>
+        <tr>
+            <th scope="row">Release</th>
+            <td>Consumer Price Index</td>
+        </tr>
+        <tr>
+            <th scope="row">Seasonal Adjustment</th>
+            <td>Seasonally Adjusted</td>
+        </tr>
+        <tr>
+            <th scope="row">Frequency</th>
+            <td>Monthly</td>
+        </tr>
+                <tr>
+            <th scope="row">Units</th>
+            <td>Index 1982-1984=100</td>
+        </tr>
+        <tr>
+            <th scope="row">Date Range</th>
+            <td>1947-01-01 to 2026-09-01</td>
+        </tr>
+        <tr>
+            <th scope="row">Last Updated</th>
+            <td>2026-10-14 8:08 AM CDT</td>
+        </tr>
+        <tr>
+            <th scope="row" class="align-middle">Notes</th>
+            <td>The Consumer Price Index for All Urban Consumers: All Items (CPIAUCSL) is a price index of a basket of goods and services paid by urban consumers. Percent changes in the price index measure the inflation rate between any two time periods. The most common inflation metric is the percent change from one year ago. It can also represent the buying habits of urban consumers. This particular index includes roughly 88 percent of the total population, accounting for wage earners, clerical workers, technical workers, self-employed, short-term workers, unemployed, retirees, and those not in the labor force.<br><br>The CPIs are based on prices for food, clothing, shelter, and fuels; transportation fares; service fees (e.g., water and sewer service); and sales taxes. Prices are collected monthly from about 4,000 housing units and approximately 26,000 retail establishments across 87 urban areas. To calculate the index, price changes are averaged with weights representing their importance in the spending of the particular group. The index measures price changes (as a percent change) from a predetermined reference date. In addition to the original unadjusted index distributed, the Bureau of Labor Statistics also releases a seasonally adjusted index. The unadjusted series reflects all factors that may influence a change in prices. However, it can be very useful to look at the seasonally adjusted CPI, which removes the effects of seasonal changes, such as weather, school year, production cycles, and holidays.<br><br>The CPI can be used to recognize periods of inflation and deflation. Significant increases in the CPI within a short time frame might indicate a period of inflation, and significant decreases in CPI within a short time frame might indicate a period of deflation. However, because the CPI includes volatile food and oil prices, it might not be a reliable measure of inflationary and deflationary periods. For a more accurate detection, the core CPI (<a href="https://fred.stlouisfed.org/series/CPILFESL">CPILFESL</a>) is often used. When using the CPI, please note that it is not applicable to all consumers and should not be used to determine relative living costs. Additionally, the CPI is a statistical measure vulnerable to sampling error since it is based on a sample of prices and not the complete average.<br><br>For more information on the CPI, see the <a href="https://www.bls.gov/opub/hom/cpi/">Handbook of Methods</a>, the <a href="https://www.bls.gov/cpi/">release notes and announcements</a>, and the <a href="https://www.bls.gov/cpi/questions-and-answers.htm">Frequently Asked Questions</a> (FAQs).</td>
+        </tr>
+    </tbody>
+</table>
+
+<table id="data-table-observations" aria-labelledby="data-table-title" class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">DATE</th>
+            <th scope="col">VALUE</th>
+        </tr>
+    </thead>
+    <tbody>
+                        <tr>
+            <th scope="row" class="pe-5">1947-01-01</th>
+            <td class="pe-5"> 21.480</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-02-01</th>
+            <td class="pe-5"> 21.620</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-03-01</th>
+            <td class="pe-5"> 22.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-04-01</th>
+            <td class="pe-5"> 22.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-05-01</th>
+            <td class="pe-5"> 21.950</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-06-01</th>
+            <td class="pe-5"> 22.080</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-07-01</th>
+            <td class="pe-5"> 22.230</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-08-01</th>
+            <td class="pe-5"> 22.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-09-01</th>
+            <td class="pe-5"> 22.840</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-10-01</th>
+            <td class="pe-5"> 22.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-11-01</th>
+            <td class="pe-5"> 23.060</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1947-12-01</th>
+            <td class="pe-5"> 23.410</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-01-01</th>
+            <td class="pe-5"> 23.680</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-02-01</th>
+            <td class="pe-5"> 23.670</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-03-01</th>
+            <td class="pe-5"> 23.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-04-01</th>
+            <td class="pe-5"> 23.820</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-05-01</th>
+            <td class="pe-5"> 24.010</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-06-01</th>
+            <td class="pe-5"> 24.150</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-07-01</th>
+            <td class="pe-5"> 24.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-08-01</th>
+            <td class="pe-5"> 24.430</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-09-01</th>
+            <td class="pe-5"> 24.360</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-10-01</th>
+            <td class="pe-5"> 24.310</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-11-01</th>
+            <td class="pe-5"> 24.160</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1948-12-01</th>
+            <td class="pe-5"> 24.050</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-01-01</th>
+            <td class="pe-5"> 24.010</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-02-01</th>
+            <td class="pe-5"> 23.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-03-01</th>
+            <td class="pe-5"> 23.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-04-01</th>
+            <td class="pe-5"> 23.920</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-05-01</th>
+            <td class="pe-5"> 23.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-06-01</th>
+            <td class="pe-5"> 23.920</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-07-01</th>
+            <td class="pe-5"> 23.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-08-01</th>
+            <td class="pe-5"> 23.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-09-01</th>
+            <td class="pe-5"> 23.750</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-10-01</th>
+            <td class="pe-5"> 23.670</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-11-01</th>
+            <td class="pe-5"> 23.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1949-12-01</th>
+            <td class="pe-5"> 23.610</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-01-01</th>
+            <td class="pe-5"> 23.510</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-02-01</th>
+            <td class="pe-5"> 23.610</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-03-01</th>
+            <td class="pe-5"> 23.640</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-04-01</th>
+            <td class="pe-5"> 23.650</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-05-01</th>
+            <td class="pe-5"> 23.770</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-06-01</th>
+            <td class="pe-5"> 23.880</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-07-01</th>
+            <td class="pe-5"> 24.070</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-08-01</th>
+            <td class="pe-5"> 24.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-09-01</th>
+            <td class="pe-5"> 24.340</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-10-01</th>
+            <td class="pe-5"> 24.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-11-01</th>
+            <td class="pe-5"> 24.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1950-12-01</th>
+            <td class="pe-5"> 24.980</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-01-01</th>
+            <td class="pe-5"> 25.380</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-02-01</th>
+            <td class="pe-5"> 25.830</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-03-01</th>
+            <td class="pe-5"> 25.880</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-04-01</th>
+            <td class="pe-5"> 25.920</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-05-01</th>
+            <td class="pe-5"> 25.990</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-06-01</th>
+            <td class="pe-5"> 25.930</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-07-01</th>
+            <td class="pe-5"> 25.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-08-01</th>
+            <td class="pe-5"> 25.860</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-09-01</th>
+            <td class="pe-5"> 26.030</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-10-01</th>
+            <td class="pe-5"> 26.160</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-11-01</th>
+            <td class="pe-5"> 26.320</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1951-12-01</th>
+            <td class="pe-5"> 26.470</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-01-01</th>
+            <td class="pe-5"> 26.450</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-02-01</th>
+            <td class="pe-5"> 26.410</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-03-01</th>
+            <td class="pe-5"> 26.390</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-04-01</th>
+            <td class="pe-5"> 26.460</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-05-01</th>
+            <td class="pe-5"> 26.470</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-06-01</th>
+            <td class="pe-5"> 26.530</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-07-01</th>
+            <td class="pe-5"> 26.680</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-08-01</th>
+            <td class="pe-5"> 26.690</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-09-01</th>
+            <td class="pe-5"> 26.630</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-10-01</th>
+            <td class="pe-5"> 26.690</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-11-01</th>
+            <td class="pe-5"> 26.690</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1952-12-01</th>
+            <td class="pe-5"> 26.710</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-01-01</th>
+            <td class="pe-5"> 26.640</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-02-01</th>
+            <td class="pe-5"> 26.590</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-03-01</th>
+            <td class="pe-5"> 26.630</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-04-01</th>
+            <td class="pe-5"> 26.690</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-05-01</th>
+            <td class="pe-5"> 26.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-06-01</th>
+            <td class="pe-5"> 26.770</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-07-01</th>
+            <td class="pe-5"> 26.790</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-08-01</th>
+            <td class="pe-5"> 26.850</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-09-01</th>
+            <td class="pe-5"> 26.890</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-10-01</th>
+            <td class="pe-5"> 26.950</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-11-01</th>
+            <td class="pe-5"> 26.850</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1953-12-01</th>
+            <td class="pe-5"> 26.870</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-01-01</th>
+            <td class="pe-5"> 26.940</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-02-01</th>
+            <td class="pe-5"> 26.990</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-03-01</th>
+            <td class="pe-5"> 26.930</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-04-01</th>
+            <td class="pe-5"> 26.860</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-05-01</th>
+            <td class="pe-5"> 26.930</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-06-01</th>
+            <td class="pe-5"> 26.940</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-07-01</th>
+            <td class="pe-5"> 26.860</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-08-01</th>
+            <td class="pe-5"> 26.850</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-09-01</th>
+            <td class="pe-5"> 26.810</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-10-01</th>
+            <td class="pe-5"> 26.720</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-11-01</th>
+            <td class="pe-5"> 26.780</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1954-12-01</th>
+            <td class="pe-5"> 26.770</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-01-01</th>
+            <td class="pe-5"> 26.770</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-02-01</th>
+            <td class="pe-5"> 26.820</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-03-01</th>
+            <td class="pe-5"> 26.790</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-04-01</th>
+            <td class="pe-5"> 26.790</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-05-01</th>
+            <td class="pe-5"> 26.770</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-06-01</th>
+            <td class="pe-5"> 26.710</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-07-01</th>
+            <td class="pe-5"> 26.760</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-08-01</th>
+            <td class="pe-5"> 26.720</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-09-01</th>
+            <td class="pe-5"> 26.850</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-10-01</th>
+            <td class="pe-5"> 26.820</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-11-01</th>
+            <td class="pe-5"> 26.880</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1955-12-01</th>
+            <td class="pe-5"> 26.870</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-01-01</th>
+            <td class="pe-5"> 26.830</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-02-01</th>
+            <td class="pe-5"> 26.860</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-03-01</th>
+            <td class="pe-5"> 26.890</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-04-01</th>
+            <td class="pe-5"> 26.930</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-05-01</th>
+            <td class="pe-5"> 27.030</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-06-01</th>
+            <td class="pe-5"> 27.150</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-07-01</th>
+            <td class="pe-5"> 27.290</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-08-01</th>
+            <td class="pe-5"> 27.310</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-09-01</th>
+            <td class="pe-5"> 27.350</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-10-01</th>
+            <td class="pe-5"> 27.510</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-11-01</th>
+            <td class="pe-5"> 27.510</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1956-12-01</th>
+            <td class="pe-5"> 27.630</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-01-01</th>
+            <td class="pe-5"> 27.670</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-02-01</th>
+            <td class="pe-5"> 27.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-03-01</th>
+            <td class="pe-5"> 27.860</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-04-01</th>
+            <td class="pe-5"> 27.930</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-05-01</th>
+            <td class="pe-5"> 28.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-06-01</th>
+            <td class="pe-5"> 28.110</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-07-01</th>
+            <td class="pe-5"> 28.190</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-08-01</th>
+            <td class="pe-5"> 28.280</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-09-01</th>
+            <td class="pe-5"> 28.320</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-10-01</th>
+            <td class="pe-5"> 28.320</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-11-01</th>
+            <td class="pe-5"> 28.410</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1957-12-01</th>
+            <td class="pe-5"> 28.470</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-01-01</th>
+            <td class="pe-5"> 28.640</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-02-01</th>
+            <td class="pe-5"> 28.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-03-01</th>
+            <td class="pe-5"> 28.870</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-04-01</th>
+            <td class="pe-5"> 28.940</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-05-01</th>
+            <td class="pe-5"> 28.940</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-06-01</th>
+            <td class="pe-5"> 28.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-07-01</th>
+            <td class="pe-5"> 28.890</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-08-01</th>
+            <td class="pe-5"> 28.940</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-09-01</th>
+            <td class="pe-5"> 28.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-10-01</th>
+            <td class="pe-5"> 28.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-11-01</th>
+            <td class="pe-5"> 28.950</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1958-12-01</th>
+            <td class="pe-5"> 28.970</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-01-01</th>
+            <td class="pe-5"> 29.010</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-02-01</th>
+            <td class="pe-5"> 29.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-03-01</th>
+            <td class="pe-5"> 28.970</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-04-01</th>
+            <td class="pe-5"> 28.980</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-05-01</th>
+            <td class="pe-5"> 29.040</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-06-01</th>
+            <td class="pe-5"> 29.110</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-07-01</th>
+            <td class="pe-5"> 29.150</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-08-01</th>
+            <td class="pe-5"> 29.180</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-09-01</th>
+            <td class="pe-5"> 29.250</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-10-01</th>
+            <td class="pe-5"> 29.350</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-11-01</th>
+            <td class="pe-5"> 29.350</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1959-12-01</th>
+            <td class="pe-5"> 29.410</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-01-01</th>
+            <td class="pe-5"> 29.370</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-02-01</th>
+            <td class="pe-5"> 29.410</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-03-01</th>
+            <td class="pe-5"> 29.410</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-04-01</th>
+            <td class="pe-5"> 29.540</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-05-01</th>
+            <td class="pe-5"> 29.570</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-06-01</th>
+            <td class="pe-5"> 29.610</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-07-01</th>
+            <td class="pe-5"> 29.550</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-08-01</th>
+            <td class="pe-5"> 29.610</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-09-01</th>
+            <td class="pe-5"> 29.610</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-10-01</th>
+            <td class="pe-5"> 29.750</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-11-01</th>
+            <td class="pe-5"> 29.780</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1960-12-01</th>
+            <td class="pe-5"> 29.810</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-01-01</th>
+            <td class="pe-5"> 29.840</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-02-01</th>
+            <td class="pe-5"> 29.840</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-03-01</th>
+            <td class="pe-5"> 29.840</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-04-01</th>
+            <td class="pe-5"> 29.810</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-05-01</th>
+            <td class="pe-5"> 29.840</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-06-01</th>
+            <td class="pe-5"> 29.840</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-07-01</th>
+            <td class="pe-5"> 29.920</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-08-01</th>
+            <td class="pe-5"> 29.940</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-09-01</th>
+            <td class="pe-5"> 29.980</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-10-01</th>
+            <td class="pe-5"> 29.980</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-11-01</th>
+            <td class="pe-5"> 29.980</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1961-12-01</th>
+            <td class="pe-5"> 30.010</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-01-01</th>
+            <td class="pe-5"> 30.040</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-02-01</th>
+            <td class="pe-5"> 30.110</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-03-01</th>
+            <td class="pe-5"> 30.170</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-04-01</th>
+            <td class="pe-5"> 30.210</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-05-01</th>
+            <td class="pe-5"> 30.240</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-06-01</th>
+            <td class="pe-5"> 30.210</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-07-01</th>
+            <td class="pe-5"> 30.220</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-08-01</th>
+            <td class="pe-5"> 30.280</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-09-01</th>
+            <td class="pe-5"> 30.420</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-10-01</th>
+            <td class="pe-5"> 30.380</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-11-01</th>
+            <td class="pe-5"> 30.380</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1962-12-01</th>
+            <td class="pe-5"> 30.380</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-01-01</th>
+            <td class="pe-5"> 30.440</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-02-01</th>
+            <td class="pe-5"> 30.480</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-03-01</th>
+            <td class="pe-5"> 30.510</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-04-01</th>
+            <td class="pe-5"> 30.480</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-05-01</th>
+            <td class="pe-5"> 30.510</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-06-01</th>
+            <td class="pe-5"> 30.610</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-07-01</th>
+            <td class="pe-5"> 30.690</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-08-01</th>
+            <td class="pe-5"> 30.750</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-09-01</th>
+            <td class="pe-5"> 30.720</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-10-01</th>
+            <td class="pe-5"> 30.750</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-11-01</th>
+            <td class="pe-5"> 30.780</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1963-12-01</th>
+            <td class="pe-5"> 30.880</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-01-01</th>
+            <td class="pe-5"> 30.940</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-02-01</th>
+            <td class="pe-5"> 30.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-03-01</th>
+            <td class="pe-5"> 30.940</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-04-01</th>
+            <td class="pe-5"> 30.950</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-05-01</th>
+            <td class="pe-5"> 30.980</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-06-01</th>
+            <td class="pe-5"> 31.010</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-07-01</th>
+            <td class="pe-5"> 31.020</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-08-01</th>
+            <td class="pe-5"> 31.050</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-09-01</th>
+            <td class="pe-5"> 31.080</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-10-01</th>
+            <td class="pe-5"> 31.120</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-11-01</th>
+            <td class="pe-5"> 31.210</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1964-12-01</th>
+            <td class="pe-5"> 31.250</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-01-01</th>
+            <td class="pe-5"> 31.280</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-02-01</th>
+            <td class="pe-5"> 31.280</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-03-01</th>
+            <td class="pe-5"> 31.310</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-04-01</th>
+            <td class="pe-5"> 31.380</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-05-01</th>
+            <td class="pe-5"> 31.480</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-06-01</th>
+            <td class="pe-5"> 31.610</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-07-01</th>
+            <td class="pe-5"> 31.580</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-08-01</th>
+            <td class="pe-5"> 31.550</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-09-01</th>
+            <td class="pe-5"> 31.620</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-10-01</th>
+            <td class="pe-5"> 31.650</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-11-01</th>
+            <td class="pe-5"> 31.750</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1965-12-01</th>
+            <td class="pe-5"> 31.850</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-01-01</th>
+            <td class="pe-5"> 31.880</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-02-01</th>
+            <td class="pe-5"> 32.080</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-03-01</th>
+            <td class="pe-5"> 32.180</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-04-01</th>
+            <td class="pe-5"> 32.280</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-05-01</th>
+            <td class="pe-5"> 32.350</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-06-01</th>
+            <td class="pe-5"> 32.380</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-07-01</th>
+            <td class="pe-5"> 32.450</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-08-01</th>
+            <td class="pe-5"> 32.650</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-09-01</th>
+            <td class="pe-5"> 32.750</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-10-01</th>
+            <td class="pe-5"> 32.850</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-11-01</th>
+            <td class="pe-5"> 32.880</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1966-12-01</th>
+            <td class="pe-5"> 32.920</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-01-01</th>
+            <td class="pe-5"> 32.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-02-01</th>
+            <td class="pe-5"> 33.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-03-01</th>
+            <td class="pe-5"> 33.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-04-01</th>
+            <td class="pe-5"> 33.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-05-01</th>
+            <td class="pe-5"> 33.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-06-01</th>
+            <td class="pe-5"> 33.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-07-01</th>
+            <td class="pe-5"> 33.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-08-01</th>
+            <td class="pe-5"> 33.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-09-01</th>
+            <td class="pe-5"> 33.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-10-01</th>
+            <td class="pe-5"> 33.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-11-01</th>
+            <td class="pe-5"> 33.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1967-12-01</th>
+            <td class="pe-5"> 34.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-01-01</th>
+            <td class="pe-5"> 34.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-02-01</th>
+            <td class="pe-5"> 34.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-03-01</th>
+            <td class="pe-5"> 34.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-04-01</th>
+            <td class="pe-5"> 34.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-05-01</th>
+            <td class="pe-5"> 34.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-06-01</th>
+            <td class="pe-5"> 34.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-07-01</th>
+            <td class="pe-5"> 34.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-08-01</th>
+            <td class="pe-5"> 35.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-09-01</th>
+            <td class="pe-5"> 35.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-10-01</th>
+            <td class="pe-5"> 35.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-11-01</th>
+            <td class="pe-5"> 35.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1968-12-01</th>
+            <td class="pe-5"> 35.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-01-01</th>
+            <td class="pe-5"> 35.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-02-01</th>
+            <td class="pe-5"> 35.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-03-01</th>
+            <td class="pe-5"> 36.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-04-01</th>
+            <td class="pe-5"> 36.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-05-01</th>
+            <td class="pe-5"> 36.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-06-01</th>
+            <td class="pe-5"> 36.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-07-01</th>
+            <td class="pe-5"> 36.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-08-01</th>
+            <td class="pe-5"> 36.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-09-01</th>
+            <td class="pe-5"> 37.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-10-01</th>
+            <td class="pe-5"> 37.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-11-01</th>
+            <td class="pe-5"> 37.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1969-12-01</th>
+            <td class="pe-5"> 37.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-01-01</th>
+            <td class="pe-5"> 37.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-02-01</th>
+            <td class="pe-5"> 38.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-03-01</th>
+            <td class="pe-5"> 38.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-04-01</th>
+            <td class="pe-5"> 38.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-05-01</th>
+            <td class="pe-5"> 38.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-06-01</th>
+            <td class="pe-5"> 38.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-07-01</th>
+            <td class="pe-5"> 38.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-08-01</th>
+            <td class="pe-5"> 39.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-09-01</th>
+            <td class="pe-5"> 39.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-10-01</th>
+            <td class="pe-5"> 39.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-11-01</th>
+            <td class="pe-5"> 39.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1970-12-01</th>
+            <td class="pe-5"> 39.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-01-01</th>
+            <td class="pe-5"> 39.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-02-01</th>
+            <td class="pe-5"> 39.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-03-01</th>
+            <td class="pe-5"> 40.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-04-01</th>
+            <td class="pe-5"> 40.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-05-01</th>
+            <td class="pe-5"> 40.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-06-01</th>
+            <td class="pe-5"> 40.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-07-01</th>
+            <td class="pe-5"> 40.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-08-01</th>
+            <td class="pe-5"> 40.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-09-01</th>
+            <td class="pe-5"> 40.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-10-01</th>
+            <td class="pe-5"> 40.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-11-01</th>
+            <td class="pe-5"> 41.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1971-12-01</th>
+            <td class="pe-5"> 41.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-01-01</th>
+            <td class="pe-5"> 41.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-02-01</th>
+            <td class="pe-5"> 41.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-03-01</th>
+            <td class="pe-5"> 41.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-04-01</th>
+            <td class="pe-5"> 41.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-05-01</th>
+            <td class="pe-5"> 41.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-06-01</th>
+            <td class="pe-5"> 41.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-07-01</th>
+            <td class="pe-5"> 41.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-08-01</th>
+            <td class="pe-5"> 41.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-09-01</th>
+            <td class="pe-5"> 42.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-10-01</th>
+            <td class="pe-5"> 42.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-11-01</th>
+            <td class="pe-5"> 42.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1972-12-01</th>
+            <td class="pe-5"> 42.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-01-01</th>
+            <td class="pe-5"> 42.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-02-01</th>
+            <td class="pe-5"> 43.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-03-01</th>
+            <td class="pe-5"> 43.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-04-01</th>
+            <td class="pe-5"> 43.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-05-01</th>
+            <td class="pe-5"> 43.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-06-01</th>
+            <td class="pe-5"> 44.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-07-01</th>
+            <td class="pe-5"> 44.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-08-01</th>
+            <td class="pe-5"> 45.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-09-01</th>
+            <td class="pe-5"> 45.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-10-01</th>
+            <td class="pe-5"> 45.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-11-01</th>
+            <td class="pe-5"> 45.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1973-12-01</th>
+            <td class="pe-5"> 46.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-01-01</th>
+            <td class="pe-5"> 46.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-02-01</th>
+            <td class="pe-5"> 47.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-03-01</th>
+            <td class="pe-5"> 47.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-04-01</th>
+            <td class="pe-5"> 48.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-05-01</th>
+            <td class="pe-5"> 48.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-06-01</th>
+            <td class="pe-5"> 49.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-07-01</th>
+            <td class="pe-5"> 49.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-08-01</th>
+            <td class="pe-5"> 49.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-09-01</th>
+            <td class="pe-5"> 50.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-10-01</th>
+            <td class="pe-5"> 51.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-11-01</th>
+            <td class="pe-5"> 51.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1974-12-01</th>
+            <td class="pe-5"> 51.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-01-01</th>
+            <td class="pe-5"> 52.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-02-01</th>
+            <td class="pe-5"> 52.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-03-01</th>
+            <td class="pe-5"> 52.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-04-01</th>
+            <td class="pe-5"> 53.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-05-01</th>
+            <td class="pe-5"> 53.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-06-01</th>
+            <td class="pe-5"> 53.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-07-01</th>
+            <td class="pe-5"> 54.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-08-01</th>
+            <td class="pe-5"> 54.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-09-01</th>
+            <td class="pe-5"> 54.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-10-01</th>
+            <td class="pe-5"> 54.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-11-01</th>
+            <td class="pe-5"> 55.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1975-12-01</th>
+            <td class="pe-5"> 55.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-01-01</th>
+            <td class="pe-5"> 55.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-02-01</th>
+            <td class="pe-5"> 55.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-03-01</th>
+            <td class="pe-5"> 56.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-04-01</th>
+            <td class="pe-5"> 56.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-05-01</th>
+            <td class="pe-5"> 56.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-06-01</th>
+            <td class="pe-5"> 56.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-07-01</th>
+            <td class="pe-5"> 57.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-08-01</th>
+            <td class="pe-5"> 57.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-09-01</th>
+            <td class="pe-5"> 57.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-10-01</th>
+            <td class="pe-5"> 57.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-11-01</th>
+            <td class="pe-5"> 58.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1976-12-01</th>
+            <td class="pe-5"> 58.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-01-01</th>
+            <td class="pe-5"> 58.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-02-01</th>
+            <td class="pe-5"> 59.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-03-01</th>
+            <td class="pe-5"> 59.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-04-01</th>
+            <td class="pe-5"> 60.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-05-01</th>
+            <td class="pe-5"> 60.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-06-01</th>
+            <td class="pe-5"> 60.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-07-01</th>
+            <td class="pe-5"> 60.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-08-01</th>
+            <td class="pe-5"> 61.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-09-01</th>
+            <td class="pe-5"> 61.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-10-01</th>
+            <td class="pe-5"> 61.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-11-01</th>
+            <td class="pe-5"> 62.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1977-12-01</th>
+            <td class="pe-5"> 62.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-01-01</th>
+            <td class="pe-5"> 62.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-02-01</th>
+            <td class="pe-5"> 63.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-03-01</th>
+            <td class="pe-5"> 63.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-04-01</th>
+            <td class="pe-5"> 63.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-05-01</th>
+            <td class="pe-5"> 64.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-06-01</th>
+            <td class="pe-5"> 65.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-07-01</th>
+            <td class="pe-5"> 65.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-08-01</th>
+            <td class="pe-5"> 65.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-09-01</th>
+            <td class="pe-5"> 66.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-10-01</th>
+            <td class="pe-5"> 67.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-11-01</th>
+            <td class="pe-5"> 67.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1978-12-01</th>
+            <td class="pe-5"> 67.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-01-01</th>
+            <td class="pe-5"> 68.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-02-01</th>
+            <td class="pe-5"> 69.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-03-01</th>
+            <td class="pe-5"> 69.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-04-01</th>
+            <td class="pe-5"> 70.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-05-01</th>
+            <td class="pe-5"> 71.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-06-01</th>
+            <td class="pe-5"> 72.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-07-01</th>
+            <td class="pe-5"> 73.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-08-01</th>
+            <td class="pe-5"> 73.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-09-01</th>
+            <td class="pe-5"> 74.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-10-01</th>
+            <td class="pe-5"> 75.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-11-01</th>
+            <td class="pe-5"> 76.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1979-12-01</th>
+            <td class="pe-5"> 76.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-01-01</th>
+            <td class="pe-5"> 78.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-02-01</th>
+            <td class="pe-5"> 79.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-03-01</th>
+            <td class="pe-5"> 80.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-04-01</th>
+            <td class="pe-5"> 80.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-05-01</th>
+            <td class="pe-5"> 81.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-06-01</th>
+            <td class="pe-5"> 82.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-07-01</th>
+            <td class="pe-5"> 82.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-08-01</th>
+            <td class="pe-5"> 83.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-09-01</th>
+            <td class="pe-5"> 83.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-10-01</th>
+            <td class="pe-5"> 84.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-11-01</th>
+            <td class="pe-5"> 85.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1980-12-01</th>
+            <td class="pe-5"> 86.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-01-01</th>
+            <td class="pe-5"> 87.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-02-01</th>
+            <td class="pe-5"> 88.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-03-01</th>
+            <td class="pe-5"> 88.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-04-01</th>
+            <td class="pe-5"> 89.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-05-01</th>
+            <td class="pe-5"> 89.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-06-01</th>
+            <td class="pe-5"> 90.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-07-01</th>
+            <td class="pe-5"> 91.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-08-01</th>
+            <td class="pe-5"> 92.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-09-01</th>
+            <td class="pe-5"> 93.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-10-01</th>
+            <td class="pe-5"> 93.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-11-01</th>
+            <td class="pe-5"> 93.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1981-12-01</th>
+            <td class="pe-5"> 94.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-01-01</th>
+            <td class="pe-5"> 94.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-02-01</th>
+            <td class="pe-5"> 94.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-03-01</th>
+            <td class="pe-5"> 94.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-04-01</th>
+            <td class="pe-5"> 95.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-05-01</th>
+            <td class="pe-5"> 95.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-06-01</th>
+            <td class="pe-5"> 97.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-07-01</th>
+            <td class="pe-5"> 97.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-08-01</th>
+            <td class="pe-5"> 97.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-09-01</th>
+            <td class="pe-5"> 97.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-10-01</th>
+            <td class="pe-5"> 98.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-11-01</th>
+            <td class="pe-5"> 98.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1982-12-01</th>
+            <td class="pe-5"> 97.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-01-01</th>
+            <td class="pe-5"> 97.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-02-01</th>
+            <td class="pe-5"> 98.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-03-01</th>
+            <td class="pe-5"> 98.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-04-01</th>
+            <td class="pe-5"> 98.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-05-01</th>
+            <td class="pe-5"> 99.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-06-01</th>
+            <td class="pe-5"> 99.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-07-01</th>
+            <td class="pe-5"> 99.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-08-01</th>
+            <td class="pe-5">100.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-09-01</th>
+            <td class="pe-5">100.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-10-01</th>
+            <td class="pe-5">100.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-11-01</th>
+            <td class="pe-5">101.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1983-12-01</th>
+            <td class="pe-5">101.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-01-01</th>
+            <td class="pe-5">102.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-02-01</th>
+            <td class="pe-5">102.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-03-01</th>
+            <td class="pe-5">102.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-04-01</th>
+            <td class="pe-5">103.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-05-01</th>
+            <td class="pe-5">103.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-06-01</th>
+            <td class="pe-5">103.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-07-01</th>
+            <td class="pe-5">104.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-08-01</th>
+            <td class="pe-5">104.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-09-01</th>
+            <td class="pe-5">104.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-10-01</th>
+            <td class="pe-5">105.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-11-01</th>
+            <td class="pe-5">105.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1984-12-01</th>
+            <td class="pe-5">105.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-01-01</th>
+            <td class="pe-5">105.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-02-01</th>
+            <td class="pe-5">106.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-03-01</th>
+            <td class="pe-5">106.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-04-01</th>
+            <td class="pe-5">107.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-05-01</th>
+            <td class="pe-5">107.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-06-01</th>
+            <td class="pe-5">107.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-07-01</th>
+            <td class="pe-5">107.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-08-01</th>
+            <td class="pe-5">107.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-09-01</th>
+            <td class="pe-5">108.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-10-01</th>
+            <td class="pe-5">108.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-11-01</th>
+            <td class="pe-5">109.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1985-12-01</th>
+            <td class="pe-5">109.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-01-01</th>
+            <td class="pe-5">109.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-02-01</th>
+            <td class="pe-5">109.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-03-01</th>
+            <td class="pe-5">109.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-04-01</th>
+            <td class="pe-5">108.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-05-01</th>
+            <td class="pe-5">109.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-06-01</th>
+            <td class="pe-5">109.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-07-01</th>
+            <td class="pe-5">109.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-08-01</th>
+            <td class="pe-5">109.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-09-01</th>
+            <td class="pe-5">110.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-10-01</th>
+            <td class="pe-5">110.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-11-01</th>
+            <td class="pe-5">110.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1986-12-01</th>
+            <td class="pe-5">110.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-01-01</th>
+            <td class="pe-5">111.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-02-01</th>
+            <td class="pe-5">111.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-03-01</th>
+            <td class="pe-5">112.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-04-01</th>
+            <td class="pe-5">112.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-05-01</th>
+            <td class="pe-5">113.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-06-01</th>
+            <td class="pe-5">113.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-07-01</th>
+            <td class="pe-5">113.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-08-01</th>
+            <td class="pe-5">114.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-09-01</th>
+            <td class="pe-5">114.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-10-01</th>
+            <td class="pe-5">115.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-11-01</th>
+            <td class="pe-5">115.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1987-12-01</th>
+            <td class="pe-5">115.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-01-01</th>
+            <td class="pe-5">116.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-02-01</th>
+            <td class="pe-5">116.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-03-01</th>
+            <td class="pe-5">116.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-04-01</th>
+            <td class="pe-5">117.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-05-01</th>
+            <td class="pe-5">117.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-06-01</th>
+            <td class="pe-5">118.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-07-01</th>
+            <td class="pe-5">118.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-08-01</th>
+            <td class="pe-5">119.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-09-01</th>
+            <td class="pe-5">119.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-10-01</th>
+            <td class="pe-5">119.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-11-01</th>
+            <td class="pe-5">120.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1988-12-01</th>
+            <td class="pe-5">120.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-01-01</th>
+            <td class="pe-5">121.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-02-01</th>
+            <td class="pe-5">121.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-03-01</th>
+            <td class="pe-5">122.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-04-01</th>
+            <td class="pe-5">123.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-05-01</th>
+            <td class="pe-5">123.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-06-01</th>
+            <td class="pe-5">124.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-07-01</th>
+            <td class="pe-5">124.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-08-01</th>
+            <td class="pe-5">124.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-09-01</th>
+            <td class="pe-5">124.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-10-01</th>
+            <td class="pe-5">125.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-11-01</th>
+            <td class="pe-5">125.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1989-12-01</th>
+            <td class="pe-5">126.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-01-01</th>
+            <td class="pe-5">127.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-02-01</th>
+            <td class="pe-5">128.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-03-01</th>
+            <td class="pe-5">128.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-04-01</th>
+            <td class="pe-5">128.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-05-01</th>
+            <td class="pe-5">129.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-06-01</th>
+            <td class="pe-5">129.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-07-01</th>
+            <td class="pe-5">130.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-08-01</th>
+            <td class="pe-5">131.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-09-01</th>
+            <td class="pe-5">132.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-10-01</th>
+            <td class="pe-5">133.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-11-01</th>
+            <td class="pe-5">133.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1990-12-01</th>
+            <td class="pe-5">134.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-01-01</th>
+            <td class="pe-5">134.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-02-01</th>
+            <td class="pe-5">134.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-03-01</th>
+            <td class="pe-5">134.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-04-01</th>
+            <td class="pe-5">135.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-05-01</th>
+            <td class="pe-5">135.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-06-01</th>
+            <td class="pe-5">136.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-07-01</th>
+            <td class="pe-5">136.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-08-01</th>
+            <td class="pe-5">136.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-09-01</th>
+            <td class="pe-5">137.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-10-01</th>
+            <td class="pe-5">137.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-11-01</th>
+            <td class="pe-5">137.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1991-12-01</th>
+            <td class="pe-5">138.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-01-01</th>
+            <td class="pe-5">138.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-02-01</th>
+            <td class="pe-5">138.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-03-01</th>
+            <td class="pe-5">139.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-04-01</th>
+            <td class="pe-5">139.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-05-01</th>
+            <td class="pe-5">139.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-06-01</th>
+            <td class="pe-5">140.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-07-01</th>
+            <td class="pe-5">140.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-08-01</th>
+            <td class="pe-5">140.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-09-01</th>
+            <td class="pe-5">141.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-10-01</th>
+            <td class="pe-5">141.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-11-01</th>
+            <td class="pe-5">142.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1992-12-01</th>
+            <td class="pe-5">142.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-01-01</th>
+            <td class="pe-5">142.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-02-01</th>
+            <td class="pe-5">143.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-03-01</th>
+            <td class="pe-5">143.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-04-01</th>
+            <td class="pe-5">143.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-05-01</th>
+            <td class="pe-5">144.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-06-01</th>
+            <td class="pe-5">144.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-07-01</th>
+            <td class="pe-5">144.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-08-01</th>
+            <td class="pe-5">144.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-09-01</th>
+            <td class="pe-5">145.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-10-01</th>
+            <td class="pe-5">145.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-11-01</th>
+            <td class="pe-5">146.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1993-12-01</th>
+            <td class="pe-5">146.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-01-01</th>
+            <td class="pe-5">146.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-02-01</th>
+            <td class="pe-5">146.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-03-01</th>
+            <td class="pe-5">147.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-04-01</th>
+            <td class="pe-5">147.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-05-01</th>
+            <td class="pe-5">147.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-06-01</th>
+            <td class="pe-5">147.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-07-01</th>
+            <td class="pe-5">148.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-08-01</th>
+            <td class="pe-5">149.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-09-01</th>
+            <td class="pe-5">149.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-10-01</th>
+            <td class="pe-5">149.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-11-01</th>
+            <td class="pe-5">149.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1994-12-01</th>
+            <td class="pe-5">150.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-01-01</th>
+            <td class="pe-5">150.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-02-01</th>
+            <td class="pe-5">150.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-03-01</th>
+            <td class="pe-5">151.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-04-01</th>
+            <td class="pe-5">151.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-05-01</th>
+            <td class="pe-5">152.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-06-01</th>
+            <td class="pe-5">152.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-07-01</th>
+            <td class="pe-5">152.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-08-01</th>
+            <td class="pe-5">152.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-09-01</th>
+            <td class="pe-5">153.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-10-01</th>
+            <td class="pe-5">153.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-11-01</th>
+            <td class="pe-5">153.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1995-12-01</th>
+            <td class="pe-5">153.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-01-01</th>
+            <td class="pe-5">154.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-02-01</th>
+            <td class="pe-5">155.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-03-01</th>
+            <td class="pe-5">155.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-04-01</th>
+            <td class="pe-5">156.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-05-01</th>
+            <td class="pe-5">156.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-06-01</th>
+            <td class="pe-5">156.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-07-01</th>
+            <td class="pe-5">157.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-08-01</th>
+            <td class="pe-5">157.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-09-01</th>
+            <td class="pe-5">157.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-10-01</th>
+            <td class="pe-5">158.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-11-01</th>
+            <td class="pe-5">158.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1996-12-01</th>
+            <td class="pe-5">159.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-01-01</th>
+            <td class="pe-5">159.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-02-01</th>
+            <td class="pe-5">159.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-03-01</th>
+            <td class="pe-5">159.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-04-01</th>
+            <td class="pe-5">159.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-05-01</th>
+            <td class="pe-5">159.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-06-01</th>
+            <td class="pe-5">160.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-07-01</th>
+            <td class="pe-5">160.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-08-01</th>
+            <td class="pe-5">160.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-09-01</th>
+            <td class="pe-5">161.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-10-01</th>
+            <td class="pe-5">161.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-11-01</th>
+            <td class="pe-5">161.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1997-12-01</th>
+            <td class="pe-5">161.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-01-01</th>
+            <td class="pe-5">162.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-02-01</th>
+            <td class="pe-5">162.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-03-01</th>
+            <td class="pe-5">162.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-04-01</th>
+            <td class="pe-5">162.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-05-01</th>
+            <td class="pe-5">162.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-06-01</th>
+            <td class="pe-5">162.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-07-01</th>
+            <td class="pe-5">163.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-08-01</th>
+            <td class="pe-5">163.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-09-01</th>
+            <td class="pe-5">163.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-10-01</th>
+            <td class="pe-5">163.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-11-01</th>
+            <td class="pe-5">164.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1998-12-01</th>
+            <td class="pe-5">164.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-01-01</th>
+            <td class="pe-5">164.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-02-01</th>
+            <td class="pe-5">164.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-03-01</th>
+            <td class="pe-5">164.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-04-01</th>
+            <td class="pe-5">165.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-05-01</th>
+            <td class="pe-5">166.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-06-01</th>
+            <td class="pe-5">166.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-07-01</th>
+            <td class="pe-5">166.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-08-01</th>
+            <td class="pe-5">167.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-09-01</th>
+            <td class="pe-5">167.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-10-01</th>
+            <td class="pe-5">168.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-11-01</th>
+            <td class="pe-5">168.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">1999-12-01</th>
+            <td class="pe-5">168.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-01-01</th>
+            <td class="pe-5">169.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-02-01</th>
+            <td class="pe-5">170.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-03-01</th>
+            <td class="pe-5">171.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-04-01</th>
+            <td class="pe-5">170.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-05-01</th>
+            <td class="pe-5">171.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-06-01</th>
+            <td class="pe-5">172.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-07-01</th>
+            <td class="pe-5">172.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-08-01</th>
+            <td class="pe-5">172.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-09-01</th>
+            <td class="pe-5">173.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-10-01</th>
+            <td class="pe-5">173.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-11-01</th>
+            <td class="pe-5">174.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2000-12-01</th>
+            <td class="pe-5">174.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-01-01</th>
+            <td class="pe-5">175.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-02-01</th>
+            <td class="pe-5">176.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-03-01</th>
+            <td class="pe-5">176.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-04-01</th>
+            <td class="pe-5">176.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-05-01</th>
+            <td class="pe-5">177.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-06-01</th>
+            <td class="pe-5">177.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-07-01</th>
+            <td class="pe-5">177.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-08-01</th>
+            <td class="pe-5">177.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-09-01</th>
+            <td class="pe-5">178.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-10-01</th>
+            <td class="pe-5">177.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-11-01</th>
+            <td class="pe-5">177.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2001-12-01</th>
+            <td class="pe-5">177.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-01-01</th>
+            <td class="pe-5">177.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-02-01</th>
+            <td class="pe-5">178.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-03-01</th>
+            <td class="pe-5">178.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-04-01</th>
+            <td class="pe-5">179.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-05-01</th>
+            <td class="pe-5">179.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-06-01</th>
+            <td class="pe-5">179.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-07-01</th>
+            <td class="pe-5">180.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-08-01</th>
+            <td class="pe-5">180.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-09-01</th>
+            <td class="pe-5">180.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-10-01</th>
+            <td class="pe-5">181.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-11-01</th>
+            <td class="pe-5">181.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2002-12-01</th>
+            <td class="pe-5">181.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-01-01</th>
+            <td class="pe-5">182.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-02-01</th>
+            <td class="pe-5">183.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-03-01</th>
+            <td class="pe-5">183.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-04-01</th>
+            <td class="pe-5">183.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-05-01</th>
+            <td class="pe-5">182.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-06-01</th>
+            <td class="pe-5">183.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-07-01</th>
+            <td class="pe-5">183.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-08-01</th>
+            <td class="pe-5">184.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-09-01</th>
+            <td class="pe-5">185.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-10-01</th>
+            <td class="pe-5">184.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-11-01</th>
+            <td class="pe-5">185.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2003-12-01</th>
+            <td class="pe-5">185.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-01-01</th>
+            <td class="pe-5">186.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-02-01</th>
+            <td class="pe-5">186.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-03-01</th>
+            <td class="pe-5">187.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-04-01</th>
+            <td class="pe-5">187.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-05-01</th>
+            <td class="pe-5">188.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-06-01</th>
+            <td class="pe-5">188.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-07-01</th>
+            <td class="pe-5">189.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-08-01</th>
+            <td class="pe-5">189.200</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-09-01</th>
+            <td class="pe-5">189.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-10-01</th>
+            <td class="pe-5">190.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-11-01</th>
+            <td class="pe-5">191.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2004-12-01</th>
+            <td class="pe-5">191.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-01-01</th>
+            <td class="pe-5">191.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-02-01</th>
+            <td class="pe-5">192.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-03-01</th>
+            <td class="pe-5">193.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-04-01</th>
+            <td class="pe-5">193.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-05-01</th>
+            <td class="pe-5">193.600</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-06-01</th>
+            <td class="pe-5">193.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-07-01</th>
+            <td class="pe-5">194.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-08-01</th>
+            <td class="pe-5">196.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-09-01</th>
+            <td class="pe-5">198.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-10-01</th>
+            <td class="pe-5">199.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-11-01</th>
+            <td class="pe-5">198.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2005-12-01</th>
+            <td class="pe-5">198.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-01-01</th>
+            <td class="pe-5">199.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-02-01</th>
+            <td class="pe-5">199.400</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-03-01</th>
+            <td class="pe-5">199.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-04-01</th>
+            <td class="pe-5">200.700</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-05-01</th>
+            <td class="pe-5">201.300</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-06-01</th>
+            <td class="pe-5">201.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-07-01</th>
+            <td class="pe-5">202.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-08-01</th>
+            <td class="pe-5">203.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-09-01</th>
+            <td class="pe-5">202.800</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-10-01</th>
+            <td class="pe-5">201.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-11-01</th>
+            <td class="pe-5">202.000</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2006-12-01</th>
+            <td class="pe-5">203.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-01-01</th>
+            <td class="pe-5">203.437</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-02-01</th>
+            <td class="pe-5">204.226</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-03-01</th>
+            <td class="pe-5">205.288</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-04-01</th>
+            <td class="pe-5">205.904</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-05-01</th>
+            <td class="pe-5">206.755</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-06-01</th>
+            <td class="pe-5">207.234</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-07-01</th>
+            <td class="pe-5">207.603</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-08-01</th>
+            <td class="pe-5">207.667</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-09-01</th>
+            <td class="pe-5">208.547</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-10-01</th>
+            <td class="pe-5">209.190</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-11-01</th>
+            <td class="pe-5">210.834</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2007-12-01</th>
+            <td class="pe-5">211.445</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-01-01</th>
+            <td class="pe-5">212.174</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-02-01</th>
+            <td class="pe-5">212.687</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-03-01</th>
+            <td class="pe-5">213.448</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-04-01</th>
+            <td class="pe-5">213.942</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-05-01</th>
+            <td class="pe-5">215.208</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-06-01</th>
+            <td class="pe-5">217.463</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-07-01</th>
+            <td class="pe-5">219.016</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-08-01</th>
+            <td class="pe-5">218.690</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-09-01</th>
+            <td class="pe-5">218.877</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-10-01</th>
+            <td class="pe-5">216.995</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-11-01</th>
+            <td class="pe-5">213.153</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2008-12-01</th>
+            <td class="pe-5">211.398</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-01-01</th>
+            <td class="pe-5">211.933</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-02-01</th>
+            <td class="pe-5">212.705</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-03-01</th>
+            <td class="pe-5">212.495</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-04-01</th>
+            <td class="pe-5">212.709</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-05-01</th>
+            <td class="pe-5">213.022</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-06-01</th>
+            <td class="pe-5">214.790</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-07-01</th>
+            <td class="pe-5">214.726</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-08-01</th>
+            <td class="pe-5">215.445</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-09-01</th>
+            <td class="pe-5">215.861</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-10-01</th>
+            <td class="pe-5">216.509</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-11-01</th>
+            <td class="pe-5">217.234</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2009-12-01</th>
+            <td class="pe-5">217.347</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-01-01</th>
+            <td class="pe-5">217.488</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-02-01</th>
+            <td class="pe-5">217.281</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-03-01</th>
+            <td class="pe-5">217.353</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-04-01</th>
+            <td class="pe-5">217.403</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-05-01</th>
+            <td class="pe-5">217.290</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-06-01</th>
+            <td class="pe-5">217.199</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-07-01</th>
+            <td class="pe-5">217.605</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-08-01</th>
+            <td class="pe-5">217.923</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-09-01</th>
+            <td class="pe-5">218.275</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-10-01</th>
+            <td class="pe-5">219.035</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-11-01</th>
+            <td class="pe-5">219.590</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2010-12-01</th>
+            <td class="pe-5">220.472</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-01-01</th>
+            <td class="pe-5">221.187</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-02-01</th>
+            <td class="pe-5">221.898</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-03-01</th>
+            <td class="pe-5">223.046</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-04-01</th>
+            <td class="pe-5">224.093</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-05-01</th>
+            <td class="pe-5">224.806</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-06-01</th>
+            <td class="pe-5">224.806</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-07-01</th>
+            <td class="pe-5">225.395</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-08-01</th>
+            <td class="pe-5">226.106</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-09-01</th>
+            <td class="pe-5">226.597</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-10-01</th>
+            <td class="pe-5">226.750</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-11-01</th>
+            <td class="pe-5">227.169</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2011-12-01</th>
+            <td class="pe-5">227.223</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-01-01</th>
+            <td class="pe-5">227.842</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-02-01</th>
+            <td class="pe-5">228.329</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-03-01</th>
+            <td class="pe-5">228.807</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-04-01</th>
+            <td class="pe-5">229.187</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-05-01</th>
+            <td class="pe-5">228.713</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-06-01</th>
+            <td class="pe-5">228.524</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-07-01</th>
+            <td class="pe-5">228.590</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-08-01</th>
+            <td class="pe-5">229.918</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-09-01</th>
+            <td class="pe-5">231.015</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-10-01</th>
+            <td class="pe-5">231.638</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-11-01</th>
+            <td class="pe-5">231.249</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2012-12-01</th>
+            <td class="pe-5">231.221</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-01-01</th>
+            <td class="pe-5">231.679</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-02-01</th>
+            <td class="pe-5">232.937</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-03-01</th>
+            <td class="pe-5">232.282</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-04-01</th>
+            <td class="pe-5">231.797</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-05-01</th>
+            <td class="pe-5">231.893</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-06-01</th>
+            <td class="pe-5">232.445</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-07-01</th>
+            <td class="pe-5">232.900</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-08-01</th>
+            <td class="pe-5">233.456</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-09-01</th>
+            <td class="pe-5">233.544</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-10-01</th>
+            <td class="pe-5">233.669</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-11-01</th>
+            <td class="pe-5">234.100</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2013-12-01</th>
+            <td class="pe-5">234.719</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-01-01</th>
+            <td class="pe-5">235.288</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-02-01</th>
+            <td class="pe-5">235.547</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-03-01</th>
+            <td class="pe-5">236.028</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-04-01</th>
+            <td class="pe-5">236.468</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-05-01</th>
+            <td class="pe-5">236.918</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-06-01</th>
+            <td class="pe-5">237.231</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-07-01</th>
+            <td class="pe-5">237.498</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-08-01</th>
+            <td class="pe-5">237.460</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-09-01</th>
+            <td class="pe-5">237.477</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-10-01</th>
+            <td class="pe-5">237.430</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-11-01</th>
+            <td class="pe-5">236.983</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2014-12-01</th>
+            <td class="pe-5">236.252</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-01-01</th>
+            <td class="pe-5">234.747</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-02-01</th>
+            <td class="pe-5">235.342</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-03-01</th>
+            <td class="pe-5">235.976</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-04-01</th>
+            <td class="pe-5">236.222</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-05-01</th>
+            <td class="pe-5">237.001</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-06-01</th>
+            <td class="pe-5">237.657</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-07-01</th>
+            <td class="pe-5">238.034</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-08-01</th>
+            <td class="pe-5">238.033</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-09-01</th>
+            <td class="pe-5">237.498</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-10-01</th>
+            <td class="pe-5">237.733</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-11-01</th>
+            <td class="pe-5">238.017</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2015-12-01</th>
+            <td class="pe-5">237.761</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-01-01</th>
+            <td class="pe-5">237.652</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-02-01</th>
+            <td class="pe-5">237.336</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-03-01</th>
+            <td class="pe-5">238.080</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-04-01</th>
+            <td class="pe-5">238.992</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-05-01</th>
+            <td class="pe-5">239.557</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-06-01</th>
+            <td class="pe-5">240.222</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-07-01</th>
+            <td class="pe-5">240.101</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-08-01</th>
+            <td class="pe-5">240.545</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-09-01</th>
+            <td class="pe-5">241.176</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-10-01</th>
+            <td class="pe-5">241.741</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-11-01</th>
+            <td class="pe-5">242.026</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2016-12-01</th>
+            <td class="pe-5">242.637</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-01-01</th>
+            <td class="pe-5">243.618</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-02-01</th>
+            <td class="pe-5">244.006</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-03-01</th>
+            <td class="pe-5">243.892</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-04-01</th>
+            <td class="pe-5">244.193</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-05-01</th>
+            <td class="pe-5">244.004</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-06-01</th>
+            <td class="pe-5">244.163</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-07-01</th>
+            <td class="pe-5">244.243</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-08-01</th>
+            <td class="pe-5">245.183</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-09-01</th>
+            <td class="pe-5">246.435</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-10-01</th>
+            <td class="pe-5">246.626</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-11-01</th>
+            <td class="pe-5">247.284</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2017-12-01</th>
+            <td class="pe-5">247.805</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-01-01</th>
+            <td class="pe-5">248.859</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-02-01</th>
+            <td class="pe-5">249.529</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-03-01</th>
+            <td class="pe-5">249.577</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-04-01</th>
+            <td class="pe-5">250.227</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-05-01</th>
+            <td class="pe-5">250.792</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-06-01</th>
+            <td class="pe-5">251.018</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-07-01</th>
+            <td class="pe-5">251.214</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-08-01</th>
+            <td class="pe-5">251.663</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-09-01</th>
+            <td class="pe-5">252.182</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-10-01</th>
+            <td class="pe-5">252.772</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-11-01</th>
+            <td class="pe-5">252.594</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2018-12-01</th>
+            <td class="pe-5">252.767</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-01-01</th>
+            <td class="pe-5">252.561</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-02-01</th>
+            <td class="pe-5">253.319</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-03-01</th>
+            <td class="pe-5">254.277</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-04-01</th>
+            <td class="pe-5">255.233</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-05-01</th>
+            <td class="pe-5">255.296</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-06-01</th>
+            <td class="pe-5">255.213</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-07-01</th>
+            <td class="pe-5">255.802</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-08-01</th>
+            <td class="pe-5">256.036</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-09-01</th>
+            <td class="pe-5">256.430</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-10-01</th>
+            <td class="pe-5">257.155</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-11-01</th>
+            <td class="pe-5">257.879</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2019-12-01</th>
+            <td class="pe-5">258.630</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-01-01</th>
+            <td class="pe-5">259.127</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-02-01</th>
+            <td class="pe-5">259.250</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-03-01</th>
+            <td class="pe-5">258.076</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-04-01</th>
+            <td class="pe-5">256.032</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-05-01</th>
+            <td class="pe-5">255.802</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-06-01</th>
+            <td class="pe-5">257.042</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-07-01</th>
+            <td class="pe-5">258.352</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-08-01</th>
+            <td class="pe-5">259.316</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-09-01</th>
+            <td class="pe-5">259.997</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-10-01</th>
+            <td class="pe-5">260.319</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-11-01</th>
+            <td class="pe-5">260.911</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2020-12-01</th>
+            <td class="pe-5">262.045</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-01-01</th>
+            <td class="pe-5">262.687</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-02-01</th>
+            <td class="pe-5">263.579</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-03-01</th>
+            <td class="pe-5">264.961</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-04-01</th>
+            <td class="pe-5">266.614</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-05-01</th>
+            <td class="pe-5">268.383</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-06-01</th>
+            <td class="pe-5">270.654</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-07-01</th>
+            <td class="pe-5">271.903</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-08-01</th>
+            <td class="pe-5">272.676</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-09-01</th>
+            <td class="pe-5">273.910</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-10-01</th>
+            <td class="pe-5">276.550</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-11-01</th>
+            <td class="pe-5">278.919</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2021-12-01</th>
+            <td class="pe-5">280.845</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-01-01</th>
+            <td class="pe-5">282.543</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-02-01</th>
+            <td class="pe-5">284.500</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-03-01</th>
+            <td class="pe-5">287.674</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-04-01</th>
+            <td class="pe-5">288.561</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-05-01</th>
+            <td class="pe-5">291.298</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-06-01</th>
+            <td class="pe-5">294.957</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-07-01</th>
+            <td class="pe-5">294.913</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-08-01</th>
+            <td class="pe-5">295.097</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-09-01</th>
+            <td class="pe-5">296.349</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-10-01</th>
+            <td class="pe-5">298.007</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-11-01</th>
+            <td class="pe-5">298.786</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2022-12-01</th>
+            <td class="pe-5">298.832</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-01-01</th>
+            <td class="pe-5">300.420</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-02-01</th>
+            <td class="pe-5">301.450</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-03-01</th>
+            <td class="pe-5">301.821</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-04-01</th>
+            <td class="pe-5">302.845</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-05-01</th>
+            <td class="pe-5">303.334</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-06-01</th>
+            <td class="pe-5">304.014</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-07-01</th>
+            <td class="pe-5">304.609</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-08-01</th>
+            <td class="pe-5">306.082</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-09-01</th>
+            <td class="pe-5">307.276</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-10-01</th>
+            <td class="pe-5">307.696</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-11-01</th>
+            <td class="pe-5">308.148</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2023-12-01</th>
+            <td class="pe-5">308.741</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-01-01</th>
+            <td class="pe-5">309.698</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-02-01</th>
+            <td class="pe-5">310.967</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-03-01</th>
+            <td class="pe-5">312.345</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-04-01</th>
+            <td class="pe-5">313.023</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-05-01</th>
+            <td class="pe-5">313.175</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-06-01</th>
+            <td class="pe-5">313.044</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-07-01</th>
+            <td class="pe-5">313.569</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-08-01</th>
+            <td class="pe-5">314.062</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-09-01</th>
+            <td class="pe-5">314.732</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-10-01</th>
+            <td class="pe-5">315.631</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-11-01</th>
+            <td class="pe-5">316.528</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2024-12-01</th>
+            <td class="pe-5">317.604</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-01-01</th>
+            <td class="pe-5">318.961</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-02-01</th>
+            <td class="pe-5">319.679</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-03-01</th>
+            <td class="pe-5">319.785</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-04-01</th>
+            <td class="pe-5">320.302</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-05-01</th>
+            <td class="pe-5">320.620</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-06-01</th>
+            <td class="pe-5">321.435</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-07-01</th>
+            <td class="pe-5">322.169</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-08-01</th>
+            <td class="pe-5">323.291</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-09-01</th>
+            <td class="pe-5">324.245</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-10-01</th>
+            <td class="pe-5">      .</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-11-01</th>
+            <td class="pe-5">325.063</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2025-12-01</th>
+            <td class="pe-5">326.031</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2026-01-01</th>
+            <td class="pe-5">326.588</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2026-02-01</th>
+            <td class="pe-5">327.460</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2026-03-01</th>
+            <td class="pe-5">330.293</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2026-04-01</th>
+            <td class="pe-5">332.407</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2026-05-01</th>
+            <td class="pe-5">333.979</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2026-06-01</th>
+            <td class="pe-5">332.568</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2026-07-01</th>
+            <td class="pe-5">332.813</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2026-08-01</th>
+            <td class="pe-5">334.131</td>
+        </tr>
+                <tr>
+            <th scope="row" class="pe-5">2026-09-01</th>
+            <td class="pe-5">336.298</td>
+        </tr>
+            </tbody>
+</table>
+
+<div id="extra-rows">
+        </div>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(event) {
+        let rows = $("#extra-rows").text().split("#");
+        $("#extra-rows").text("");
+        for(i=1; i<rows.length; i++) {
+            let parts = rows[i].split('|');
+            $("#data-table-observations").append('<tr><th scope="row" class="pe-5">'+ parts[0] +'</th><td class="pe-5">'+ parts[1] +'</td></tr>');
+        }
+    });
+</script>
+        <!--        -->
+<!--        <button disabled id="filter-button" class="hidden drawer-dropdown-trigger filter-tags-btn btn sticky-bottom btn-block btn-default dropdown-is-active">-->
+<!--            <div class="filter-button-inner">-->
+<!--                <i class="fa fa-filter" style="padding-right:5px;"></i>Filter-->
+<!--                <span class="badge badge-primary subpage-badge-primary">0</span>-->
+<!--            </div>-->
+<!--        </button>-->
+<!--        -->
+            </div>
+    </div>
+
+<link href=/css/1793728006.footer.min.css rel="stylesheet" media="all">
+<script></script>
+<br class="clear">
+</div>
+
+<div class="hidden-print d-lg-none icon-container sticky-bottom btt-ct col-12">
+    <a id="back-to-top" class="back-to-top" href="#top">
+        <i aria-hidden="true" class="fas fa-solid fa-chevron-up" title="Back to Top"></i>
+    <span class="fa-sr-only">Back to Top</span></a>
+</div>
+<button disabled id="filter-button" class="hidden drawer-dropdown-trigger filter-tags-btn btn sticky-bottom btn-block btn-default dropdown-is-active">
+    <div class="filter-button-inner">
+        <i class="fa fa-filter" style="padding-right:5px;"></i>Filter
+        <span class="badge badge-primary subpage-badge-primary">0</span>
+    </div>
+</button>
+
+<div class="footer2 hidden-print row EL-footer2">
+    <div class="container d-md-flex">
+        <div class="col-md-6 col-lg-5 col-12">
+            <div class="col-12">
+                <h3 class="col-12">Subscribe to the FRED newsletter</h3>
+                <form id="subscribe-div" class="form-horizontal form-control newsletter-form">
+                    <div class="col-12">
+                        <div class="input-group">
+                            <input id="subscribe-email-input" type="text" name="email" placeholder="Email"
+                            class="form-control email" aria-label="email">
+                            <button id="subscribe-email-btn" type="button"
+                            class="btn subscribe-newsletter-btn-gtm">
+                            Subscribe</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12">
+                <h3 class="col-12">Follow us</h3>
+                <div id="follow-icons" class="col-12">
+                    <span id="li-container" class="icon-container">
+                        <a href="http://bit.ly/d056zL">
+                            <i aria-hidden="true" class="fab fa-brands fa-linkedin-in" title="Linked In"></i>
+                            <span class="fa-sr-only">Saint Louis Fed linkedin page</span></a></span>
+                    <span id="fb-container" class="icon-container">
+                        <a href="https://www.facebook.com/stlfed">
+                            <i aria-hidden="true" class="fab fa-brands fa-facebook-f" title="Facebook"></i>
+                            <span class="fa-sr-only">Saint Louis Fed facebook page</span></a></span>
+                    <span id="x-container" class="icon-container">
+                        <a href="http://bit.ly/9ngC3L">
+                            <i aria-hidden="true" class="fab fa-brands fa-x-twitter" title="X (formerly Twitter)"></i>
+                            <span class="fa-sr-only">Saint Louis Fed X page</span></a></span>
+                    <span id="yt-container" class="icon-container">
+                        <a href="http://bit.ly/aY9TVF">
+                            <i aria-hidden="true" class="fab fa-brands fa-youtube" title="YouTube"></i>
+                            <span class="fa-sr-only">Saint Louis Fed YouTube page</span></a></span> 
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1 col-lg-2 d-none d-md-block">&nbsp;</div>
+        <div class="col-md-4 col-lg-3 col-7 need-help">
+            <h3 class="col-12">Need Help?</h3>
+            <div class="col-12">
+                <div class="footer-link">
+                    <a class="footer-questions-gtm q-and-a-link-gtm" href="//fred.stlouisfed.org/contactus/">
+                        Questions or Comments</a></div>
+                <div class="footer-link">
+                    <a class="footer-fredhelp-gtm" href="//fredhelp.stlouisfed.org/">FRED Help</a></div>
+            </div>
+            <hr class="col-12">
+            <div class="col-12">
+                <div class="footer-link">
+                    <a href="//fred.stlouisfed.org/legal/">Legal</a></div>
+                <div class="footer-link">
+                    <a href="https://www.stlouisfed.org/about-us/privacy-policy/online-notice">Privacy Notice & Policy</a></div>
+            </div>
+        </div>
+        <div class="col-md-1 col-lg-2 d-none d-md-block">&nbsp;</div>
+    </div>
+</div>
+
+<script>
+    // function to parse cookies, and return the value
+    function getCookie(name) {
+        var cookies = document.cookie.split(';');
+        for (var i in cookies) {
+            var cookie = cookies[i].trim().split('=');
+            if (cookie[0] == name) {
+                return cookie[1];
+            }
+        }
+        return null;
+    }
+    // certain pages in FRED set a custom tag variable
+    // this gets sent to Google Analytics so we can see what tags people are using
+    if (window.tags) {
+        dataLayer.push({ 'tags': tags });
+
+    }
+
+    // if the user is logged in, send the value of the liruid cookie to Google Analytics
+    var researchLiruid = getCookie('research-liruid');
+    dataLayer.push({ 'userId': researchLiruid });
+
+</script>
+<script src="//fred.stlouisfed.org/assets/jquery/dist/1793728005.jquery.min.js" type="text/javascript"></script>
+<script src="//fred.stlouisfed.org/assets/popperjs/dist/umd/1793728005.popper.min.js"></script>
+<script src="//fred.stlouisfed.org/assets/bootstrap/dist/js/1793728005.bootstrap.min.js"></script>
+<script src="//fred.stlouisfed.org/assets/select2/dist/js/1793728005.select2.full.min.js"></script>
+<script>
+    // force expire the .fred.stlouisfed.org _ga cookie
+    document.cookie = document.cookie + '_ga=;domain=.fred.stlouisfed.org;expires=Sat, 01-Jan-2000 00:00:00 GMT';
+</script>
+
+<script defer src="//fred.stlouisfed.org/assets/jquery-menu-aim/1793728005.jquery.menu-aim.min.js"></script>
+
+<script src="//fred.stlouisfed.org/js/1793728006.common.min.js"></script>
+
+<script src="//fred.stlouisfed.org/js/1793728005.508.min.js"></script>
+
+<script>
+    var appConfig = {
+        uapi_host: 'https://fred.stlouisfed.org/uapi',
+        research_host: 'https://www.stlouisfed.org/research',
+        fred_host: 'https://fred.stlouisfed.org',
+        alfred_host: 'https://alfred.stlouisfed.org',
+        gsi_client_id: '115290014367-vpb89b600koe9kn0njeeq38c1unfr3gk.apps.googleusercontent.com',
+        fred_account_host: 'https://fredaccount.stlouisfed.org',
+    };
+
+    var domain_suffix = (window.location.hostname.split(".")[0].split("-")[1] || '');
+    appConfig.logged_in = getCookie('research-lirua' + (domain_suffix ? '-' + domain_suffix : '')) !== null && getCookie('research-lirua' + (domain_suffix ? '-' + domain_suffix : '')) !== undefined;
+    var getAuth = function (callback) {
+        if (typeof callback === 'function') {
+            callback();
+        }
+        return;
+    };
+    window.getAuth = getAuth;
+
+</script>
+
+<script>
+    <!--suppress back to top before scroll-->
+    window.onscroll = function(){
+        backTop = $("#back-to-top");
+        window.pageYOffset >= 205 ? backTop.css('display', 'block') : backTop.css('display', 'none');
+    }
+
+</script>
+<script src="//fred.stlouisfed.org/assets/dompurify/dist/1793728005.purify.min.js"></script>
+<script defer src="//fred.stlouisfed.org/js/1793721135.banner.js"></script>
+<script src="//accounts.google.com/gsi/client" async defer></script>
+<script src="//fred.stlouisfed.org/assets/stlrch-fred/fred-account-react/dist/1793728005.main.dist.js"></script>
+<script src="//fred.stlouisfed.org/assets/stlrch-fred/fred-account-react/dist/1793728005.vendor.dist.js"></script>
+
+<script type="text/javascript">
+    // update mobile footer filter bar active filter count to content.tagsDrawers tags-number
+    $('.filter-button-inner .badge').text($('.tags-number').text());
+</script>
+
+<link href=/css/1793728006.contact.min.css rel="stylesheet" media="(min-width: 767px)">
+<script></script>
+
+
+<script type="text/javascript"  src="/1KUoDi/li-pq/Cai_v/8Ndo/E1OE8wbSGbJkXchYuE/GgwNV3ll/EyUdE1By/GxA"></script></body>
+</html>
+
+

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b29">
+  <title>Model 411 | Stock Forecast Lab</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap top-inner">
+      <div class="brand"><span class="brand-mark">411</span><span>MODEL LAB</span></div>
+      <nav aria-label="มุมมอง">
+        <button data-view="forecast" aria-pressed="true">Forecast</button>
+        <button data-view="backtest" aria-pressed="false">Backtest</button>
+      </nav>
+      <button class="present" id="present"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg><span>Present</span></button>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow"><span class="signal"></span> EQUITY RESEARCH <span class="divider">/</span> <span id="exchange">NASDAQ</span></div>
+        <h1 id="company">Micron Technology</h1>
+        <p>วิเคราะห์แนวโน้มราคาจากโมเดล <span id="version">MU Capstone v5</span></p>
+      </div>
+      <div class="actions">
+        <label class="model-control"><span>โมเดลหุ้น</span><select id="model" aria-label="โมเดลหุ้น"></select></label>
+        <button class="primary" id="upload" type="button"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 16V4m-5 5 5-5 5 5M4 16v4h16v-4"/></svg>อัปเดตข้อมูล</button>
+      </div>
+    </section>
+
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section class="metrics" aria-label="สรุปการคาดการณ์">
+      <div><span>ราคาปิดล่าสุดในชุดข้อมูล</span><strong id="last-close">—</strong><small id="date">กำลังโหลดข้อมูล</small></div>
+      <div><span id="price-caption">ราคาคาดการณ์</span><strong id="forecast-price">—</strong><small id="sessions">—</small></div>
+      <div><span>เทียบราคาปิดล่าสุด</span><strong id="return">—</strong><small>ผลตอบแทนโดยนัยของโมเดล</small></div>
+      <div><span>RMSE บนชุดทดสอบ</span><strong id="rmse">—</strong><small id="baseline-metric">—</small></div>
+    </section>
+
+    <div class="dashboard">
+      <section class="card graph-card" aria-labelledby="graph-title">
+        <div class="card-heading">
+          <div><div class="eyebrow">01 <span class="divider">/</span> <span id="chart-kicker">PRICE OUTLOOK</span></div><h2 id="graph-title">แนวโน้มราคา</h2></div>
+          <div id="horizons" class="segmented" role="group" aria-label="ระยะคาดการณ์">
+            <button data-horizon="1m" aria-pressed="true">1M</button>
+            <button data-horizon="3m" aria-pressed="false">3M</button>
+            <button data-horizon="6m" aria-pressed="false">6M</button>
+          </div>
+        </div>
+        <div class="chart-label"><span id="currency">USD / SHARE</span><span id="chart-period"></span></div>
+        <div class="chart" id="chart"></div>
+        <div class="legend" id="legend"></div>
+      </section>
+
+      <aside class="card outlook">
+        <div class="eyebrow">02 <span class="divider">/</span> FORECAST SUMMARY</div>
+        <h2>ภาพรวมแต่ละช่วง</h2>
+        <div id="outlooks" class="outlooks"></div>
+        <label class="feature-control"><span>ชุดตัวแปร</span><select id="feature" aria-label="ชุดตัวแปร"></select></label>
+        <div class="assessment" id="assessment"></div>
+      </aside>
+    </div>
+
+    <section class="card methodology">
+      <div><div class="eyebrow">03 <span class="divider">/</span> MODEL NOTES</div><h2>อ่านผลอย่างไร</h2></div>
+      <div><strong>ข้อมูลที่ใช้ ณ วันราคาปิด</strong><p id="input-dates">กำลังอ่านข้อมูล</p><p id="input-values"></p></div>
+      <div><strong>ผลทดสอบย้อนหลัง</strong><p>เลือกโมเดลด้วย Walk-forward และตัดตัวอย่างที่ผลลัพธ์ล้ำช่วงทดสอบ ค่า RMSE ยิ่งต่ำยิ่งดี ส่วนผลตอบแทน 3 และ 6 เดือนมีช่วงซ้อนทับกัน</p></div>
+    </section>
+    <footer><span>MODEL 411 <span class="divider">/</span> <span id="source">ชุดข้อมูลในโปรเจกต์</span></span><span>ใช้เพื่อการวิเคราะห์และนำเสนอ</span></footer>
+  </main>
+
+  <dialog id="upload-dialog">
+    <form id="upload-form">
+      <div class="eyebrow">DATA INPUT</div>
+      <h2>โหลดข้อมูล <span id="upload-symbol">MU</span></h2>
+      <label class="feature-control"><span>วิธีนำเข้า</span>
+        <select id="import-mode"><option value="update">รวมกับประวัติเดิมและบันทึก</option><option value="forecast">รันจากชุดไฟล์ใหม่</option></select>
+      </label>
+      <p id="import-help"></p>
+      <p id="templates">
+        <a download="mu_prices.csv" href="data:text/csv;charset=utf-8,date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume%0A">แม่แบบราคา</a>
+        <a download="mu_quarterly_update.csv" href="data:text/csv;charset=utf-8,fiscalDateEnding%2CreportedDate%2CtotalRevenue%2CoperatingCashflow%2CcapitalExpenditures%2CgrossProfit%2CoperatingIncome%2CnetIncome%2CreportedEPS%2CestimatedEPS%2Csurprise%2CsurprisePercentage%2CtotalAssets%2CtotalLiabilities%2CtotalShareholderEquity%0A">แม่แบบงบรายไตรมาส</a>
+      </p>
+      <details><summary>รายชื่อไฟล์ที่รองรับ</summary><ul id="file-list"></ul></details>
+      <label class="file-input"><span>เลือกไฟล์ CSV</span><input id="files" type="file" accept=".csv,text/csv" multiple required></label>
+      <p id="upload-message" role="status"></p>
+      <div class="dialog-actions"><button type="button" id="cancel">ปิด</button><button class="primary" id="run" type="submit">รันโมเดล</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

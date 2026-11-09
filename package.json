@@ -1,0 +1,6 @@
+{
+  "name": "model-411",
+  "private": true,
+  "type": "module",
+  "scripts": { "start": "node server.mjs", "refresh": "node server.mjs --refresh" }
+}
