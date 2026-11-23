@@ -1,8 +1,8 @@
 import { createServer } from 'node:http';
 import { spawn } from 'node:child_process';
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, renameSync } from 'node:fs';
 import { readFile, writeFile, rename } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
+import { dirname, join, win32 } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -19,6 +19,25 @@ const config = {
 
 const bundledPython = join(root, '.runtime', 'venv',
   process.platform === 'win32' ? 'Scripts/python.exe' : 'bin/python');
+
+// Windows venv launchers store an absolute path to the base Python.
+if (process.platform === 'win32' && !process.env.MODEL_PYTHON && existsSync(bundledPython)) {
+  const configPath = join(root, '.runtime', 'venv', 'pyvenv.cfg');
+  if (existsSync(configPath)) {
+    const settings = readFileSync(configPath, 'utf8');
+    const home = /^home\s*=\s*(.+)$/m.exec(settings);
+    if (home) {
+      const previous = home[1].trim();
+      const relocated = join(root, '.runtime', 'python', win32.basename(previous));
+      if (previous !== relocated && existsSync(join(relocated, 'python.exe'))) {
+        const temporary = configPath + '.' + process.pid + '.tmp';
+        writeFileSync(temporary, settings.replace(home[0], () => 'home = ' + relocated));
+        renameSync(temporary, configPath);
+      }
+    }
+  }
+}
+
 const python = process.env.MODEL_PYTHON || (existsSync(bundledPython) ? bundledPython : 'python');
 const dataPath = id => join(root, 'public', id + '.json');
 const workingPath = id => join(root, 'data', id + '.working.json');

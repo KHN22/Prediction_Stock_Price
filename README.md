@@ -24,7 +24,7 @@ npm start
 
 ## ติดตั้ง Python สำหรับรันโมเดล
 
-เครื่องนี้มี Python และไลบรารีใน `.runtime/venv` แล้ว หากย้ายโฟลเดอร์หรือใช้เครื่องอื่น ให้สร้าง environment ใหม่ด้วย Python 3.12
+บน Windows หากย้ายโปรเจกต์พร้อมโฟลเดอร์ `.runtime` ทั้งชุด ให้เปิด **Start Model 411.cmd** จากตำแหน่งใหม่ เซิร์ฟเวอร์จะปรับพาธของ Python ที่อยู่ในโปรเจกต์ให้โดยอัตโนมัติ หากเครื่องปลายทางไม่มี `.runtime` ให้สร้าง environment ด้วย Python 3.12
 
 ```powershell
 py -3.12 -m venv .runtime/venv
