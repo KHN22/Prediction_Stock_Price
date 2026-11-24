@@ -113,3 +113,5 @@ footer>span{overflow-wrap:anywhere}
 #thesis-dots i{width:8px;height:8px;border:1px solid var(--muted);border-radius:50%}#thesis-dots .correct{background:var(--teal-dark);border-color:var(--teal-dark)}
 .thesis details{border-top:1px solid var(--soft);padding-top:13px}.thesis summary{cursor:pointer;font-weight:650}.thesis a{color:var(--teal-dark)}
 @media(max-width:760px){.thesis-grid{grid-template-columns:1fr;gap:4px}}
+
+.statement-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}.statement-table th,.statement-table td{text-align:right;padding:8px;border-bottom:1px solid var(--soft);white-space:nowrap}.statement-table :is(th,td):first-child{text-align:left}

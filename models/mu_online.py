@@ -128,8 +128,7 @@ def statements(payload, as_of):
             quarter[name] = row
         if all(field in quarter[name] for name, field in [
             ("mu_income_statement_raw.csv", "totalRevenue"),
-            ("mu_cash_flow_raw.csv", "operatingCashflow"),
-            ("mu_cash_flow_raw.csv", "capitalExpenditures")]):
+            ("mu_cash_flow_raw.csv", "operatingCashflow")]):
             for name, row in quarter.items():
                 output[name].append(row)
     if len(output["mu_income_statement_raw.csv"]) < 16:

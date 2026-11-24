@@ -109,6 +109,48 @@ for (const id of ['thesis-down','thesis-all']) {
   byId(id).onclick = () => { showDownCalls = id === 'thesis-down'; renderThesis(); };
 }
 
+function renderStatementThesis(data, horizon) {
+  const f = data.financialReview;
+  const panel = byId('statement-thesis');
+  panel.hidden = selected.id !== 'mu' || !f?.lines || selected.feature !== 'C_price_macro_financials';
+  if (panel.hidden) return;
+  const labels = {
+    revenue: ['รายได้','Revenue'], grossProfit: ['กำไรขั้นต้น','Gross profit'],
+    operatingIncome: ['กำไรจากการดำเนินงาน','Operating income'], netIncome: ['กำไรสุทธิ','Net income'],
+    assets: ['สินทรัพย์รวม','Total assets'], liabilities: ['หนี้สินรวม','Total liabilities'],
+    operatingCash: ['กระแสเงินสดจากการดำเนินงาน','Operating cash flow'],
+  };
+  const ratio = (a, b, period) => {
+    const numerator = f.lines[a]?.[period];
+    const denominator = f.lines[b]?.[period];
+    return Number.isFinite(numerator) && denominator > 0 ? (100 * numerator / denominator).toFixed(1) + '%' : '—';
+  };
+  const change = (a, b) => ['previous','actual'].map(k => ratio(a,b,k)).join(' → ');
+  text('statement-period', t('งวดสิ้นสุด ', 'Quarter ended ') + dateText(f.quarter) +
+    t(' · โมเดลใช้งบตั้งแต่ ', ' · Available to the model from ') + dateText(f.release));
+  text('statement-profit', t('อัตรากำไรขั้นต้น ', 'Gross margin ') + change('grossProfit','revenue') +
+    t(' · อัตรากำไรสุทธิ ', ' · Net margin ') + change('netIncome','revenue'));
+  text('statement-balance', t('หนี้สินต่อสินทรัพย์ ', 'Liabilities as a share of assets ') + change('liabilities','assets') +
+    t(' สัดส่วนที่สูงขึ้นหมายถึงภาระผูกพันต่อสินทรัพย์ที่มากขึ้น ควรอ่านคู่กับสภาพคล่องและกำหนดชำระ', '. A rising share means more claims against assets. Check liquidity and payment schedules alongside it.'));
+  const price = data.results.find(r => r.horizon === horizon && r.feature_set === 'B_price_macro');
+  const statements = data.results.find(r => r.horizon === horizon && r.feature_set === selected.feature);
+  text('statement-rmse', price && statements ? t('ทดสอบราคาย้อนหลัง · RMSE ชุดราคา + Macro ', 'Return backtest · RMSE for price + macro ') +
+    price.model_RMSE_log_return.toFixed(4) + t(' เทียบกับชุดเพิ่มงบ ', ' vs. with statements ') +
+    statements.model_RMSE_log_return.toFixed(4) + t(' (ต่ำกว่าดีกว่า)', ' (lower is better)') : '');
+  const billions = v => Number.isFinite(v) ? (v / 1e9).toFixed(2) : '—';
+  byId('statement-rows').replaceChildren(...Object.entries(labels).map(([key, label]) => {
+    const line = f.lines[key] || {};
+    const tr = document.createElement('tr');
+    const rule = line.rule === 'trend' ? t('ต่อแนวโน้มครึ่งหนึ่ง','Half trend') : line.rule === 'carry' ? t('คงค่าล่าสุด','Last value') : '—';
+    for (const value of [t(...label),billions(line.previous),billions(line.actual),billions(line.estimate),rule,billions(line.testMAE),line.testQuarters ?? '—']) {
+      const cell = document.createElement('td');
+      cell.textContent = value;
+      tr.append(cell);
+    }
+    return tr;
+  }));
+}
+
 function render() {
   const entry = loaded.get(selected.id);
   if (!entry) return;
@@ -159,7 +201,7 @@ function render() {
   text('input-dates', [financials, macro, pending, sourceText(data.sources?.note)].filter(Boolean).join(' · ') ||
     (data.files.length === 1 ? t('รอบนี้ใช้เฉพาะข้อมูลราคา', 'This run uses price data only') : t('รันโมเดลอีกครั้งเพื่อดูวันที่ของข้อมูลแต่ละชุด', 'Run the model again to see the dates of the inputs')));
   const metric = (name, value) => value == null ? '' : name + ' ' + model.currency + ' ' + compact.format(value);
-  text('input-values', [metric(t('รายได้', 'Revenue'), inputs.revenue), metric(t('FCF ตามสูตรโมเดล', 'Model FCF'), inputs.fcf)].filter(Boolean).join(' · '));
+  text('input-values', [metric(t('รายได้', 'Revenue'), inputs.revenue), metric(t('กำไรสุทธิ', 'Net income'), inputs.netIncome)].filter(Boolean).join(' · '));
   const muView = selected.id === 'mu';
   const role = muView ? horizonRole(row.horizon, selected.feature) : '';
   text('horizon-role', role);
@@ -223,6 +265,7 @@ function render() {
   ));
 
   renderThesis();
+  renderStatementThesis(data, row.horizon);
   drawChart(data.history.slice(-90), row, format, backtest);
 }
 
@@ -360,7 +403,7 @@ const errorTranslations = new Map([
   ['ข้อมูลที่ผ่านการตรวจสอบยังไม่พอสำหรับทุกช่วงคาดการณ์', 'There is insufficient valid data to evaluate all horizons.'],
   ['งบมีวันสิ้นไตรมาสซ้ำ หรือวันประกาศอยู่ก่อนวันสิ้นไตรมาส', 'Check for duplicate quarter ends or release dates before quarter end.'],
   ['ระบุตัวเลขของงบอย่างน้อยหนึ่งรายการ โดยใช้หน่วย USD เต็มและไม่มีเครื่องหมายคั่นหลัก', 'Enter at least one financial figure in whole US dollars without thousands separators.'],
-  ['ไตรมาสใหม่ต้องมีรายได้ กระแสเงินสดจากการดำเนินงาน และ CapEx', 'New quarters require revenue, operating cash flow and CapEx.'],
+  ['ไตรมาสใหม่ต้องมีรายได้และกระแสเงินสดจากการดำเนินงาน', 'New quarters require revenue and operating cash flow.'],
   ['Yahoo Finance ไม่ส่งข้อมูลราคา MU', 'Yahoo Finance returned no MU price data.'],
   ['สัญลักษณ์หรือสกุลเงินราคาจาก Yahoo ไม่ตรงกับ MU', 'The ticker or currency returned by Yahoo does not match MU.'],
   ['Yahoo ส่งข้อมูล OHLCV ที่ไม่ถูกต้อง', 'Yahoo returned invalid OHLCV data.'],

@@ -93,8 +93,8 @@ def merge_quarters(files, content):
                            if abs((pd.Timestamp(key) - pd.Timestamp(quarter)).days) <= 14), None)
             if nearby:
                 raise ValueError(f"{quarter} อยู่ใกล้ไตรมาสเดิม {nearby} ให้ใช้วันที่เดิมเมื่อต้องการแก้ไตรมาสเดียวกัน")
-            if not {"totalRevenue", "operatingCashflow", "capitalExpenditures"}.issubset(fields):
-                raise ValueError("ไตรมาสใหม่ต้องมีรายได้ กระแสเงินสดจากการดำเนินงาน และ CapEx")
+            if not {"totalRevenue", "operatingCashflow"}.issubset(fields):
+                raise ValueError("ไตรมาสใหม่ต้องมีรายได้และกระแสเงินสดจากการดำเนินงาน")
             known.add(quarter)
         elif (existing := reports[EARNINGS][2].get(quarter, {}).get(REPORTED)) not in (None, "", "None", row[REPORTED]):
             raise ValueError(f"{quarter}: วันประกาศเดิมคือ {existing} ให้ใช้วันเดิมเมื่ออัปเดตไตรมาสเดียวกัน")

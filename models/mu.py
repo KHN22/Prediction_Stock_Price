@@ -7,6 +7,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from mu_financial import financial_review
 
 ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOK = ROOT / "Copy_of_MU_Capstone_v5_WalkForward_Improved.ipynb"
@@ -93,7 +94,7 @@ def run(files):
         if not available.empty:
             current = available.iloc[-1]
             inputs["financialsAvailable"] = current["date"].date().isoformat()
-            for key, column in {"revenue": "is_totalRevenue", "fcf": "fin_approx_fcf"}.items():
+            for key, column in {"revenue": "is_totalRevenue", "netIncome": "is_netIncome"}.items():
                 value = current.get(column, np.nan)
                 inputs[key] = float(value) if np.isfinite(value) else None
         inputs["financialsImported"] = financials["date"].max().date().isoformat() if not financials.empty else None
@@ -137,5 +138,6 @@ def run(files):
         "history": [[date.date().isoformat(), float(close)] for date, close in zip(frame.date, frame.close)],
         "files": list(files),
         "inputs": inputs,
+        "financialReview": financial_review(env),
         "results": results,
     }
