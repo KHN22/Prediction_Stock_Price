@@ -98,3 +98,18 @@ footer>span{overflow-wrap:anywhere}
 #theme-toggle{white-space:nowrap}
 #theme-toggle[aria-pressed=true]{border-color:#70d7c0;color:#a0ead8}
 @media(max-width:670px){.top-inner{height:auto;min-height:66px;flex-wrap:wrap;padding-top:10px;padding-bottom:10px;gap:10px}.topbar nav{height:36px}.display-controls{margin-left:auto}}
+
+.outlook-role{display:block;font-size:11px;font-weight:400;color:var(--muted)}
+.horizon-role{font-size:13px;color:var(--teal-dark);margin:5px 0 0}
+.thesis{margin-top:16px;padding:clamp(18px,3vw,32px);border-top:3px solid var(--teal-dark)}
+.thesis header p,.thesis article p,.thesis small,.thesis details p{color:var(--muted);margin:8px 0;line-height:1.65}
+.thesis-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);margin:20px 0}
+.thesis h3{font-size:16px;margin:12px 0 8px}
+.thesis-path{display:flex;align-items:center;gap:clamp(12px,2vw,26px);padding:16px;background:var(--control);border-radius:8px}
+.thesis-path div{display:grid;font-size:12px;color:var(--muted)}
+.thesis-path strong,#thesis-count{color:var(--ink);font-size:clamp(18px,2vw,25px);font-variant-numeric:tabular-nums}
+.thesis-switch{display:inline-flex;margin:4px 0 10px}.thesis-switch button{font:inherit;font-size:13px}
+#thesis-count{display:block}#thesis-dots{display:flex;flex-wrap:wrap;gap:4px;margin:10px 0;max-width:370px}
+#thesis-dots i{width:8px;height:8px;border:1px solid var(--muted);border-radius:50%}#thesis-dots .correct{background:var(--teal-dark);border-color:var(--teal-dark)}
+.thesis details{border-top:1px solid var(--soft);padding-top:13px}.thesis summary{cursor:pointer;font-weight:650}.thesis a{color:var(--teal-dark)}
+@media(max-width:760px){.thesis-grid{grid-template-columns:1fr;gap:4px}}

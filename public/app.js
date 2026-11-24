@@ -22,6 +22,17 @@ const featureNames = {
 };
 const baselineNames = { zero: ['ราคาคงที่', 'Unchanged price'], historical_mean: ['ค่าเฉลี่ยย้อนหลัง', 'Historical mean'], momentum_21d: ['โมเมนตัม 21 วัน', '21-day momentum'] };
 const monthNames = { '1m': ['1 เดือน', '1 month'], '3m': ['3 เดือน', '3 months'], '6m': ['6 เดือน', '6 months'] };
+const horizonRoles = {
+  '1m': ['มุมมองเสริมระยะสั้น', 'Short-term context'],
+  '3m': ['มุมมองหลัก', 'Primary outlook'],
+  '6m': ['มุมมองเสริม · อยู่ระหว่างทดสอบ', 'Supporting outlook · Under evaluation'],
+};
+function horizonRole(horizon, feature) {
+  if (horizon === '3m' && feature !== 'B_price_macro') {
+    return t('ชุดตัวแปรเปรียบเทียบ', 'Alternative feature set');
+  }
+  return translatedName(horizonRoles, horizon);
+}
 const translatedName = (names, key) => names[key] ? t(...names[key]) : key;
 const money = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
 const dateFormats = {};
@@ -40,7 +51,7 @@ const closeText = (value, currency) => currency === 'USD' ? money.format(value) 
 const text = (id, value) => { byId(id).textContent = value; };
 const option = (value, label) => new Option(label, value);
 const signClass = value => value < 0 ? 'down' : value > 0 ? 'up' : '';
-const selected = { id: 'mu', horizon: '1m', view: 'forecast', feature: '' };
+const selected = { id: 'mu', horizon: '3m', view: 'forecast', feature: 'B_price_macro' };
 const loaded = new Map();
 const models = new Map();
 const chart = byId('chart');
@@ -74,6 +85,30 @@ const sourceLabels = new Map([
 ]);
 const sourceText = value => sourceLabels.has(value) ? t(...sourceLabels.get(value)) : value;
 
+// Fixed forecast vintage: keep the evidence comparable when online data changes.
+let showDownCalls = true;
+function renderThesis() {
+  const panel = byId('thesis');
+  panel.hidden = selected.id !== 'mu' || selected.horizon !== '3m' || selected.feature !== 'B_price_macro';
+  if (panel.hidden) return;
+  const total = showDownCalls ? 25 : 239;
+  const correct = showDownCalls ? 0 : 177;
+  byId('thesis-down').setAttribute('aria-pressed', String(showDownCalls));
+  byId('thesis-all').setAttribute('aria-pressed', String(!showDownCalls));
+  text('thesis-count', t('ถูก ' + correct + ' จาก ' + total + ' ครั้ง', correct + ' correct out of ' + total));
+  byId('thesis-dots').replaceChildren(...Array.from({length: total}, (_, i) => {
+    const dot = document.createElement('i');
+    if (i < correct) dot.className = 'correct';
+    return dot;
+  }));
+  text('thesis-explain', showDownCalls
+    ? t('วงกลมละ 1 ครั้งที่โมเดลทายลง ทั้ง 25 ครั้งราคาปลายช่วงสูงกว่าวันเริ่มต้น', 'Each dot is one down call. All 25 ended above their starting price.')
+    : t('จุดทึบคือครั้งที่ทายถูก (74.1%) ส่วน Momentum 21 วันทายถูก 75.3% อย่างไรก็ตาม โมเดลมี RMSE ต่ำกว่า (0.4524 เทียบกับ 0.4972) จึงประมาณขนาดการเปลี่ยนแปลงได้ดีกว่าในชุดนี้', 'Filled dots are correct calls (74.1%). The 21-day momentum benchmark got 75.3% right. The model had lower RMSE (0.4524 vs 0.4972), so its return estimates had smaller squared errors overall.'));
+}
+for (const id of ['thesis-down','thesis-all']) {
+  byId(id).onclick = () => { showDownCalls = id === 'thesis-down'; renderThesis(); };
+}
+
 function render() {
   const entry = loaded.get(selected.id);
   if (!entry) return;
@@ -81,7 +116,9 @@ function render() {
   const model = models.get(selected.id);
   const format = value => closeText(value, model.currency);
   const features = [...new Set(data.results.map(row => row.feature_set))].sort();
-  if (!features.includes(selected.feature)) selected.feature = features.at(-1);
+  if (!features.includes(selected.feature)) {
+    selected.feature = selected.id === 'mu' && features.includes('B_price_macro') ? 'B_price_macro' : features.at(-1);
+  }
   const rows = data.results.filter(row => row.feature_set === selected.feature)
     .sort((a, b) => a.sessions - b.sessions);
   if (!rows.some(row => row.horizon === selected.horizon)) selected.horizon = rows[0].horizon;
@@ -123,13 +160,18 @@ function render() {
     (data.files.length === 1 ? t('รอบนี้ใช้เฉพาะข้อมูลราคา', 'This run uses price data only') : t('รันโมเดลอีกครั้งเพื่อดูวันที่ของข้อมูลแต่ละชุด', 'Run the model again to see the dates of the inputs')));
   const metric = (name, value) => value == null ? '' : name + ' ' + model.currency + ' ' + compact.format(value);
   text('input-values', [metric(t('รายได้', 'Revenue'), inputs.revenue), metric(t('FCF ตามสูตรโมเดล', 'Model FCF'), inputs.fcf)].filter(Boolean).join(' · '));
+  const muView = selected.id === 'mu';
+  const role = muView ? horizonRole(row.horizon, selected.feature) : '';
+  text('horizon-role', role);
+  byId('horizon-role').hidden = !role;
   text('price-caption', t('ราคาคาดการณ์ · ', 'Forecast price · ') + translatedName(monthNames, row.horizon));
   text('forecast-price', format(row.forecast));
-  text('sessions', row.sessions + t(' วันซื้อขาย · ', ' trading sessions · ') + row.best_model);
+  text('sessions', row.sessions + t(' วันซื้อขาย · ', ' trading sessions · ') + (row.best_model === 'RandomForest' ? 'Random Forest' : row.best_model));
   text('return', pct(row.return));
   byId('return').className = signClass(row.return);
-  text('rmse', row.model_RMSE_log_return.toFixed(3));
-  text('baseline-metric', 'Baseline ' + row.best_baseline_RMSE_log_return.toFixed(3) + ' · log return');
+  text('rmse', row.model_RMSE_log_return.toFixed(4));
+  const benchmark = translatedName(baselineNames, row.best_baseline);
+  text('baseline-metric', benchmark + ' ' + row.best_baseline_RMSE_log_return.toFixed(4) + ' · log return');
   text('chart-kicker', backtest ? t('ชุดทดสอบ', 'HELD-OUT TEST') : t('คาดการณ์ราคา', 'PRICE OUTLOOK'));
   text('graph-title', backtest ? t('ผลทดสอบย้อนหลัง', 'Backtest results') : t('แนวโน้มราคา', 'Price outlook'));
   text('currency', model.currency + t(' / หุ้น', ' / SHARE'));
@@ -154,6 +196,12 @@ function render() {
       span.className = className;
       button.append(span);
     }
+    if (muView) {
+      const roleLabel = document.createElement('small');
+      roleLabel.className = 'outlook-role';
+      roleLabel.textContent = horizonRole(item.horizon, selected.feature);
+      button.firstElementChild.append(roleLabel);
+    }
     button.onclick = () => {
       selected.horizon = item.horizon;
       render();
@@ -166,12 +214,15 @@ function render() {
   const beats = row.beats_best_baseline_RMSE;
   assessment.classList.toggle('good', beats);
   const heading = document.createElement('strong');
-  heading.textContent = beats ? t('RMSE ต่ำกว่า Baseline', 'Lower RMSE than the baseline') : t('โมเดลยังไม่ชนะ Baseline', 'Model does not beat the baseline');
+  heading.textContent = (beats ? t('RMSE ต่ำกว่า ', 'Lower RMSE than ') : t('RMSE ไม่ต่ำกว่า ', 'RMSE at or above ')) + benchmark;
   assessment.replaceChildren(heading, document.createTextNode(
-    (translatedName(baselineNames, row.best_baseline)) + t(' · ทายทิศทางถูก ', ' · Directional accuracy ') +
-    (row.model_directional_accuracy * 100).toFixed(1) + t('% จาก ', '% across ') + row.n_test + t(' จุดทดสอบ', ' test observations')
+    t('ทายทิศทางถูก · โมเดล ', 'Directional accuracy · Model ') +
+    (row.model_directional_accuracy * 100).toFixed(1) + '% / ' + translatedName(baselineNames, row.best_baseline) +
+    (Number.isFinite(row.baseline_directional_accuracy) ? ' ' + (100 * row.baseline_directional_accuracy).toFixed(1) + '%' : '') +
+    t(' จาก ', ' across ') + row.n_test + t(' จุดทดสอบ', ' test observations')
   ));
 
+  renderThesis();
   drawChart(data.history.slice(-90), row, format, backtest);
 }
 

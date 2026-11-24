@@ -80,6 +80,7 @@ def run(files):
 
     # Keep estimator settings and CV intact. Limit tree parallelism on local machines.
     evaluation = source(16).replace("n_jobs=-1", "n_jobs=2")
+    env["dashboard_primary_view"] = ("3m", "B_price_macro")
     exec(evaluation, env)
 
     frame = env["df"]

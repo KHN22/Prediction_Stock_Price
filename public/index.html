@@ -60,11 +60,12 @@
         <div class="card-heading">
           <div><div class="eyebrow">01 <span class="divider">/</span> <span id="chart-kicker" data-en="PRICE OUTLOOK">คาดการณ์ราคา</span></div><h2 id="graph-title" data-en="Price outlook">แนวโน้มราคา</h2></div>
           <div id="horizons" class="segmented" role="group" aria-label="ระยะคาดการณ์" data-en-label="Forecast horizon">
-            <button data-horizon="1m" aria-pressed="true">1M</button>
-            <button data-horizon="3m" aria-pressed="false">3M</button>
+            <button data-horizon="1m" aria-pressed="false">1M</button>
+            <button data-horizon="3m" aria-pressed="true">3M</button>
             <button data-horizon="6m" aria-pressed="false">6M</button>
           </div>
         </div>
+        <p id="horizon-role" class="horizon-role" hidden></p>
         <div class="chart-label"><span id="currency" data-en="USD / SHARE">USD / หุ้น</span><span id="chart-period"></span></div>
         <div class="chart" id="chart"></div>
         <div class="legend" id="legend"></div>
@@ -79,6 +80,28 @@
       </aside>
     </div>
 
+    <section id="thesis" class="card thesis" aria-labelledby="thesis-heading" hidden>
+      <header><span class="eyebrow">INVESTMENT THESIS · MU</span><h2 id="thesis-heading" data-en="Could Micron fall a little further?">MU มีโอกาสลงต่ออีกเล็กน้อยแค่ไหน?</h2>
+      <p data-en="Forecast recorded on 23 Nov 2026 · Three-month Random Forest using price and macro data. Figures are fixed for later review.">บันทึก ณ 23 พ.ย. 2026 · มุมมอง 3 เดือนจาก Random Forest ชุดราคาและ Macro เก็บตัวเลขรอบนี้ไว้เทียบกับผลจริง</p></header>
+      <div class="thesis-grid"><article>
+      <h3 data-en="From closing price to forecast">จากราคาปิดถึงจุดที่โมเดลคาด</h3>
+      <div class="thesis-path"><div><span data-en="Starting close">ราคาปิดวันเริ่มต้น</span><strong>$707.70</strong></div><span aria-hidden="true">→</span><div><span data-en="After 63 sessions">อีก 63 วันซื้อขาย</span><strong>$682.05</strong></div></div>
+      <p data-en="A difference of −$25.65 per share (−3.62%). This endpoint is one possible outcome.">ส่วนต่าง −$25.65 ต่อหุ้น (−3.62%) จุดปลายนี้เป็นหนึ่งในผลที่อาจเกิดขึ้น</p>
+      <h3 data-en="What supports the downside case?">อะไรสนับสนุนภาพขาลง?</h3>
+      <p data-en="Before the forecast, MU fell 19.4% over 21 sessions and 24.1% over 63. Continued selling could push it lower. Both measures describe the same price history.">ก่อนวันพยากรณ์ ราคาลดลง 19.4% ใน 21 วันซื้อขาย และ 24.1% ใน 63 วัน หากแรงขายต่อเนื่อง ราคาก็อาจลงต่อ ทั้งสองตัวเลขมาจากประวัติราคาเดียวกัน</p>
+      </article><article>
+      <h3 data-en="How often did the model get the direction right?">โมเดลเคยอ่านทิศทางถูกแค่ไหน?</h3>
+      <div class="segmented thesis-switch"><button type="button" id="thesis-down" aria-pressed="true" data-en="Down calls">เมื่อทายลง</button><button type="button" id="thesis-all" aria-pressed="false" data-en="All calls">ทุกครั้งที่ทาย</button></div>
+      <div aria-live="polite"><strong id="thesis-count"></strong><div id="thesis-dots" aria-hidden="true"></div><p id="thesis-explain"></p></div>
+      <small data-en="Forecast windows overlap, so several dots cover the same market move. These historical counts do not give the odds of the next decline.">ช่วงพยากรณ์ซ้อนกัน หลายจุดจึงสะท้อนตลาดช่วงเดียวกัน สถิตินี้ยังใช้ระบุโอกาสลงของรอบใหม่ไม่ได้</small>
+      </article></div>
+      <details><summary data-en="What could change this view?">อะไรจะทำให้ต้องทบทวนมุมมองนี้?</summary>
+      <p data-en="Before earnings · Check the 21-session return. A sustained recovery weakens the selling-pressure argument.">ก่อนงบออก · ดูว่าผลตอบแทนย้อนหลัง 21 วันกลับเป็นบวกหรือยัง หากราคาฟื้นต่อเนื่อง เหตุผลเรื่องแรงขายจะอ่อนลง</p>
+      <p data-en="Earnings on 17 Dec 2026 · Last quarter’s revenue was $54.23B. Guidance was $60–63B. A beat with a stronger outlook weakens the downside case. A miss with weaker guidance strengthens it. Watch the price reaction since guidance was already public.">งบ 17 ธ.ค. 2026 · ไตรมาสก่อนมีรายได้ $54.23 พันล้าน บริษัทคาดรอบถัดไป $60–63 พันล้าน หากสูงกว่ากรอบพร้อมแนวโน้มงวดหน้าที่แข็งแรง ให้ทบทวนภาพขาลง หากต่ำกว่ากรอบพร้อมแนวโน้มอ่อนลง ภาพขาลงจะมีน้ำหนักขึ้น ดูการตอบรับของราคาด้วย เพราะตลาดรู้กรอบนี้แล้ว</p>
+      <p data-en="At session 63 · Compare the actual close with $707.70 to check direction, then with $682.05 to measure the forecast error.">ครบ 63 วันซื้อขาย · เทียบราคาปิดจริงกับ $707.70 เพื่อเช็กทิศทาง แล้วเทียบกับ $682.05 เพื่อเช็กขนาดความคลาดเคลื่อน</p>
+      <a href="https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Fiscal-Fourth-Quarter-and-Full-Year-2026-Results/default.aspx" data-en="Micron results and guidance">งบและประมาณการของ Micron</a> · <a href="https://investors.micron.com/news/press-release/2026/Micron-Technology-to-Report-Fiscal-First-Quarter-Results-on-December-17-2026/default.aspx" data-en="Earnings date">กำหนดประกาศงบ</a>
+      </details>
+    </section>
     <details id="macro-details" class="card macro-details" hidden>
       <summary data-en="Macroeconomic data from FRED">ข้อมูล Macro จาก FRED</summary>
       <div class="macro-table-wrap"><table><thead><tr><th data-en="Indicator">ตัวแปร</th><th data-en="Latest observation period">งวดล่าสุดที่ดึง</th><th data-en="Latest value">ค่าล่าสุด</th><th data-en="Value used after lag">ค่าที่ใช้ตาม lag</th></tr></thead><tbody id="macro-rows"></tbody></table></div>
@@ -87,7 +110,7 @@
     <section class="card methodology">
       <div><div class="eyebrow">03 <span class="divider">/</span><span data-en="MODEL NOTES">คำอธิบายโมเดล</span> </div><h2 data-en="How to read the results">อ่านผลอย่างไร</h2></div>
       <div><strong data-en="Inputs available at the latest close">ข้อมูลที่พร้อมใช้ ณ วันราคาปิด</strong><p id="input-dates" data-en="Loading inputs">กำลังอ่านข้อมูล</p><p id="input-values"></p></div>
-      <div><strong data-en="Backtest results">ผลทดสอบย้อนหลัง</strong><p data-en="Walk-forward validation selects the model and excludes training samples whose targets cross into the test period. Lower RMSE is better. The 3- and 6-month returns use overlapping periods.">เลือกโมเดลด้วย Walk-forward และตัดตัวอย่างที่ผลลัพธ์ล้ำช่วงทดสอบ ค่า RMSE ยิ่งต่ำยิ่งดี ส่วนผลตอบแทน 3 และ 6 เดือนมีช่วงซ้อนทับกัน</p></div>
+      <div><strong data-en="Backtest results">ผลทดสอบย้อนหลัง</strong><p data-en="The primary MU view uses Random Forest with price and macro indicators over 63 sessions, benchmarked against 21-day momentum. Walk-forward validation excludes training targets that cross into the evaluation period. Lower RMSE is better. The 3- and 6-month returns use overlapping periods.">มุมมองหลักของ MU ใช้ Random Forest กับราคาและ Macro ระยะ 63 วันซื้อขาย เทียบกับโมเมนตัม 21 วัน การทดสอบแบบ Walk-forward ตัดตัวอย่างฝึกที่วันปลายเป้าหมายล้ำเข้าช่วงประเมิน ค่า RMSE ยิ่งต่ำยิ่งดี ส่วนผลตอบแทน 3 และ 6 เดือนมีช่วงซ้อนทับกัน</p></div>
     </section>
     <footer><span>MODEL 411 <span class="divider">/</span> <span id="source" data-en="Project dataset">ชุดข้อมูลในโปรเจกต์</span></span><span data-en="For analysis and presentation">ใช้เพื่อการวิเคราะห์และนำเสนอ</span></footer>
   </main>
