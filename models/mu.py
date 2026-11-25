@@ -10,7 +10,7 @@ import pandas as pd
 from mu_financial import financial_review
 
 ROOT = Path(__file__).resolve().parents[1]
-NOTEBOOK = ROOT / "Copy_of_MU_Capstone_v5_WalkForward_Improved.ipynb"
+NOTEBOOK = ROOT / "MU_Capstone_v5_WalkForward_Improved.ipynb"
 PRICE = "mu_prices.csv"
 SCHEMA = {
     PRICE: {"date", "open", "high", "low", "close", "volume"},
@@ -105,11 +105,22 @@ def run(files):
     for row in env["results_df"].to_dict("records"):
         horizon, feature_set = row["horizon"], row["feature_set"]
         target, target_date = f"target_log_return_{horizon}", f"target_date_{horizon}"
+        target_col = row.get("target_col") or target
+        members = row.get("ensemble_members") or [row["best_model"]]
+        weight = float(row.get("blend_weight", 1.0))
         known = frame.loc[frame[target_date] <= latest["date"].iloc[0]]
         columns = [column for column in env["feature_sets"][feature_set] if known[column].notna().any()]
-        model = env["clone"](env["models"][row["best_model"]])
-        model.fit(known[columns], known[target])
-        predicted_return = float(np.expm1(model.predict(latest[columns])[0]))
+        residual_preds = []
+        for name in members:
+            model = env["clone"](env["models"][name])
+            model.fit(known[columns], known[target_col])
+            residual_preds.append(float(model.predict(latest[columns])[0]))
+        residual = float(np.mean(residual_preds))
+        base_log = float(np.log1p(np.clip(float(latest["return_21d"].fillna(0).iloc[0]), -0.999999, None)))
+        if not np.isfinite(base_log):
+            base_log = 0.0
+        predicted_log = base_log + weight * residual
+        predicted_return = float(np.expm1(predicted_log))
         predicted_price = predicted_return * float(latest["close"].iloc[0]) + float(latest["close"].iloc[0])
         if not np.isfinite(predicted_price) or predicted_price <= 0:
             raise ValueError("โมเดลให้ราคานอกช่วงที่แสดงผลได้")
