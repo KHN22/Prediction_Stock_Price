@@ -1,0 +1,10 @@
+horizon,feature_set,baseline,members,weight,rmse,mae,direction,bias,price_mae,latest_base_log,latest_raw_residual_log,latest_weighted_residual_log,latest_base_pct,residual_increment_pp,latest_return_pct
+1m,A_price_only,flat,ExtraTrees+RandomForest+HistGradientBoosting,0,0.2608239057,0.2019388961,0,-0.09939267685,129.9705135,0,0.05530773096,0,0,0,0
+1m,B_price_macro,flat,HistGradientBoosting+RandomForest+ExtraTrees,0,0.2608239057,0.2019388961,0,-0.09939267685,129.9705135,0,0.06925555143,0,0,0,0
+1m,C_price_macro_financials,flat,HistGradientBoosting+RandomForest+ExtraTrees,0,0.2608239057,0.2019388961,0,-0.09939267685,129.9705135,0,-0.01960692672,-0,0,-0,0
+3m,A_price_only,flat,HistGradientBoosting+RandomForest+ExtraTrees,1,0.5853114355,0.4869386474,0.2719665272,-0.4301275207,244.6232714,0,0.1821971719,0.1821971719,0,19.98507474,19.98507474
+3m,B_price_macro,flat,RandomForest,1,0.5069786223,0.4147386714,0.7991631799,-0.3595129331,221.1895173,0,-0.03603916014,-0.03603916014,0,-3.539748123,-3.539748123
+3m,C_price_macro_financials,flat,HistGradientBoosting+ExtraTrees+Ridge,0.3260917484,0.5462995954,0.4590155345,0.3263598326,-0.4275491839,236.4200637,0,0.2351528491,0.07668140373,0,7.969803382,7.969803382
+6m,A_price_only,flat,HistGradientBoosting+ExtraTrees+RandomForest,0,1.01273448,0.9550339568,0,-0.9405560885,432.1011114,0,0.9813513738,0,0,0,0
+6m,B_price_macro,flat,Ridge+HistGradientBoosting+RandomForest,0.2028282899,1.079802311,1.030128766,0.2123893805,-1.026885717,458.4629069,0,1.083533986,0.2197713455,0,24.57918421,24.57918421
+6m,C_price_macro_financials,flat,HistGradientBoosting+Ridge+RandomForest,0,1.01273448,0.9550339568,0,-0.9405560885,432.1011114,0,1.70161103,0,0,0,0
