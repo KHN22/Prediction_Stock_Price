@@ -1,3 +1,6 @@
+import { rmseMetric } from './metrics.js';
+import { renderBacktest, renderDecision } from './backtest-view.js';
+
 const byId = id => document.getElementById(id);
 let language = 'th';
 try { if (localStorage.getItem('model411-language') === 'en') language = 'en'; } catch {}
@@ -57,6 +60,10 @@ const loaded = new Map();
 const models = new Map();
 const chart = byId('chart');
 let scrollFrame = 0;
+let nonoverlapBacktest = false;
+let activeTestPoints = [];
+let inspectBacktestPoint = () => {};
+let highlightBacktestPoint = () => {};
 function stopSmoothScroll() {
   cancelAnimationFrame(scrollFrame);
 }
@@ -180,6 +187,8 @@ function renderMarketPrint(history, format) {
 
 function renderExplorer(data, row, format) {
   const topic = explorer.topic;
+  const score = rmseMetric(data.model, row);
+  const intervalModel = data.model === 'amzn';
   const lines = data.financialReview?.lines || {};
   const macro = data.sources?.macroSeries || [];
   const topics = {
@@ -240,10 +249,13 @@ function renderExplorer(data, row, format) {
   } else {
     const error = key === 'error';
     const display = value => !Number.isFinite(value) ? '—' : error ? value.toFixed(4) : (100 * value).toFixed(1) + '%';
-    pair(row.best_model === 'RandomForest' ? 'Random Forest' : row.best_model, display(error ? row.model_RMSE_log_return : row.model_directional_accuracy), error ? row.model_RMSE_log_return : row.model_directional_accuracy);
-    pair(translatedName(baselineNames,row.best_baseline), display(error ? row.best_baseline_RMSE_log_return : row.baseline_directional_accuracy), error ? row.best_baseline_RMSE_log_return : row.baseline_directional_accuracy);
-    note = translatedName(monthNames,row.horizon) + ' · ' + translatedName(featureNames,row.feature_set) + ' · ' + row.n_test +
-      t(' จุดทดสอบ · ',' test observations · ') + (error ? t('RMSE ของผลตอบแทนลอการิทึม ยิ่งต่ำยิ่งดี','Log-return RMSE; lower is better.') : t('สัดส่วนครั้งที่ทายขึ้นหรือลงถูก ยิ่งสูงยิ่งดี','Share of correct direction calls; higher is better.'));
+    pair(row.best_model === 'RandomForest' ? 'Random Forest' : row.best_model, display(error ? score.model : row.model_directional_accuracy), error ? score.model : row.model_directional_accuracy);
+    pair(!error && intervalModel ? t('ช่วงราคาคงสเกล','Constant-scale intervals') : translatedName(baselineNames,row.best_baseline), display(error ? score.baseline : row.baseline_directional_accuracy), error ? score.baseline : row.baseline_directional_accuracy);
+    const sample = intervalModel ? (error ? 'CV' : 'CV non-overlap') : t('ชุดทดสอบ','Test set');
+    const count = error ? score.count : row.n_test;
+    note = translatedName(monthNames,row.horizon) + ' · ' + sample +
+      (count == null ? '' : ' · ' + count + t(' จุด',' observations')) + ' · ' +
+      (error ? 'RMSE · ' + score.unit + t(' · ยิ่งต่ำยิ่งดี',' · lower is better') : t('สัดส่วนครั้งที่ทายขึ้นหรือลงถูก ยิ่งสูงยิ่งดี','Share of correct direction calls; higher is better.'));
   }
   // The two bars share a zero and scale, including when a statement line is negative.
   if (readings.length && readings.every(({raw}) => Number.isFinite(raw))) {
@@ -382,9 +394,11 @@ function render() {
   text('sessions', row.sessions + t(' วันซื้อขาย · ', ' trading sessions · ') + (row.best_model === 'RandomForest' ? 'Random Forest' : row.best_model));
   text('return', pct(row.return));
   byId('return').className = signClass(row.return);
-  text('rmse', row.model_RMSE_log_return.toFixed(4));
+  const score = rmseMetric(data.model, row);
+  text('rmse-label', score.sample === 'CV' ? t('RMSE ความผันผวน · CV','Volatility RMSE · CV') : t('RMSE บนชุดทดสอบ','Test set RMSE'));
+  text('rmse', score.model.toFixed(4));
   const benchmark = translatedName(baselineNames, row.best_baseline);
-  text('baseline-metric', benchmark + ' ' + row.best_baseline_RMSE_log_return.toFixed(4) + ' · log return');
+  text('baseline-metric', benchmark + ' ' + score.baseline.toFixed(4) + ' · ' + score.unit);
   text('chart-kicker', backtest ? t('ชุดทดสอบ', 'HELD-OUT TEST') : t('คาดการณ์ราคา', 'PRICE OUTLOOK'));
   text('graph-title', backtest ? t('ผลทดสอบย้อนหลัง', 'Backtest results') : t('แนวโน้มราคา', 'Price outlook'));
   text('currency', model.currency + t(' / หุ้น', ' / SHARE'));
@@ -424,7 +438,7 @@ function render() {
   }));
 
   const assessment = byId('assessment');
-  const beats = row.beats_best_baseline_RMSE;
+  const beats = score.model < score.baseline;
   assessment.classList.toggle('good', beats);
   const heading = document.createElement('strong');
   heading.textContent = (beats ? t('RMSE ต่ำกว่า ', 'Lower RMSE than ') : t('RMSE ไม่ต่ำกว่า ', 'RMSE at or above ')) + benchmark;
@@ -435,11 +449,28 @@ function render() {
     (100 * row.coverage.CV.cov80).toFixed(0) + '%)' : '';
   assessment.replaceChildren(heading, document.createTextNode(
     t('ทายทิศทางถูก · โมเดล ', 'Directional accuracy · Model ') +
-    dirText(row.model_directional_accuracy) + ' / ' + translatedName(baselineNames, row.best_baseline) +
+    dirText(row.model_directional_accuracy) + ' / ' + (data.model === 'amzn' ? t('ช่วงราคาคงสเกล','Constant-scale intervals') : translatedName(baselineNames, row.best_baseline)) +
     ' ' + dirText(row.baseline_directional_accuracy) +
-    t(' จาก ', ' across ') + row.n_test + t(' จุดทดสอบ', ' test observations') + coverageText
+    t(' จาก ', ' across ') + row.n_test + (data.model === 'amzn' ? t(' จุด CV ไม่ทับซ้อน', ' non-overlapping CV observations') : t(' จุดทดสอบ', ' test observations')) + coverageText
   ));
 
+  if (data.model === 'amzn') {
+    byId('decision-explanation').hidden = false;
+    const evidence = renderBacktest(data, row, {t, format, dateText, visible: backtest,
+      nonoverlap: nonoverlapBacktest, onSample: value => { nonoverlapBacktest = value; render(); },
+      onInspect: index => highlightBacktestPoint(index)});
+    activeTestPoints = evidence.points;
+    inspectBacktestPoint = evidence.inspect;
+    renderDecision(data, row, {t, format});
+  } else {
+    byId('backtest-evidence').hidden = true;
+    byId('decision-explanation').hidden = true;
+    activeTestPoints = [];
+    inspectBacktestPoint = () => {};
+    highlightBacktestPoint = () => {};
+    const originalNote = staticLabels.find(([node]) => node.id === 'model-evaluation-note');
+    if (originalNote) originalNote[0].textContent = t(originalNote[1], originalNote[0].dataset.en);
+  }
   renderStatementThesis(data, row.horizon);
   let forecastContext = translatedName(monthNames, row.horizon) + ' · ' + translatedName(featureNames, row.feature_set);
   if (row.intervals) {
@@ -473,9 +504,10 @@ function drawChart(history, row, format, backtest) {
   const right = width - 16;
   const top = 16;
   const bottom = height - 30;
-  const series = backtest ? row.test : history;
+  const series = backtest ? (selected.id === 'amzn' ? activeTestPoints.map(p => [p.targetDate, p.actual, p.predicted, p.baseline, ...(p.intervals || [])]) : row.test) : history;
+  if (!series.length) { chart.replaceChildren(); byId('legend').replaceChildren(); return; }
   const last = history.at(-1);
-  const end = backtest ? series.length - 1 : history.length - 1 + row.sessions;
+  const end = backtest ? Math.max(series.length - 1, 1) : history.length - 1 + row.sessions;
   const values = series.flatMap(point => point.slice(1));
   if (!backtest) {
     values.push(row.forecast);
@@ -521,6 +553,12 @@ function drawChart(history, row, format, backtest) {
       band(7, 6, 'var(--chart-predicted)', 0.20);
     }
     path(series.map((point, i) => [i, point[3]]), ochre, '2 4');
+    series.forEach((point, i) => {
+      if (point.length >= 8 && (point[1] < point[6] || point[1] > point[7])) {
+        svg.append(svgNode('circle', {cx: x(i), cy: y(point[1]), r: 3,
+          fill: 'var(--red)', 'data-missed-interval': '80', 'aria-label': t('ราคาจริงหลุดกรอบ 80%', 'Actual price outside 80% interval')}));
+      }
+    });
     path(series.map((point, i) => [i, point[2]]), green, '6 4');
   } else {
     const fillPath = prices.map(([i, value]) => 'L' + x(i) + ',' + y(value)).join(' ');
@@ -539,9 +577,9 @@ function drawChart(history, row, format, backtest) {
   }
   path(prices, navy, '', 2.25);
 
-  const tickCount = width < 440 ? 2 : backtest ? 5 : 4;
+  const tickCount = series.length === 1 ? 1 : width < 440 ? 2 : backtest ? 5 : 4;
   for (let i = 0; i < tickCount; i++) {
-    const index = Math.round((series.length - 1) * i / (tickCount - 1));
+    const index = tickCount === 1 ? 0 : Math.round((series.length - 1) * i / (tickCount - 1));
     if (!backtest && i === tickCount - 1 && cutoff > right - 55) continue;
     svg.append(svgNode('text', { x: x(index), y: height - 7, class: 'axis',
       'text-anchor': i === 0 ? 'start' : i === tickCount - 1 ? 'end' : 'middle',
@@ -558,10 +596,11 @@ function drawChart(history, row, format, backtest) {
   function showPoint(i, future) {
     cursorIndex = future ? series.length : i;
     const point = series[i];
+    if (backtest) inspectBacktestPoint(i);
     const pos = future ? right : x(i);
     const label = future ? '+' + row.sessions + t(' วันซื้อขาย\nคาดการณ์ ', ' trading sessions\nForecast ') + format(row.forecast) :
       dateText(point[0]) + t('\nราคาจริง ', '\nActual ') + format(point[1]) +
-      (backtest ? t('\nโมเดล ', '\nModel ') + format(point[2]) + '\nBaseline ' + format(point[3]) : '');
+      (backtest ? (activeTestPoints[i]?.originDate ? t('\nออกพยากรณ์ ', '\nOrigin ') + dateText(activeTestPoints[i].originDate) : '') + t('\nโมเดล ', '\nModel ') + format(point[2]) + '\nBaseline ' + format(point[3]) + (point.length >= 8 ? '\n80% ' + format(point[6]) + '–' + format(point[7]) : '') : '');
     cursor.setAttribute('x1', pos);
     cursor.setAttribute('x2', pos);
     cursor.setAttribute('visibility', 'visible');
@@ -574,6 +613,7 @@ function drawChart(history, row, format, backtest) {
     cursor.setAttribute('visibility', 'hidden');
     tip.hidden = true;
   }
+  highlightBacktestPoint = backtest ? index => showPoint(index, false) : () => {};
   svg.addEventListener('pointermove', event => {
     const relative = event.clientX - svg.getBoundingClientRect().left;
     const index = Math.max(0, Math.min(series.length - 1, Math.round((relative - left) * end / (right - left))));
@@ -656,7 +696,8 @@ function drawChart(history, row, format, backtest) {
   }
 
   const labels = [['', t('ราคาจริง', 'Actual price')], ['predicted', backtest ? t('โมเดล', 'Model') : t('จุดคาดการณ์ปลายช่วง', 'Forecast at horizon end')]];
-  if (backtest) labels.push(['baseline', 'Baseline · ' + (translatedName(baselineNames, row.best_baseline))]);
+  if (backtest && series[0]?.length >= 8) labels.push(['band80', t('กรอบ 80%', '80% interval')], ['band95', t('กรอบ 95%', '95% interval')], ['miss', t('ราคาจริงหลุดกรอบ 80%', 'Actual outside 80% interval')]);
+  if (backtest) labels.push(['baseline', 'Baseline · ' + (selected.id === 'amzn' ? t('ช่วงราคาคงสเกล','Constant-scale intervals') : translatedName(baselineNames, row.best_baseline))]);
   const items = labels.map(([style, label]) => {
     const span = document.createElement('span');
     const swatch = document.createElement('i');

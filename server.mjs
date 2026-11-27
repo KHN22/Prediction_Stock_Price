@@ -107,6 +107,9 @@ const staticFiles = {
   '/': ['index.html', 'text/html'],
   '/style.css': ['style.css', 'text/css'],
   '/app.js': ['app.js', 'text/javascript'],
+  '/metrics.js': ['metrics.js', 'text/javascript'],
+  '/backtest.js': ['backtest.js', 'text/javascript'],
+  '/backtest-view.js': ['backtest-view.js', 'text/javascript'],
 };
 const uploadLimit = 12 * 1024 * 1024;
 let busy = false;

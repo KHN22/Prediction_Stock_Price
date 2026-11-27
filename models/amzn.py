@@ -1,7 +1,9 @@
 """Adapter for the AMZN Prediction V4 notebook (volatility + conformal intervals)."""
 
 import io
-import json
+from amzn_direction import direction_forecast
+from notebook_sections import load_sections
+from forecast_explanations import amzn_sensitivity
 import sys
 import tempfile
 import types
@@ -29,10 +31,18 @@ def run(files):
         raise ValueError("ต้องเลือกไฟล์ amzn_prices.csv, amzn_market.csv และ amzn_earnings.csv ครบทั้ง 3 ไฟล์")
     bundle = {notebook_name: files[server_name] for server_name, notebook_name in FILEMAP.items()}
 
-    cells = json.loads(NOTEBOOK.read_text(encoding="utf-8"))["cells"]
+    sections = load_sections(NOTEBOOK, {
+        'setup': ('class _FilesZip:', 'HOLDOUT_DAYS'),
+        'features': ('def earn_feats(', 'YV[h]'),
+        'volatility': ('def vol_predictions(', 'D = {}'),
+        'selection': ('def dm_test(', 'BEST ='),
+        'intervals': ('def eval_intervals(', 'SHR[h]'),
+        'evaluation': ("'Holdout non-overlap'", 'res = pd.DataFrame(rows)'),
+        'forecast': ('fc_rows = []', 'def score_log('),
+    })
 
-    def source(index):
-        return "".join(cells[index]["source"])
+    def source(role):
+        return sections[role]
 
     def quiet(*args, **kwargs):
         pass
@@ -53,8 +63,8 @@ def run(files):
             "print": quiet,
             "display": quiet,
         }
-        for index in (2, 4, 6, 8, 10, 12, 14):
-            exec(compile(source(index), f"<amzn_cell_{index}>", "exec"), env)
+        for role in ("setup", "features", "volatility", "selection", "intervals", "evaluation", "forecast"):
+            exec(compile(source(role), f"<amzn_{role}>", "exec"), env)
 
         idx, close = env["idx"], env["close"]
         last = env["LAST"]
@@ -62,7 +72,7 @@ def run(files):
         history = [[stamp.date().isoformat(), float(value)] for stamp, value in zip(idx, close)]
 
         # Directional accuracy on the non-overlapping CV window.
-        def direction(row_h, h):
+        def direction(h):
             ev = env["EV"][h]
             cv = ev[(ev.index >= env["CV_START"]) & (ev["end"] < env["HOLDOUT_START"])]
             sub = cv.dropna(subset=["ret", "q0.5", "c0.5"]).iloc[::h]
@@ -87,7 +97,7 @@ def run(files):
             naive_row = cvs[(cvs["horizon"] == h) & (cvs["model"] == "naive")].iloc[0]
             model_rmse = float(cv_row["rmse"])
             naive_rmse = float(naive_row["rmse"])
-            diracc, base_diracc, n_test = direction(h, h)
+            diracc, base_diracc, n_test = direction(h)
 
             # Backtest series from the holdout year: [target date, actual, model, baseline,
             # 95% band lo/hi, 80% band lo/hi] as prices.
@@ -96,10 +106,17 @@ def run(files):
                 subset=["ret", "q0.5", "c0.5", "q0.1", "q0.9", "q0.025", "q0.975"])
             origin_close = close.reindex(hold.index)
             test = []
+            origins = []
+            baseline_intervals = []
             for (origin, rrow), spot in zip(hold.iterrows(), origin_close):
                 end_date = rrow["end"]
                 if pd.isna(end_date):
                     continue
+                origins.append([origin.date().isoformat(), float(spot)])
+                baseline_intervals.append([
+                    float(spot * np.exp(rrow["c0.025"])), float(spot * np.exp(rrow["c0.975"])),
+                    float(spot * np.exp(rrow["c0.1"])), float(spot * np.exp(rrow["c0.9"])),
+                ])
                 test.append([
                     pd.Timestamp(end_date).date().isoformat(),
                     float(spot * np.exp(rrow["ret"])),
@@ -125,14 +142,21 @@ def run(files):
                 "forecast": median,
                 "return": median / price - 1.0,
                 "best_model": vol_model,
-                "model_RMSE_log_return": model_rmse,
+                "model_RMSE_log_volatility": model_rmse,
+                "rmse_sample": "CV",
+                "n_rmse": int(cv_row["n"]),
+                "direction_sample": "CV non-overlap",
                 "best_baseline": "naive",
-                "best_baseline_RMSE_log_return": naive_rmse,
+                "best_baseline_RMSE_log_volatility": naive_rmse,
                 "beats_best_baseline_RMSE": model_rmse < naive_rmse,
                 "model_directional_accuracy": diracc,
                 "baseline_directional_accuracy": base_diracc,
                 "n_test": n_test,
                 "test": test,
+                "backtestOrigins": origins,
+                "baselineIntervals": baseline_intervals,
+                "explanation": amzn_sensitivity(env, h, frow),
+                "directionProbability": direction_forecast(env, h, frow),
                 "coverage": coverage,
                 "intervals": {
                     "targetDate": pd.Timestamp(frow["target_date"]).date().isoformat(),

@@ -75,7 +75,7 @@
       <div><span data-en="Latest closing price">ราคาปิดล่าสุดในชุดข้อมูล</span><strong id="last-close">—</strong><small id="date" data-en="Loading data">กำลังโหลดข้อมูล</small></div>
       <div><span id="price-caption" data-en="Forecast price">ราคาคาดการณ์</span><strong id="forecast-price">—</strong><small id="sessions">—</small></div>
       <div><span data-en="Change from latest close">เทียบราคาปิดล่าสุด</span><strong id="return">—</strong><small data-en="Model-implied return">ผลตอบแทนโดยนัยของโมเดล</small></div>
-      <div><span data-en="Test set RMSE">RMSE บนชุดทดสอบ</span><strong id="rmse">—</strong><small id="baseline-metric">—</small></div>
+      <div><span id="rmse-label" data-en="Test set RMSE">RMSE บนชุดทดสอบ</span><strong id="rmse">—</strong><small id="baseline-metric">—</small></div>
     </section>
 
     <div class="dashboard">
@@ -103,6 +103,25 @@
       </aside>
     </div>
 
+    <section id="backtest-evidence" class="card evidence-panel" aria-labelledby="backtest-title" hidden>
+      <header class="evidence-heading"><div><div class="eyebrow">BACKTEST EVIDENCE</div><h2 id="backtest-title" data-en="Did the forecast hold up?">คำพยากรณ์ตรงกับผลจริงแค่ไหน?</h2></div>
+        <label class="feature-control"><span data-en="Evaluation sample">จุดที่ใช้ประเมิน</span><select id="backtest-sample"><option value="daily" data-en="All daily origins">ทุกวันออกพยากรณ์</option><option value="separated" data-en="Non-overlapping windows">เว้นช่วงไม่ให้เป้าหมายทับซ้อน</option></select></label></header>
+      <p id="backtest-protocol"></p><p id="backtest-sample-note"></p>
+      <div class="macro-table-wrap"><table class="evidence-table"><caption class="sr-only" data-en="Model and benchmark evaluated on identical target dates">ผลโมเดลและวิธีอ้างอิงบนวันเป้าหมายเดียวกัน</caption><thead><tr id="backtest-score-head"></tr></thead><tbody id="backtest-score-rows"></tbody></table></div>
+      <p id="backtest-verdict" class="evidence-reading" aria-live="polite"></p>
+      <details class="evidence-case" open><summary data-en="Inspect a past forecast">ตรวจคำพยากรณ์ทีละจุด</summary>
+        <label for="backtest-case" id="backtest-case-label"></label><input type="range" id="backtest-case" min="0" max="0" value="0">
+        <div id="backtest-case-values" class="evidence-values" aria-live="polite"></div>
+        <p data-en="These are retrospectively reconstructed forecasts, not archived live predictions. The origin is the simulated issue date; the target is the maturity date. Bands describe the terminal close, not the path’s highest or lowest price.">ผลนี้จำลองพยากรณ์ย้อนหลัง ไม่ใช่คำพยากรณ์สดที่บันทึกไว้ตั้งแต่วันนั้น วันออกพยากรณ์คือวันที่จำลองว่าสร้างประมาณการ วันครบกำหนดคือวันที่นำราคาจริงมาเทียบ กรอบอธิบายราคาปิดเมื่อครบกำหนด ไม่ใช่ราคาสูงสุดหรือต่ำสุดระหว่างทาง</p>
+      </details>
+    </section>
+    <section id="decision-explanation" class="card evidence-panel" aria-labelledby="decision-title">
+      <div class="eyebrow" data-en="HOW THE MODEL DECIDES">ที่มาของคำพยากรณ์</div><h2 id="decision-title"></h2>
+      <p id="decision-process"></p><div id="decision-values" class="evidence-values"></div>
+      <details class="evidence-case" open><summary data-en="Which input groups affect this forecast most?">กลุ่มข้อมูลใดส่งผลต่อคำพยากรณ์รอบนี้มากที่สุด?</summary>
+        <p id="decision-factor-unit"></p><ol id="decision-factors" class="factor-list"></ol><p id="decision-components"></p><p id="decision-interpretation"></p></details>
+      <h3 data-en="How to use this evidence">ใช้ผลนี้ประกอบการตัดสินใจอย่างไร?</h3><p id="decision-reading"></p>
+    </section>
     <section id="statement-thesis" class="card thesis" aria-labelledby="statement-title" hidden>
       <header><span class="eyebrow">INVESTMENT THESIS · MU</span>
       <h2 id="statement-title" data-en="Is revenue growth translating into profit?">รายได้ที่เพิ่มขึ้นเปลี่ยนเป็นกำไรได้แค่ไหน?</h2>
@@ -126,7 +145,7 @@
     <details class="card notes"><summary data-en="Model inputs and evaluation method">ข้อมูลที่ใช้และวิธีทดสอบโมเดล</summary><div class="methodology">
       <div><div class="eyebrow"><span data-en="MODEL NOTES">คำอธิบายโมเดล</span> </div><h2 data-en="How to read the results">อ่านผลอย่างไร</h2></div>
       <div><strong data-en="Inputs available at the latest close">ข้อมูลที่พร้อมใช้ ณ วันราคาปิด</strong><p id="input-dates" data-en="Loading inputs">กำลังอ่านข้อมูล</p><p id="input-values"></p></div>
-      <div><strong data-en="Backtest results">ผลทดสอบย้อนหลัง</strong><p data-en="The primary MU view uses Random Forest with price and macro indicators over 63 sessions, benchmarked against 21-day momentum. Walk-forward validation excludes training targets that cross into the evaluation period. Lower RMSE is better. The 3- and 6-month returns use overlapping periods.">มุมมองหลักของ MU ใช้ Random Forest กับราคาและ Macro ระยะ 63 วันซื้อขาย เทียบกับโมเมนตัม 21 วัน การทดสอบแบบ Walk-forward ตัดตัวอย่างฝึกที่วันปลายเป้าหมายล้ำเข้าช่วงประเมิน ค่า RMSE ยิ่งต่ำยิ่งดี ส่วนผลตอบแทน 3 และ 6 เดือนมีช่วงซ้อนทับกัน</p></div>
+      <div><strong data-en="Backtest results">ผลทดสอบย้อนหลัง</strong><p id="model-evaluation-note" data-en="The primary MU view uses Random Forest with price and macro indicators over 63 sessions, benchmarked against 21-day momentum. Walk-forward validation excludes training targets that cross into the evaluation period. Lower RMSE is better. The 3- and 6-month returns use overlapping periods.">มุมมองหลักของ MU ใช้ Random Forest กับราคาและ Macro ระยะ 63 วันซื้อขาย เทียบกับโมเมนตัม 21 วัน การทดสอบแบบ Walk-forward ตัดตัวอย่างฝึกที่วันปลายเป้าหมายล้ำเข้าช่วงประเมิน ค่า RMSE ยิ่งต่ำยิ่งดี ส่วนผลตอบแทน 3 และ 6 เดือนมีช่วงซ้อนทับกัน</p></div>
     </div></details>
     <footer><span>MODEL 411 <span class="divider">/</span> <span id="source" data-en="Project dataset">ชุดข้อมูลในโปรเจกต์</span></span><span data-en="For analysis and presentation">ใช้เพื่อการวิเคราะห์และนำเสนอ</span></footer>
   </main>

@@ -2,7 +2,7 @@
 
 import ast
 import io
-import json
+from notebook_sections import load_sections
 from pathlib import Path
 
 import numpy as np
@@ -44,20 +44,26 @@ def run(files):
     if not np.isfinite(prices[list(SCHEMA[PRICE] - {"date"})]).all().all() or prices["date"].isna().any():
         raise ValueError("ข้อมูลราคามีวันที่หรือค่า OHLCV ที่อ่านไม่ได้")
 
-    cells = json.loads(NOTEBOOK.read_text(encoding="utf-8"))["cells"]
+    sections = load_sections(NOTEBOOK, {
+        'reports': ('def parse_report_cell(', 'income_q ='),
+        'prices': ("prices['date'] =", "prices = prices.dropna(subset=['date','close'])"),
+        'features': ('HORIZONS =', 'technical_features ='),
+        'fundamentals': ('macro_cols =', 'feature_sets ='),
+        'evaluation': ('def thin_validation(', 'results_df=pd.DataFrame(results)'),
+    })
 
-    def source(index):
-        return "".join(cells[index]["source"])
+    def source(role):
+        return sections[role]
 
     def quiet(*args, **kwargs):
         pass
 
     env = {"np": np, "pd": pd, "ast": ast, "print": quiet, "display": quiet, "prices": prices}
     # Skip plot and Colab I/O while running the notebook's original transformations.
-    exec(source(10).split("plt.figure", 1)[0], env)
+    exec(source('prices').split("plt.figure", 1)[0], env)
     if len(env["prices"]) < 1100:
         raise ValueError("ต้องมีราคาปิดรายวันอย่างน้อย 1,100 วันซื้อขายเพื่อประเมินครบทั้งสามช่วง")
-    exec(source(12), env)
+    exec(source('features'), env)
     if len(files) == 1:
         env["feature_sets"] = {"A_price_only": env["technical_features"]}
     else:
@@ -69,7 +75,7 @@ def run(files):
             balance_raw=tables["mu_balance_sheet_raw.csv"],
         )
         try:
-            exec(source(6).split("for name, table in", 1)[0], env)
+            exec(source('reports').split("for name, table in", 1)[0], env)
         except (ValueError, SyntaxError) as error:
             raise ValueError("อ่านรายงานรายไตรมาสไม่ได้ กรุณาใช้รูปแบบ raw CSV ของโน้ตบุ๊ก") from error
         for key in ("income_q", "earnings_q", "cash_q", "balance_q"):
@@ -77,10 +83,10 @@ def run(files):
                 raise ValueError("รายงานรายไตรมาสต้องมี fiscalDateEnding")
         if len(env["macro"].columns) < 2 or pd.to_datetime(env["macro"]["date"], errors="coerce").notna().sum() == 0:
             raise ValueError("ไฟล์ Macro ต้องมีวันที่และตัวแปรเศรษฐกิจ")
-        exec(source(14), env)
+        exec(source('fundamentals'), env)
 
     # Keep estimator settings and CV intact. Limit tree parallelism on local machines.
-    evaluation = source(16).replace("n_jobs=-1", "n_jobs=2")
+    evaluation = source('evaluation').replace("n_jobs=-1", "n_jobs=2")
     env["dashboard_primary_view"] = ("3m", "B_price_macro")
     exec(evaluation, env)
 
