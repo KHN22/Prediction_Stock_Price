@@ -109,17 +109,142 @@ for (const id of ['thesis-down','thesis-all']) {
   byId(id).onclick = () => { showDownCalls = id === 'thesis-down'; renderThesis(); };
 }
 
+const statementLabels = {
+  revenue: ['รายได้','Revenue'], grossProfit: ['กำไรขั้นต้น','Gross profit'],
+  operatingIncome: ['กำไรจากการดำเนินงาน','Operating income'], netIncome: ['กำไรสุทธิ','Net income'],
+  assets: ['สินทรัพย์รวม','Total assets'], liabilities: ['หนี้สินรวม','Total liabilities'],
+  operatingCash: ['กระแสเงินสดจากการดำเนินงาน','Operating cash flow'],
+};
+const explorer = { topic: 'market', market: '63', business: 'revenue', economy: '', model: 'error' };
+let historyRange = 90;
+let redrawChart = () => {};
+let redrawExplorer = () => {};
+
+function renderMarketPrint(history, format) {
+  const points = history.slice(-63);
+  const values = points.map(point => point[1]);
+  const low = Math.min(...values), high = Math.max(...values);
+  const path = values.map((value, index) => {
+    const x = 4 + 532 * index / Math.max(1, values.length - 1);
+    const y = high === low ? 60 : 110 - 100 * (value - low) / (high - low);
+    return [x.toFixed(2), y.toFixed(2)];
+  });
+  const d = 'M' + path.join(' L');
+  const [cx, cy] = path.at(-1);
+  byId('price-print').replaceChildren(
+    svgNode('path', { d: d + ' L' + cx + ',120 L4,120 Z', fill: 'var(--print-fill)' }),
+    svgNode('path', { d, fill: 'none', stroke: 'var(--accent)', 'stroke-width': 2, 'vector-effect': 'non-scaling-stroke' }),
+    svgNode('circle', { cx, cy, r: 3, fill: 'var(--accent)' })
+  );
+  text('print-price', format(values.at(-1)));
+  text('print-start', dateText(points[0][0]));
+  text('print-end', dateText(points.at(-1)[0]));
+}
+
+function renderExplorer(data, row, format) {
+  const topic = explorer.topic;
+  const lines = data.financialReview?.lines || {};
+  const macro = data.sources?.macroSeries || [];
+  const topics = {
+    market: [t('ช่วงนี้ราคาเปลี่ยนไปแค่ไหน?', 'What changed over this period?'), t('ช่วงย้อนหลัง','Lookback'),
+      [21,63,90].filter(n => n < data.history.length).map(n => [String(n), n + t(' วันซื้อขาย',' sessions')])],
+    business: [t('งบล่าสุดเปลี่ยนจากไตรมาสก่อนอย่างไร?', 'What changed in the latest quarter?'), t('รายการในงบ','Statement item'),
+      Object.keys(statementLabels).filter(key => lines[key]).map(key => [key,t(...statementLabels[key])])],
+    economy: [t('ตอนคาดการณ์ โมเดลเห็นข้อมูลเศรษฐกิจค่าไหน?', 'Which economic reading was available to the model?'), t('ตัวชี้วัด','Indicator'),
+      macro.map(item => [item.series,sourceText(item.label)])],
+    model: [t('โมเดลเทียบกับวิธีอ้างอิงได้ดีแค่ไหน?', 'How does the model compare with its benchmark?'), t('เกณฑ์วัด','Measure'),
+      [['error', t('ความคลาดเคลื่อน (RMSE)','Forecast error (RMSE)')], ['direction', t('ความแม่นยำด้านทิศทาง','Directional accuracy')]]],
+  };
+  const [question, label, choices] = topics[topic];
+  const choice = byId('choice');
+  const key = choices.some(([id]) => id === explorer[topic]) ? explorer[topic] : choices[0]?.[0];
+  explorer[topic] = key;
+  choice.replaceChildren(...choices.map(([id,name]) => option(id,name)));
+  choice.value = key || '';
+  choice.disabled = !choices.length;
+  choice.parentElement.hidden = !choices.length;
+  text('question', question);
+  text('choice-label', label);
+  for (const button of document.querySelectorAll('[data-topic]')) button.setAttribute('aria-pressed', String(button.dataset.topic === topic));
+  const comparison = byId('comparison');
+  comparison.replaceChildren();
+  const readings = [];
+  const pair = (caption, value, raw) => {
+    const item = document.createElement('div');
+    const name = document.createElement('span');
+    const number = document.createElement('strong');
+    name.textContent = caption;
+    number.textContent = value;
+    item.append(name, number);
+    comparison.append(item);
+    readings.push({ item, raw });
+  };
+  let note;
+  if (!key) {
+    note = t('ชุดข้อมูลรอบนี้ไม่มีข้อมูลสำหรับหัวข้อนี้','This dataset has no observations for this topic.');
+  } else if (topic === 'market') {
+    const first = data.history.at(-Number(key) - 1), last = data.history.at(-1);
+    pair(dateText(first[0]), format(first[1]), first[1]);
+    pair(dateText(last[0]), format(last[1]), last[1]);
+    note = t('ราคาปิดเปลี่ยนไป ', 'The closing price changed by ') + pct(last[1] / first[1] - 1) + t(' ในช่วงที่เลือก',' over the selected period.');
+  } else if (topic === 'business') {
+    const line = lines[key];
+    const amount = value => Number.isFinite(value) ? compact.format(value) : '—';
+    pair(t('ไตรมาสก่อน','Previous quarter'), amount(line.previous), line.previous);
+    pair(t('ไตรมาสล่าสุด','Latest quarter'), amount(line.actual), line.actual);
+    note = models.get(selected.id).currency + t(' · งวดสิ้นสุด ', ' · Quarter ended ') + dateText(data.financialReview.quarter) +
+      t(' · โมเดลใช้งบได้ตั้งแต่ ', ' · Available to the model from ') + dateText(data.financialReview.release);
+  } else if (topic === 'economy') {
+    const item = macro.find(series => series.series === key);
+    const reading = value => Number.isFinite(value) ? value.toLocaleString('en-US',{maximumFractionDigits:3}) : '—';
+    pair(t('ค่าล่าสุดในชุดข้อมูล','Latest reading'), reading(item.latestValue), item.latestValue);
+    pair(t('ค่าที่โมเดลใช้หลังเลื่อนเวลา','Reading after model lag'), reading(item.usedValue), item.usedValue);
+    note = sourceText(item.units) + t(' · งวดล่าสุด ', ' · Latest period ') + dateText(item.observationDate) + t(' · แหล่งข้อมูล FRED',' · Source: FRED');
+  } else {
+    const error = key === 'error';
+    const display = value => !Number.isFinite(value) ? '—' : error ? value.toFixed(4) : (100 * value).toFixed(1) + '%';
+    pair(row.best_model === 'RandomForest' ? 'Random Forest' : row.best_model, display(error ? row.model_RMSE_log_return : row.model_directional_accuracy), error ? row.model_RMSE_log_return : row.model_directional_accuracy);
+    pair(translatedName(baselineNames,row.best_baseline), display(error ? row.best_baseline_RMSE_log_return : row.baseline_directional_accuracy), error ? row.best_baseline_RMSE_log_return : row.baseline_directional_accuracy);
+    note = translatedName(monthNames,row.horizon) + ' · ' + translatedName(featureNames,row.feature_set) + ' · ' + row.n_test +
+      t(' จุดทดสอบ · ',' test observations · ') + (error ? t('RMSE ของผลตอบแทนลอการิทึม ยิ่งต่ำยิ่งดี','Log-return RMSE; lower is better.') : t('สัดส่วนครั้งที่ทายขึ้นหรือลงถูก ยิ่งสูงยิ่งดี','Share of correct direction calls; higher is better.'));
+  }
+  // The two bars share a zero and scale, including when a statement line is negative.
+  if (readings.length && readings.every(({raw}) => Number.isFinite(raw))) {
+    const values = readings.map(({raw}) => raw);
+    const low = Math.min(0,...values), high = Math.max(0,...values);
+    const span = high - low || 1;
+    for (const {item, raw} of readings) {
+      const track = document.createElement('div');
+      track.className = 'value-track';
+      track.setAttribute('aria-hidden', 'true');
+      const bar = document.createElement('i');
+      bar.style.left = ((Math.min(raw,0) - low) / span * 100) + '%';
+      bar.style.width = (Math.abs(raw) / span * 100) + '%';
+      track.append(bar);
+      item.append(track);
+    }
+  }
+  text('chapter-note', note);
+}
+for (const button of document.querySelectorAll('[data-topic]')) {
+  button.onclick = () => {
+    explorer.topic = button.dataset.topic;
+    redrawExplorer();
+  };
+}
+byId('choice').onchange = event => {
+  explorer[explorer.topic] = event.target.value;
+  redrawExplorer();
+};
+for (const button of document.querySelectorAll('[data-range]')) {
+  button.onclick = () => { historyRange = Number(button.dataset.range); render(); };
+}
+
 function renderStatementThesis(data, horizon) {
   const f = data.financialReview;
   const panel = byId('statement-thesis');
   panel.hidden = selected.id !== 'mu' || !f?.lines || selected.feature !== 'C_price_macro_financials';
   if (panel.hidden) return;
-  const labels = {
-    revenue: ['รายได้','Revenue'], grossProfit: ['กำไรขั้นต้น','Gross profit'],
-    operatingIncome: ['กำไรจากการดำเนินงาน','Operating income'], netIncome: ['กำไรสุทธิ','Net income'],
-    assets: ['สินทรัพย์รวม','Total assets'], liabilities: ['หนี้สินรวม','Total liabilities'],
-    operatingCash: ['กระแสเงินสดจากการดำเนินงาน','Operating cash flow'],
-  };
   const ratio = (a, b, period) => {
     const numerator = f.lines[a]?.[period];
     const denominator = f.lines[b]?.[period];
@@ -138,7 +263,7 @@ function renderStatementThesis(data, horizon) {
     price.model_RMSE_log_return.toFixed(4) + t(' เทียบกับชุดเพิ่มงบ ', ' vs. with statements ') +
     statements.model_RMSE_log_return.toFixed(4) + t(' (ต่ำกว่าดีกว่า)', ' (lower is better)') : '');
   const billions = v => Number.isFinite(v) ? (v / 1e9).toFixed(2) : '—';
-  byId('statement-rows').replaceChildren(...Object.entries(labels).map(([key, label]) => {
+  byId('statement-rows').replaceChildren(...Object.entries(statementLabels).map(([key, label]) => {
     const line = f.lines[key] || {};
     const tr = document.createElement('tr');
     const rule = line.rule === 'trend' ? t('ต่อแนวโน้มครึ่งหนึ่ง','Half trend') : line.rule === 'carry' ? t('คงค่าล่าสุด','Last value') : '—';
@@ -151,9 +276,19 @@ function renderStatementThesis(data, horizon) {
   }));
 }
 
+byId('open-lab').onclick = () => {
+  const lab = byId('mu-lab');
+  lab.open = true;
+  lab.querySelector('summary').focus();
+  lab.scrollIntoView({block:'start'});
+};
+
 function render() {
+  byId('mu-lab').hidden = selected.id !== 'mu';
+  byId('open-lab').hidden = selected.id !== 'mu';
   const entry = loaded.get(selected.id);
   if (!entry) return;
+  byId('load-failure').hidden = true;
   const { data, source } = entry;
   const model = models.get(selected.id);
   const format = value => closeText(value, model.currency);
@@ -217,7 +352,7 @@ function render() {
   text('chart-kicker', backtest ? t('ชุดทดสอบ', 'HELD-OUT TEST') : t('คาดการณ์ราคา', 'PRICE OUTLOOK'));
   text('graph-title', backtest ? t('ผลทดสอบย้อนหลัง', 'Backtest results') : t('แนวโน้มราคา', 'Price outlook'));
   text('currency', model.currency + t(' / หุ้น', ' / SHARE'));
-  text('chart-period', backtest ? t('วันที่เป้าหมายในชุดทดสอบ', 'Target dates in the test set') : t('ย้อนหลัง 90 วันซื้อขาย + จุดคาดการณ์', 'Last 90 trading sessions and forecast'));
+  text('chart-period', backtest ? t('วันที่เป้าหมายในชุดทดสอบ', 'Target dates in the test set') : t('ย้อนหลัง ', 'Last ') + Math.min(historyRange,data.history.length) + t(' วันซื้อขาย + จุดคาดการณ์', ' sessions and forecast'));
 
   for (const button of document.querySelectorAll('[data-view]')) {
     button.setAttribute('aria-pressed', String(button.dataset.view === selected.view));
@@ -266,7 +401,14 @@ function render() {
 
   renderThesis();
   renderStatementThesis(data, row.horizon);
-  drawChart(data.history.slice(-90), row, format, backtest);
+  text('forecast-context', translatedName(monthNames, row.horizon) + ' · ' + translatedName(featureNames, row.feature_set));
+  byId('history-range').hidden = backtest;
+  for (const button of document.querySelectorAll('[data-range]')) button.setAttribute('aria-pressed', String(Number(button.dataset.range) === historyRange));
+  renderMarketPrint(data.history, format);
+  redrawExplorer = () => renderExplorer(data, row, format);
+  redrawChart = () => drawChart(data.history.slice(-historyRange), row, format, backtest);
+  redrawExplorer();
+  redrawChart();
 }
 
 const svgNS = 'http://www.w3.org/2000/svg';
@@ -345,11 +487,10 @@ function drawChart(history, row, format, backtest) {
   const tip = document.createElement('div');
   tip.className = 'tooltip';
   tip.hidden = true;
-  svg.addEventListener('pointermove', event => {
-    const relative = event.clientX - svg.getBoundingClientRect().left;
-    const i = Math.max(0, Math.min(series.length - 1, Math.round((relative - left) * end / (right - left))));
+  let cursorIndex = 0;
+  function showPoint(i, future) {
+    cursorIndex = future ? series.length : i;
     const point = series[i];
-    const future = !backtest && relative > cutoff + 7;
     const pos = future ? right : x(i);
     const label = future ? '+' + row.sessions + t(' วันซื้อขาย\nคาดการณ์ ', ' trading sessions\nForecast ') + format(row.forecast) :
       dateText(point[0]) + t('\nราคาจริง ', '\nActual ') + format(point[1]) +
@@ -361,10 +502,31 @@ function drawChart(history, row, format, backtest) {
     tip.hidden = false;
     tip.style.top = '16px';
     tip.style.left = Math.max(0, Math.min(width - tip.offsetWidth, pos + 9)) + 'px';
-  });
-  svg.addEventListener('pointerleave', () => {
+  }
+  function hidePoint() {
     cursor.setAttribute('visibility', 'hidden');
     tip.hidden = true;
+  }
+  svg.addEventListener('pointermove', event => {
+    const relative = event.clientX - svg.getBoundingClientRect().left;
+    const index = Math.max(0, Math.min(series.length - 1, Math.round((relative - left) * end / (right - left))));
+    showPoint(index, !backtest && relative > cutoff + 7);
+  });
+  svg.addEventListener('pointerleave', hidePoint);
+  tip.id = 'chart-reading';
+  tip.setAttribute('role','status');
+  svg.setAttribute('tabindex','0');
+  svg.setAttribute('aria-label', svg.getAttribute('aria-label') + t(' · ใช้ลูกศรซ้ายขวาเพื่ออ่านแต่ละจุด', ' · Use the left and right arrows to read individual points'));
+  svg.addEventListener('focus', () => showPoint(series.length - 1, false));
+  svg.addEventListener('blur', hidePoint);
+  svg.addEventListener('keydown', event => {
+    if (event.key === 'Escape') return hidePoint();
+    if (!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
+    event.preventDefault();
+    const max = backtest ? series.length - 1 : series.length;
+    const index = event.key === 'Home' ? 0 : event.key === 'End' ? max :
+      Math.min(max, Math.max(0, cursorIndex + (event.key === 'ArrowRight' ? 1 : -1)));
+    showPoint(Math.min(index, series.length - 1), index === series.length);
   });
   chart.replaceChildren(svg, tip);
 
@@ -455,17 +617,19 @@ for (const button of document.querySelectorAll('[data-view], [data-horizon]')) {
   button.addEventListener('click', () => {
     Object.assign(selected, button.dataset);
     render();
+    if (button.dataset.view) byId('forecast').focus();
   });
 }
 byId('feature').onchange = event => { selected.feature = event.target.value; render(); };
 byId('model').onchange = event => selectModel(event.target.value).catch(showNotice);
+byId('retry-load').onclick = () => location.reload();
 let previousWidth = 0;
 let previousHeight = 0;
 new ResizeObserver(() => {
   if (previousWidth === chart.clientWidth && previousHeight === chart.clientHeight) return;
   previousWidth = chart.clientWidth;
   previousHeight = chart.clientHeight;
-  render();
+  redrawChart();
 }).observe(chart);
 
 const dialog = byId('upload-dialog');
@@ -574,6 +738,7 @@ try {
   await selectModel(byId('model').value);
 } catch (error) {
   showNotice(error);
+  byId('load-failure').hidden = false;
 }
 
 byId('online').onclick = async () => {
