@@ -55,6 +55,66 @@ const selected = { id: 'mu', horizon: '3m', view: 'forecast', feature: 'B_price_
 const loaded = new Map();
 const models = new Map();
 const chart = byId('chart');
+let scrollFrame = 0;
+function stopSmoothScroll() {
+  cancelAnimationFrame(scrollFrame);
+}
+for (const event of ['wheel', 'touchstart', 'keydown']) {
+  window.addEventListener(event, stopSmoothScroll, { passive: true });
+}
+for (const link of document.querySelectorAll('.hero-links a[href^="#"]')) {
+  link.addEventListener('click', event => {
+    if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    stopSmoothScroll();
+    const destination = document.querySelector(link.getAttribute('href'));
+    const startY = window.scrollY;
+    const targetY = Math.max(0, Math.min(
+      startY + destination.getBoundingClientRect().top - 24,
+      document.documentElement.scrollHeight - innerHeight,
+    ));
+    const startTime = performance.now();
+    function step(now) {
+      const progress = Math.min((now - startTime) / 900, 1);
+      const eased = progress < 0.5 ? 4 * progress ** 3 : 1 - (-2 * progress + 2) ** 3 / 2;
+      window.scrollTo({ top: startY + (targetY - startY) * eased, behavior: 'instant' });
+      if (progress < 1) {
+        scrollFrame = requestAnimationFrame(step);
+      } else {
+        destination.focus({ preventScroll: true });
+        if (location.hash !== link.hash) history.pushState(null, '', link.hash);
+      }
+    }
+    scrollFrame = requestAnimationFrame(step);
+  });
+}
+
+let contentTransition;
+function animateContent(element, update, direction = 1) {
+  const isChapter = element.id === 'chapter';
+  contentTransition?.skipTransition();
+  element.getAnimations().forEach(animation => animation.cancel());
+  if (document.startViewTransition) {
+    const root = document.documentElement;
+    root.dataset.scene = isChapter ? 'evidence' : 'page';
+    root.dataset.slideDirection = direction > 0 ? 'forward' : 'back';
+    const transition = document.startViewTransition(update);
+    contentTransition = transition;
+    transition.finished.catch(() => {}).finally(() => {
+      if (contentTransition !== transition) return;
+      delete root.dataset.scene;
+      delete root.dataset.slideDirection;
+      contentTransition = undefined;
+    });
+    return;
+  }
+  update();
+  element.animate([
+    { transform: (isChapter ? 'translateY(' : 'translateX(') + (direction * 48) + 'px)' },
+    { transform: 'translate(0)' },
+  ], { duration: 760, easing: 'cubic-bezier(.25,.1,.25,1)' });
+}
+
 
 async function fetchJSON(url, options) {
   const response = await fetch(url, options);
@@ -84,30 +144,6 @@ const sourceLabels = new Map([
   ['Yahoo Finance · adjusted daily OHLC', ['Yahoo Finance · ราคา OHLC รายวันที่ปรับแล้ว', 'Yahoo Finance · adjusted daily OHLC']],
 ]);
 const sourceText = value => sourceLabels.has(value) ? t(...sourceLabels.get(value)) : value;
-
-// Fixed forecast vintage: keep the evidence comparable when online data changes.
-let showDownCalls = true;
-function renderThesis() {
-  const panel = byId('thesis');
-  panel.hidden = selected.id !== 'mu' || selected.horizon !== '3m' || selected.feature !== 'B_price_macro';
-  if (panel.hidden) return;
-  const total = showDownCalls ? 25 : 239;
-  const correct = showDownCalls ? 0 : 177;
-  byId('thesis-down').setAttribute('aria-pressed', String(showDownCalls));
-  byId('thesis-all').setAttribute('aria-pressed', String(!showDownCalls));
-  text('thesis-count', t('ถูก ' + correct + ' จาก ' + total + ' ครั้ง', correct + ' correct out of ' + total));
-  byId('thesis-dots').replaceChildren(...Array.from({length: total}, (_, i) => {
-    const dot = document.createElement('i');
-    if (i < correct) dot.className = 'correct';
-    return dot;
-  }));
-  text('thesis-explain', showDownCalls
-    ? t('วงกลมละ 1 ครั้งที่โมเดลทายลง ทั้ง 25 ครั้งราคาปลายช่วงสูงกว่าวันเริ่มต้น', 'Each dot is one down call. All 25 ended above their starting price.')
-    : t('จุดทึบคือครั้งที่ทายถูก (74.1%) ส่วน Momentum 21 วันทายถูก 75.3% อย่างไรก็ตาม โมเดลมี RMSE ต่ำกว่า (0.4524 เทียบกับ 0.4972) จึงประมาณขนาดการเปลี่ยนแปลงได้ดีกว่าในชุดนี้', 'Filled dots are correct calls (74.1%). The 21-day momentum benchmark got 75.3% right. The model had lower RMSE (0.4524 vs 0.4972), so its return estimates had smaller squared errors overall.'));
-}
-for (const id of ['thesis-down','thesis-all']) {
-  byId(id).onclick = () => { showDownCalls = id === 'thesis-down'; renderThesis(); };
-}
 
 const statementLabels = {
   revenue: ['รายได้','Revenue'], grossProfit: ['กำไรขั้นต้น','Gross profit'],
@@ -228,8 +264,11 @@ function renderExplorer(data, row, format) {
 }
 for (const button of document.querySelectorAll('[data-topic]')) {
   button.onclick = () => {
+    if (explorer.topic === button.dataset.topic) return;
+    const topics = [...document.querySelectorAll('[data-topic]')].map(item => item.dataset.topic);
+    const direction = topics.indexOf(button.dataset.topic) > topics.indexOf(explorer.topic) ? 1 : -1;
     explorer.topic = button.dataset.topic;
-    redrawExplorer();
+    animateContent(byId('chapter'), redrawExplorer, direction);
   };
 }
 byId('choice').onchange = event => {
@@ -259,6 +298,11 @@ function renderStatementThesis(data, horizon) {
     t(' สัดส่วนที่สูงขึ้นหมายถึงภาระผูกพันต่อสินทรัพย์ที่มากขึ้น ควรอ่านคู่กับสภาพคล่องและกำหนดชำระ', '. A rising share means more claims against assets. Check liquidity and payment schedules alongside it.'));
   const price = data.results.find(r => r.horizon === horizon && r.feature_set === 'B_price_macro');
   const statements = data.results.find(r => r.horizon === horizon && r.feature_set === selected.feature);
+  text('investment-outlook', statements
+    ? translatedName(monthNames, horizon) + ' · ' + closeText(statements.forecast, 'USD') +
+      ' (' + pct(statements.return) + ') · ' + horizonRole(horizon, selected.feature)
+    : '');
+
   text('statement-rmse', price && statements ? t('ทดสอบราคาย้อนหลัง · RMSE ชุดราคา + Macro ', 'Return backtest · RMSE for price + macro ') +
     price.model_RMSE_log_return.toFixed(4) + t(' เทียบกับชุดเพิ่มงบ ', ' vs. with statements ') +
     statements.model_RMSE_log_return.toFixed(4) + t(' (ต่ำกว่าดีกว่า)', ' (lower is better)') : '');
@@ -390,7 +434,6 @@ function render() {
     t(' จาก ', ' across ') + row.n_test + t(' จุดทดสอบ', ' test observations')
   ));
 
-  renderThesis();
   renderStatementThesis(data, row.horizon);
   text('forecast-context', translatedName(monthNames, row.horizon) + ' · ' + translatedName(featureNames, row.feature_set));
   byId('history-range').hidden = backtest;
@@ -519,7 +562,65 @@ function drawChart(history, row, format, backtest) {
       Math.min(max, Math.max(0, cursorIndex + (event.key === 'ArrowRight' ? 1 : -1)));
     showPoint(Math.min(index, series.length - 1), index === series.length);
   });
+  const previous = chart.querySelector('svg');
+  const chartKey = [selected.id, selected.view, selected.horizon, selected.feature].join('/');
+  const animateChange = previous && chart.dataset.selection !== chartKey &&
+    document.documentElement.dataset.scene !== 'page';
+  chart.dataset.selection = chartKey;
+  const sameView = previous && chart.dataset.previousView === selected.view;
+  const oldShapes = previous ? [...previous.querySelectorAll('path, circle, rect')].map(node => ({
+    tag: node.tagName,
+    d: getComputedStyle(node).d,
+    cx: getComputedStyle(node).cx,
+    cy: getComputedStyle(node).cy,
+    x: getComputedStyle(node).x,
+    width: getComputedStyle(node).width,
+  })) : [];
+  chart.dataset.previousView = selected.view;
+  chart.getAnimations({ subtree: true }).forEach(animation => animation.cancel());
   chart.replaceChildren(svg, tip);
+  if (animateChange) {
+    const timing = { duration: 560, easing: 'cubic-bezier(.22,1,.36,1)' };
+    if (sameView) {
+      [...svg.querySelectorAll('path, circle, rect')].forEach((node, index) => {
+        const old = oldShapes[index];
+        if (!old || old.tag !== node.tagName) return;
+        const current = getComputedStyle(node);
+        const properties = node.tagName === 'path' ? ['d'] :
+          node.tagName === 'circle' ? ['cx', 'cy'] : ['x', 'width'];
+        const from = {}, to = {};
+        for (const property of properties) {
+          from[property] = old[property];
+          to[property] = current[property];
+        }
+        if (node.tagName === 'path' && backtest) {
+          const coordinates = value => (value.match(/[-+]?(?:\d*\.)?\d+(?:e[-+]?\d+)?/gi) || []).map(Number);
+          const oldPoints = coordinates(old.d);
+          const newPoints = coordinates(current.d);
+          const count = Math.max(oldPoints.length, newPoints.length) / 2;
+          const resample = points => Array.from({ length: count }, (_, i) => {
+            const position = i * (points.length / 2 - 1) / (count - 1);
+            const leftIndex = Math.floor(position);
+            const rightIndex = Math.min(leftIndex + 1, points.length / 2 - 1);
+            const mix = position - leftIndex;
+            const x = points[leftIndex * 2] * (1 - mix) + points[rightIndex * 2] * mix;
+            const y = points[leftIndex * 2 + 1] * (1 - mix) + points[rightIndex * 2 + 1] * mix;
+            return (i ? 'L' : 'M') + x + ',' + y;
+          }).join(' ');
+          if (count > 1 && oldPoints.length > 2 && newPoints.length > 2) {
+            from.d = 'path("' + resample(oldPoints) + '")';
+            to.d = 'path("' + resample(newPoints) + '")';
+          }
+        }
+        node.animate([from, to], timing);
+      });
+    } else {
+      svg.animate([
+        { opacity: 0.25, transform: 'translateY(8px)' },
+        { opacity: 1, transform: 'translateY(0)' },
+      ], timing);
+    }
+  }
 
   const labels = [['', t('ราคาจริง', 'Actual price')], ['predicted', backtest ? t('โมเดล', 'Model') : t('จุดคาดการณ์ปลายช่วง', 'Forecast at horizon end')]];
   if (backtest) labels.push(['baseline', 'Baseline · ' + (translatedName(baselineNames, row.best_baseline))]);
@@ -606,9 +707,15 @@ function showNotice(error) {
 
 for (const button of document.querySelectorAll('[data-view], [data-horizon]')) {
   button.addEventListener('click', () => {
-    Object.assign(selected, button.dataset);
-    render();
-    if (button.dataset.view) byId('forecast').focus();
+    if (button.dataset.view) {
+      if (selected.view === button.dataset.view) return;
+      selected.view = button.dataset.view;
+      const direction = selected.view === 'backtest' ? 1 : -1;
+      animateContent(document.querySelector('main'), render, direction);
+    } else {
+      selected.horizon = button.dataset.horizon;
+      render();
+    }
   });
 }
 byId('feature').onchange = event => { selected.feature = event.target.value; render(); };
