@@ -202,7 +202,3 @@ button,select,summary,.launch,.text-link{transition:background-color .16s,color 
 
 @media(max-width:410px){.brand-mark{display:none}.brand>span:last-child{display:inline}.brand{font-size:10px;letter-spacing:.10em}}
 
-#mu-lab{margin:0 0 22px;scroll-margin-top:16px}
-#mu-lab summary{font-size:18px}#mu-lab p,#mu-lab small{color:var(--muted);margin:12px 0}
-#mu-lab h3{margin:20px 0 9px;font-size:16px}#mu-lab table{font-size:13px}
-#mu-lab tbody th{font-weight:550}#mu-lab tbody tr:last-child{background:var(--accent-soft)}

@@ -276,16 +276,7 @@ function renderStatementThesis(data, horizon) {
   }));
 }
 
-byId('open-lab').onclick = () => {
-  const lab = byId('mu-lab');
-  lab.open = true;
-  lab.querySelector('summary').focus();
-  lab.scrollIntoView({block:'start'});
-};
-
 function render() {
-  byId('mu-lab').hidden = selected.id !== 'mu';
-  byId('open-lab').hidden = selected.id !== 'mu';
   const entry = loaded.get(selected.id);
   if (!entry) return;
   byId('load-failure').hidden = true;
