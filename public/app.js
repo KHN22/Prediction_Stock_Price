@@ -19,8 +19,9 @@ const featureNames = {
   A_price_only: ['ราคาและตัวแปรเทคนิค', 'Price and technical indicators'],
   B_price_macro: ['ราคาและ Macro', 'Price and macro indicators'],
   C_price_macro_financials: ['ราคา, Macro และงบการเงิน', 'Price, macro and financials'],
+  interval_forecast: ['ช่วงราคา V4 (volatility + conformal)', 'V4 intervals (volatility + conformal)'],
 };
-const baselineNames = { zero: ['ราคาคงที่', 'Unchanged price'], historical_mean: ['ค่าเฉลี่ยย้อนหลัง', 'Historical mean'], momentum_21d: ['โมเมนตัม 21 วัน', '21-day momentum'] };
+const baselineNames = { zero: ['ราคาคงที่', 'Unchanged price'], historical_mean: ['ค่าเฉลี่ยย้อนหลัง', 'Historical mean'], momentum_21d: ['โมเมนตัม 21 วัน', '21-day momentum'], naive: ['naive volatility', 'Naive volatility'] };
 const monthNames = { '1m': ['1 เดือน', '1 month'], '3m': ['3 เดือน', '3 months'], '6m': ['6 เดือน', '6 months'] };
 const horizonRoles = {
   '1m': ['มุมมองเสริมระยะสั้น', 'Short-term context'],
@@ -427,15 +428,26 @@ function render() {
   assessment.classList.toggle('good', beats);
   const heading = document.createElement('strong');
   heading.textContent = (beats ? t('RMSE ต่ำกว่า ', 'Lower RMSE than ') : t('RMSE ไม่ต่ำกว่า ', 'RMSE at or above ')) + benchmark;
+  const dirText = value => Number.isFinite(value) ? (100 * value).toFixed(1) + '%' : '—';
+  const coverageText = row.coverage && row.coverage.Holdout ?
+    t(' · ช่วง 80% ครอบคลุมราคาจริง ', ' · 80% interval covered the realized price ') +
+    (100 * row.coverage.Holdout.cov80).toFixed(0) + '% (' + t('CV ', 'CV ') +
+    (100 * row.coverage.CV.cov80).toFixed(0) + '%)' : '';
   assessment.replaceChildren(heading, document.createTextNode(
     t('ทายทิศทางถูก · โมเดล ', 'Directional accuracy · Model ') +
-    (row.model_directional_accuracy * 100).toFixed(1) + '% / ' + translatedName(baselineNames, row.best_baseline) +
-    (Number.isFinite(row.baseline_directional_accuracy) ? ' ' + (100 * row.baseline_directional_accuracy).toFixed(1) + '%' : '') +
-    t(' จาก ', ' across ') + row.n_test + t(' จุดทดสอบ', ' test observations')
+    dirText(row.model_directional_accuracy) + ' / ' + translatedName(baselineNames, row.best_baseline) +
+    ' ' + dirText(row.baseline_directional_accuracy) +
+    t(' จาก ', ' across ') + row.n_test + t(' จุดทดสอบ', ' test observations') + coverageText
   ));
 
   renderStatementThesis(data, row.horizon);
-  text('forecast-context', translatedName(monthNames, row.horizon) + ' · ' + translatedName(featureNames, row.feature_set));
+  let forecastContext = translatedName(monthNames, row.horizon) + ' · ' + translatedName(featureNames, row.feature_set);
+  if (row.intervals) {
+    const iv = row.intervals;
+    forecastContext += t(' · 80% ', ' · 80% ') + format(iv.p10) + '–' + format(iv.p90) +
+      t(' · 95% ', ' · 95% ') + format(iv['p2.5']) + '–' + format(iv['p97.5']);
+  }
+  text('forecast-context', forecastContext);
   byId('history-range').hidden = backtest;
   for (const button of document.querySelectorAll('[data-range]')) button.setAttribute('aria-pressed', String(Number(button.dataset.range) === historyRange));
   renderMarketPrint(data.history, format);
@@ -465,7 +477,10 @@ function drawChart(history, row, format, backtest) {
   const last = history.at(-1);
   const end = backtest ? series.length - 1 : history.length - 1 + row.sessions;
   const values = series.flatMap(point => point.slice(1));
-  if (!backtest) values.push(row.forecast);
+  if (!backtest) {
+    values.push(row.forecast);
+    if (row.intervals) values.push(row.intervals.p10, row.intervals.p90, row.intervals['p2.5'], row.intervals['p97.5']);
+  }
   const low = Math.min(...values);
   const high = Math.max(...values);
   const rawStep = Math.max((high - low) / 4, Math.abs(high) * .00001, .01);
@@ -495,12 +510,30 @@ function drawChart(history, row, format, backtest) {
   const navy = 'var(--chart-line)', green = 'var(--chart-predicted)', ochre = 'var(--chart-baseline)';
   const prices = series.map((point, i) => [i, point[1]]);
   if (backtest) {
+    if (series.length && series[0].length > 4) {
+      const band = (hi, lo, fill, opacity) => {
+        const up = series.map((point, i) => [i, point[hi]]);
+        const dn = series.map((point, i) => [i, point[lo]]).reverse();
+        const d = [...up, ...dn].map(([i, v], k) => (k ? 'L' : 'M') + x(i).toFixed(2) + ',' + y(v).toFixed(2)).join(' ');
+        svg.append(svgNode('path', { d, fill, opacity }));
+      };
+      band(5, 4, 'var(--chart-baseline)', 0.10);
+      band(7, 6, 'var(--chart-predicted)', 0.20);
+    }
     path(series.map((point, i) => [i, point[3]]), ochre, '2 4');
     path(series.map((point, i) => [i, point[2]]), green, '6 4');
   } else {
     const fillPath = prices.map(([i, value]) => 'L' + x(i) + ',' + y(value)).join(' ');
     svg.append(svgNode('path', { d: 'M' + left + ',' + bottom + ' ' + fillPath + ' L' + cutoff + ',' + bottom + ' Z', fill: 'var(--chart-area)' }));
     svg.append(line(cutoff, top, cutoff, bottom, 'var(--chart-cutoff)', { 'stroke-dasharray': '3 4' }));
+    if (row.intervals) {
+      const iv = row.intervals;
+      const bandX = right - (right - cutoff) * 0.4;
+      const band = (lo, hi, fill, opacity) => svg.append(svgNode('rect', {
+        x: bandX, y: y(hi), width: right - bandX, height: y(lo) - y(hi), fill, opacity }));
+      band(iv['p2.5'], iv['p97.5'], 'var(--chart-baseline)', 0.10);
+      band(iv.p10, iv.p90, green, 0.22);
+    }
     path([[history.length - 1, last[1]], [end, row.forecast]], green, '7 5');
     svg.append(svgNode('circle', { cx: right, cy: y(row.forecast), r: 5, fill: green, stroke: 'var(--surface)', 'stroke-width': 2 }));
   }
@@ -739,7 +772,9 @@ function configureImport() {
   const names = merge ? [...model.files, ...model.updateFiles] : model.files;
   text('import-help', merge
     ? t('เลือกเฉพาะไฟล์ที่มีข้อมูลเพิ่มหรือแก้ไข เช่น แถวราคาปิดรายวันหรือข้อมูลงบรายไตรมาส ใช้หน่วย USD เต็มสำหรับงบ', 'Select only files with new or revised data, such as daily closes or quarterly financials. Enter financial amounts in whole US dollars.')
-    : t('เลือกไฟล์ราคาย้อนหลังหนึ่งไฟล์สำหรับตัวแปรเทคนิค หรือเลือกครบทั้ง 6 ไฟล์เพื่อรันชุดใหม่', 'Select the historical price file for technical indicators, or all six files to run the full dataset.'));
+    : model.id === 'mu'
+      ? t('เลือกไฟล์ราคาย้อนหลังหนึ่งไฟล์สำหรับตัวแปรเทคนิค หรือเลือกครบทั้ง 6 ไฟล์เพื่อรันชุดใหม่', 'Select the historical price file for technical indicators, or all six files to run the full dataset.')
+      : t('เลือกไฟล์ให้ครบทั้ง ' + names.length + ' ไฟล์เพื่อรันโมเดล', 'Select all ' + names.length + ' files to run the model.'));
   text('upload-message', '');
   byId('templates').hidden = !merge;
   byId('file-list').replaceChildren(...names.map(name => {
@@ -769,10 +804,12 @@ byId('upload-form').onsubmit = async event => {
   const names = merge ? [...model.files, ...model.updateFiles] : model.files;
   const files = [...fileInput.files];
   const unique = new Set(files.map(file => file.name));
-  if (!unique.size || (!merge && !(unique.size === names.length || (unique.size === 1 && unique.has(names[0])))) ||
+  const singleOk = model.id === 'mu' && unique.size === 1 && unique.has(names[0]);
+  if (!unique.size || (!merge && !(unique.size === names.length || singleOk)) ||
       files.length !== unique.size || [...unique].some(name => !names.includes(name))) {
     text('upload-message', merge ? t('กรุณาเลือกไฟล์ชื่อเดียวกับแม่แบบหรือรายชื่อไฟล์ที่รองรับ', 'Use a filename from the templates or supported filenames list.') :
-      t('กรุณาเลือกไฟล์ราคาเพียงไฟล์เดียว หรือเลือกครบตามรายชื่อด้านบน', 'Select only the price file, or select every file listed above.'));
+      model.id === 'mu' ? t('กรุณาเลือกไฟล์ราคาเพียงไฟล์เดียว หรือเลือกครบตามรายชื่อด้านบน', 'Select only the price file, or select every file listed above.') :
+      t('กรุณาเลือกไฟล์ให้ครบตามรายชื่อด้านบน', 'Select every file listed above.'));
     return;
   }
   if (files.reduce((total, file) => total + file.size, 0) > 11 * 1024 * 1024) {
@@ -841,16 +878,23 @@ try {
 
 byId('online').onclick = async () => {
   const button = byId('online');
+  const id = selected.id;
+  const model = models.get(id);
   button.disabled = true;
   byId('upload').disabled = true;
   byId('notice').hidden = false;
-  setNotice(() => t('กำลังดึงราคา งบ MU และ Macro จาก FRED แล้วรัน Walk-forward อาจใช้เวลาหลายนาที…', 'Fetching MU prices, financials and FRED macro data, then running walk-forward validation. This may take several minutes…'));
+  setNotice(() => id === 'mu'
+    ? t('กำลังดึงราคา งบ MU และ Macro จาก FRED แล้วรัน Walk-forward อาจใช้เวลาหลายนาที…', 'Fetching MU prices, financials and FRED macro data, then running walk-forward validation. This may take several minutes…')
+    : t('กำลังดึงราคา ' + model.symbol + ' และ VIX แล้วคำนวณช่วงราคา อาจใช้เวลาหลายนาที…', 'Fetching ' + model.symbol + ' prices and VIX, then computing forecast intervals. This may take several minutes…'));
   try {
-    const data = await fetchJSON('/api/online/mu', {method: 'POST'});
-    loaded.set('mu', {data, source: () => t('อัปเดตออนไลน์', 'Online update')});
+    const data = await fetchJSON('/api/online/' + id, {method: 'POST'});
+    loaded.set(id, {data, source: () => t('อัปเดตออนไลน์', 'Online update')});
     render();
-    setNotice(() => t('อัปเดตสำเร็จ · ราคาปิดถึง ', 'Updated · Closing prices through ') + dateText(data.asOf) +
-      t(' · งบสิ้นงวด ', ' · Financial period ended ') + dateText(data.sources.quarter) + t(' · Macro จาก FRED ครบ 5 ชุด', ' · All five FRED series updated'));
+    setNotice(() => id === 'mu'
+      ? t('อัปเดตสำเร็จ · ราคาปิดถึง ', 'Updated · Closing prices through ') + dateText(data.asOf) +
+        t(' · งบสิ้นงวด ', ' · Financial period ended ') + dateText(data.sources.quarter) + t(' · Macro จาก FRED ครบ 5 ชุด', ' · All five FRED series updated')
+      : t('อัปเดตสำเร็จ · ราคาปิดถึง ', 'Updated · Closing prices through ') + dateText(data.asOf) +
+        t(' · งบล่าสุด ', ' · Latest earnings ') + dateText(data.sources.quarter));
   } catch (error) {
     showNotice(error);
   } finally {
