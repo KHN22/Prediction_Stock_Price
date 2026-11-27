@@ -108,7 +108,7 @@ def run(files):
         target_col = row.get("target_col") or target
         members = row.get("ensemble_members") or [row["best_model"]]
         weight = float(row.get("blend_weight", 1.0))
-        known = frame.loc[frame[target_date] <= latest["date"].iloc[0]]
+        known = frame.loc[(frame[target_date] <= latest["date"].iloc[0]) & frame[target_col].notna()]
         columns = [column for column in env["feature_sets"][feature_set] if known[column].notna().any()]
         residual_preds = []
         for name in members:
@@ -116,7 +116,7 @@ def run(files):
             model.fit(known[columns], known[target_col])
             residual_preds.append(float(model.predict(latest[columns])[0]))
         residual = float(np.mean(residual_preds))
-        base_log = float(np.log1p(np.clip(float(latest["return_21d"].fillna(0).iloc[0]), -0.999999, None)))
+        base_log = float(latest["baseline_momentum_log"].fillna(0).iloc[0])
         if not np.isfinite(base_log):
             base_log = 0.0
         predicted_log = base_log + weight * residual
