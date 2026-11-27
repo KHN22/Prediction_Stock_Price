@@ -15,6 +15,11 @@ const config = {
     files: ['mu_prices.csv', 'cleaned_macro_data.csv', 'mu_income_statement_raw.csv',
       'mu_earnings_raw.csv', 'mu_cash_flow_raw.csv', 'mu_balance_sheet_raw.csv'],
   },
+  amzn: {
+    id: 'amzn', symbol: 'AMZN', company: 'Amazon.com', exchange: 'NASDAQ',
+    version: 'V4 · volatility intervals', currency: 'USD',
+    files: ['amzn_prices.csv', 'amzn_market.csv', 'amzn_earnings.csv'],
+  },
 };
 
 const bundledPython = join(root, '.runtime', 'venv',
@@ -132,7 +137,7 @@ async function handle(req, res) {
   }
   const model = config[id];
   const merge = route === 'update' && Boolean(model.updateFiles);
-  if (req.method === 'POST' && route === 'online' && id === 'mu') {
+  if (req.method === 'POST' && route === 'online' && (id === 'mu' || id === 'amzn')) {
     if (req.headers.origin && req.headers.origin !== 'http://' + req.headers.host) {
       return send(res, 403, { error: 'Origin ไม่ถูกต้อง' });
     }
@@ -140,19 +145,23 @@ async function handle(req, res) {
     busy = true;
     try {
       const base = (await readWorking(id))?.files ?? await readBase(model);
-      const entries = await Promise.all(['CPIAUCSL', 'FEDFUNDS', 'UNRATE', 'GS10', 'GDPC1'].map(async series => {
-        try {
-          const response = await fetch('https://fred.stlouisfed.org/data/' + series, {
-            signal: AbortSignal.timeout(30000),
-            headers: { 'User-Agent': 'Model411 personal research' },
-          });
-          if (!response.ok) throw new Error('HTTP ' + response.status);
-          return [series, await response.text()];
-        } catch {
-          throw Object.assign(new Error('ดึง Macro ' + series + ' จาก FRED ไม่สำเร็จ กรุณาลองใหม่ภายหลัง'), { status: 502 });
-        }
-      }));
-      const working = await forecast(id, { base, macroTables: Object.fromEntries(entries) }, 'online');
+      let macroTables = {};
+      if (id === 'mu') {
+        const entries = await Promise.all(['CPIAUCSL', 'FEDFUNDS', 'UNRATE', 'GS10', 'GDPC1'].map(async series => {
+          try {
+            const response = await fetch('https://fred.stlouisfed.org/data/' + series, {
+              signal: AbortSignal.timeout(30000),
+              headers: { 'User-Agent': 'Model411 personal research' },
+            });
+            if (!response.ok) throw new Error('HTTP ' + response.status);
+            return [series, await response.text()];
+          } catch {
+            throw Object.assign(new Error('ดึง Macro ' + series + ' จาก FRED ไม่สำเร็จ กรุณาลองใหม่ภายหลัง'), { status: 502 });
+          }
+        }));
+        macroTables = Object.fromEntries(entries);
+      }
+      const working = await forecast(id, { base, macroTables }, 'online');
       working.result.updatedAt = new Date().toISOString();
       const temporary = workingPath(id) + '.tmp';
       await writeFile(temporary, JSON.stringify(working));
